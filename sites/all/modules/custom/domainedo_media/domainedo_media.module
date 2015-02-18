@@ -1,0 +1,110 @@
+<?php
+/**
+ * @file
+ * Code for the Domaine d'O Media feature.
+ */
+
+include_once 'domainedo_media.features.inc';
+
+/**
+ * Rewriting of the hook_field_formatter_info()
+ * initially implemented in ...modules/contrib/scald/modules/fields/atom_reference/atom_reference.module
+ * 
+ */
+function domainedo_media_field_formatter_info() {
+	// Expose all the Scald Contexts as formatters for the Atom Reference field.
+	$formatters = array();
+	$contexts = scald_contexts();
+	foreach ($contexts as $name => $context) {
+		if (empty($context['hidden'])) {
+			$formatters[$name] = array(
+					'label' => $context['title'],
+					'field types' => array('atom_reference'),
+			);
+			if (in_array($name,array('list','block','full','slideshow_home','zoom'))) {
+				$formatters[$name]['settings'] = array('link' => 0);
+			}
+		}
+	}
+	return $formatters;
+}
+
+//function domainedo_media_field_formatter_info_alter(&$info) {
+// 	// Add a setting to 'List' and 'Block' formatters (= 2 Scald Contextes).
+// 	$info['list']['settings'] = array(
+// 			'link' => 0,
+// 	);
+// 	$info['block']['settings'] = array(
+// 			'link' => 0,
+// 	);
+//	dsm($info);
+//}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function domainedo_media_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+	//$dsm($field);
+	//This gets the view_mode where our settings are stored
+	$display = $instance['display'][$view_mode]; //dsm($display);
+	//This gets the actual settings
+	$settings = $display['settings'];
+	//Initialize the element variable
+	$element = array();
+	//Add your select box
+	$element['link'] = array(
+			'#type' => 'select',
+			'#title' => t('Link'),
+			'#default_value' => $settings['link'],
+			'#options' => array(
+					'0'  => 'No',
+					'1' => 'Yes',
+			),
+	);
+	return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function domainedo_media_field_formatter_settings_summary($field, $instance, $view_mode) {
+	$display = $instance['display'][$view_mode];
+	$settings = $display['settings'];
+
+	$summary = '';
+	if ($display['type'] == 'list' || $display['type'] == 'block' || $display['type'] == 'slideshow_home' || $display['type'] == 'zoom') {
+		$summary .= t('Link: @value', array('@value'     => ($settings['link'] == 0) ? t('No') : t('Yes') ));
+	}
+	return $summary;
+}
+
+/**
+ * Rewriting of the hook_field_formatter_view()
+ * initially implemented in ...modules/contrib/scald/modules/fields/atom_reference/atom_reference.module
+ *
+ */
+function domainedo_media_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+	$render_context = $display['type'];
+	$contexts = scald_contexts();
+	$element = array();
+
+	if (!empty($contexts[$render_context])) {
+		foreach ($items as $delta => $item) {
+			$sid = $item['sid'];
+			//////// modified part /////////
+			$markup = scald_render($sid, $render_context);
+			$linkable = FALSE;
+			if (isset($display['settings']['link'])) {
+				$linkable = $display['settings']['link'];
+			}
+			if (in_array($render_context, array('list','block','slideshow_home','zoom')) && $linkable) {
+				$node_path = '/' . drupal_get_path_alias('node/' . $entity->nid);
+				$markup = '<a href="' . $node_path . '">' . $markup . '</a>';
+			}
+			$element[$delta] = array('#markup' => $markup);
+			//// end of modified part /////
+		}
+	}
+
+	return $element;
+}
