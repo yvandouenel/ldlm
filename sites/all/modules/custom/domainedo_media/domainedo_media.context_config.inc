@@ -21,12 +21,30 @@ function domainedo_media_default_scald_context_config() {
     'gallery' => array(
       '*' => 'style-Library',
     ),
+    'audio' => array(
+      '*' => 'passthrough',
+    ),
+    'image' => array(
+      '*' => 'style-Library',
+    ),
+    'twitter' => array(
+      '*' => 'passthrough',
+    ),
   );
   $context_config->player = array(
     'file' => array(
       '*' => 'default',
     ),
     'gallery' => array(
+      '*' => 'default',
+    ),
+    'audio' => array(
+      '*' => 'default',
+    ),
+    'image' => array(
+      '*' => 'default',
+    ),
+    'twitter' => array(
       '*' => 'default',
     ),
   );
