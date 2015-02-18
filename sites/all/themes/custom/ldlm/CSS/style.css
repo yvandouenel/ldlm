@@ -1,0 +1,76 @@
+
+/* Général ********************************************************************/
+body{
+  font-family: arial;
+}
+body.pro{
+  border: 1px solid #ef8c0c;
+}
+ul li.leaf {
+  list-style: none;
+}
+h2#page-title{
+  clear: both;
+  font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
+}
+/* Menus hauts ****************************************************************/
+#top_bar{
+  background-color: #3b3b3b;
+  min-height: 41px;
+}
+#block-menu-menu-top ul.menu{
+  margin-left: 440px;
+}
+#block-menu-menu-top ul.menu a{
+  color: #7abed6;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  display: block;
+  padding: 10px 5px;
+}
+/* logos **********************************************************************/
+#paul_bousquet{
+  margin-top: 40px;
+}
+#link_ldlm,#link_pdfm{
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size:  0.9em;
+  display: block;
+  float: left;
+}
+#link_ldlm{
+  color: #236f8b;
+  margin-right: 5px;
+}
+#link_pdfm{
+  color: #ef8c0c; 
+}
+/* Menus principaux ***********************************************************/
+#main_menu{
+  clear: both;
+}
+#superfish-1{
+  margin-top: 30px;
+}
+#superfish-1 li{
+  padding: 0;
+  margin: 0;
+}
+#superfish-1 > li > a{
+  background-color: #e6edf2;
+  padding: 10px;
+  color: #566174;
+  border-right: 1px solid white;
+}
+#superfish-1 > li.active-trail> a{
+  background-color: #236f8b;
+  color: white;
+}
+#superfish-1 li a{
+  text-decoration: none;
+  display: block;
+  text-decoration: none;
+}
+
