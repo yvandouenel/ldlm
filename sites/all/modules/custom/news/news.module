@@ -1,0 +1,80 @@
+<?php
+/**
+ * @file
+ * Code for the News feature.
+ */
+
+include_once 'news.features.inc';
+/**
+ * Title and image are link to the node or to the field_news_url_target field
+ * Working directly on the "title" field was not possible because of the automatic
+ * format which is not html (tag are not interpreted). So I decided to work on the 
+ * "news_url_target" field
+ */
+function news_views_pre_render(&$view) {
+	 /*if ($view->name == 'zoom' && $view->current_display == 'block') {
+    dpm($view);
+   }*/
+  if ($view->name == 'evenements' && $view->current_display == 'page') {
+            foreach ($view->result as &$value) {
+                if (!empty($value->field_field_news_url_target)) {
+                    $target = (empty($value->field_field_new_window) || !$value->field_field_new_window[0]['rendered']['#markup'])? '' : ' target="_blank" ';
+                    
+                    $value->field_field_scald_image[0]['rendered']['#markup'] = '<a '.$target.' href="'.$value->field_field_news_url_target[0]['rendered']['#markup'].'">'.$value->field_field_scald_image[0]['rendered']['#markup'].'</a>';
+                    
+                    $value->field_field_news_url_target[0]['rendered']['#markup'] = 
+                            '<h3 class="title-event-list"><a '.$target.' href="'.$value->field_field_news_url_target[0]['rendered']['#markup'].'">'.$value->node_title.'</a></h3>';
+                }else {
+                    $href = ' href="'.drupal_get_path_alias("node/".$value->nid).'" ';
+                    $value->field_field_news_url_target[0]['rendered']['#markup'] = '<h3 class="title-event-list"><a href="/node/'.$value->nid.'">'.$value->node_title.'</a></h3>';
+                    $value->field_field_scald_image[0]['rendered']['#markup'] = '<a '.$href.'>'.$value->field_field_scald_image[0]['rendered']['#markup'].'</a>';
+                }
+            }
+		
+	}
+  if ($view->name == 'evenements' && $view->current_display == 'block_2') {
+            foreach ($view->result as &$value) {
+                if (!empty($value->field_field_news_url_target)) {
+                    $target = (empty($value->field_field_new_window) || !$value->field_field_new_window[0]['rendered']['#markup'])? '' : ' target="_blank" ';
+                    
+                    $value->field_field_scald_image[0]['rendered']['#markup'] = '<a '.$target.' href="'.$value->field_field_news_url_target[0]['rendered']['#markup'].'">'.$value->field_field_scald_image[0]['rendered']['#markup'].'</a>';
+                    
+                    $value->field_field_news_url_target[0]['rendered']['#markup'] = 
+                            '<h3 class="title-event-list"><a '.$target.' href="'.$value->field_field_news_url_target[0]['rendered']['#markup'].'">'.$value->node_title.'</a></h3>';
+                }else {
+                    $href = ' href="'.drupal_get_path_alias("node/".$value->nid).'" ';
+                    $value->field_field_news_url_target[0]['rendered']['#markup'] = '<h3 class="title-event-list"><a href="/node/'.$value->nid.'">'.$value->node_title.'</a></h3>';
+                    $value->field_field_scald_image[0]['rendered']['#markup'] = '<a '.$href.'>'.$value->field_field_scald_image[0]['rendered']['#markup'].'</a>';
+                }
+            }
+		
+	}
+}
+/**
+ * Implements hook_node_view_alter().
+ */
+function news_node_view_alter(&$build) {
+  
+  $path_alias = '';
+
+  if ($build['#bundle'] == 'news' && $build['#view_mode'] == 'full') {	
+    if(isset($build['field_news_only_video'][0]['#markup']) && $build['field_news_only_video'][0]['#markup']) {
+      
+      if(isset($build['field_scald_image'][0]['#markup'])){
+        $build['field_scald_image'][0]['#markup'] = "";
+        $build['field_news_only_video'][0]['#markup'] = "";
+      }
+    }
+  }
+  if ($build['#bundle'] == 'news' && $build['#view_mode'] == 'zoom') {
+
+    $path_alias = drupal_get_path_alias('node/'.$build['#node']->vid);
+    $build['field_scald_image'][0]['#markup'] = '<div style="position:relative">'.
+            '<a href="'.$path_alias.'">'.
+            '<img style="position:absolute; top: 25%; left:38%" src="sites/all/themes/custom/domainedo/images/icons/youtubeArrow3.png" alt="" />'.
+            '</a>'.
+            $build['field_scald_image'][0]['#markup'].
+            '</div>';
+    $build['field_news_only_video'][0]['#markup'] = "";
+  }
+}
