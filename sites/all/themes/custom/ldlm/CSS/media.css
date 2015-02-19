@@ -1,6 +1,6 @@
 
 @media screen and (min-width:1280px){
-  .center{
+  .container{
     width: 1200px;
     margin: auto;
   }
@@ -9,7 +9,7 @@
   body{
     background-color: red;
   }
-  .center{
+  .container{
     width: 100%;
   }
 }

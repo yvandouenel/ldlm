@@ -6,6 +6,9 @@ body{
 body.pro{
   border: 1px solid #ef8c0c;
 }
+#main_content{
+  clear: both;
+}
 ul li.leaf {
   list-style: none;
 }
@@ -18,6 +21,9 @@ h2#page-title{
   background-color: #3b3b3b;
   min-height: 41px;
 }
+#block-menu-menu-top{
+  float: left;
+}
 #block-menu-menu-top ul.menu{
   margin-left: 440px;
 }
@@ -27,6 +33,11 @@ h2#page-title{
   font-family: 'Open Sans', sans-serif;
   display: block;
   padding: 10px 5px;
+}
+/* Moteur de recherche ********************************************************/
+#search-block-form{
+  padding-top: 10px;
+  float: left;
 }
 /* logos **********************************************************************/
 #paul_bousquet{
