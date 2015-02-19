@@ -21,7 +21,7 @@ function domainedo_media_field_formatter_info() {
 					'label' => $context['title'],
 					'field types' => array('atom_reference'),
 			);
-			if (in_array($name,array('list','block','full','slideshow_home','zoom'))) {
+			if (in_array($name,array('list','block','full','slideshow_home','zoom','teaser'))) {
 				$formatters[$name]['settings'] = array('link' => 0);
 			}
 		}
@@ -72,7 +72,7 @@ function domainedo_media_field_formatter_settings_summary($field, $instance, $vi
 	$settings = $display['settings'];
 
 	$summary = '';
-	if ($display['type'] == 'list' || $display['type'] == 'block' || $display['type'] == 'slideshow_home' || $display['type'] == 'zoom') {
+	if ($display['type'] == 'list' || $display['type'] == 'block' || $display['type'] == 'slideshow_home' || $display['type'] == 'zoom'|| $display['type'] == 'teaser') {
 		$summary .= t('Link: @value', array('@value'     => ($settings['link'] == 0) ? t('No') : t('Yes') ));
 	}
 	return $summary;
@@ -97,7 +97,7 @@ function domainedo_media_field_formatter_view($entity_type, $entity, $field, $in
 			if (isset($display['settings']['link'])) {
 				$linkable = $display['settings']['link'];
 			}
-			if (in_array($render_context, array('list','block','slideshow_home','zoom')) && $linkable) {
+			if (in_array($render_context, array('list','block','slideshow_home','zoom','teaser')) && $linkable) {
 				$node_path = '/' . drupal_get_path_alias('node/' . $entity->nid);
 				$markup = '<a href="' . $node_path . '">' . $markup . '</a>';
 			}

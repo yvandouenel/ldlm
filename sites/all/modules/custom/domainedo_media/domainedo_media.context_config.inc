@@ -30,6 +30,9 @@ function domainedo_media_default_scald_context_config() {
     'twitter' => array(
       '*' => 'passthrough',
     ),
+    'video' => array(
+      '*' => 'passthrough',
+    ),
   );
   $context_config->player = array(
     'file' => array(
@@ -43,12 +46,19 @@ function domainedo_media_default_scald_context_config() {
     ),
     'image' => array(
       '*' => 'default',
+      'settings' => array(),
     ),
     'twitter' => array(
       '*' => 'default',
     ),
+    'video' => array(
+      '*' => 'default',
+    ),
   );
-  $context_config->data = array();
+  $context_config->data = array(
+    'width' => '',
+    'height' => '',
+  );
   $export['sdl_library_item'] = $context_config;
 
   return $export;
