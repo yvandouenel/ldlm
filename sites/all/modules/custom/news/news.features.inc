@@ -30,48 +30,6 @@ function news_views_api($module = NULL, $api = NULL) {
 }
 
 /**
- * Implements hook_custom_breadcrumb_features_default_settings().
- */
-function news_custom_breadcrumb_features_default_settings() {
-  $custom_breadcrumbs = array();
-
-  // Exported custom breadcrumb: fiche_v_nement.
-  $custom_breadcrumbs['fiche_v_nement'] = array(
-    'name' => 'Fiche événement',
-    'titles' => 'Autres événements
-[current-page:page-title]',
-    'paths' => 'evenements
-<none>',
-    'visibility_php' => '',
-    'node_type' => 'news',
-    'language' => '',
-    'machine_name' => 'fiche_v_nement',
-  );
-
-  return $custom_breadcrumbs;
-}
-
-/**
- * Implements hook_custom_breadcrumbs_views_features_default_settings().
- */
-function news_custom_breadcrumbs_views_features_default_settings() {
-  $custom_breadcrumbs = array();
-
-  // Exported custom breadcrumb: liste_v_nements.
-  $custom_breadcrumbs['liste_v_nements'] = array(
-    'name' => 'Liste événements',
-    'titles' => '[current-page:page-title]',
-    'paths' => '<none>',
-    'visibility_php' => '',
-    'views_path' => 'evenements',
-    'language' => '',
-    'machine_name' => 'liste_v_nements',
-  );
-
-  return $custom_breadcrumbs;
-}
-
-/**
  * Implements hook_node_info().
  */
 function news_node_info() {
@@ -85,5 +43,6 @@ function news_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }

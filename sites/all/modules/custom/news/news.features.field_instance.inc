@@ -583,7 +583,7 @@ function news_field_default_field_instances() {
         'settings' => array(
           'link' => 1,
         ),
-        'type' => 'zoom',
+        'type' => 'title',
         'weight' => 1,
       ),
     ),
