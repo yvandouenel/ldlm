@@ -1,0 +1,121 @@
+
+/* Général ********************************************************************/
+body{
+  font-family: arial;
+}
+body.pro{
+  border: 1px solid #ef8c0c;
+}
+#main_content{
+  clear: both;
+}
+ul li.leaf {
+  list-style: none;
+}
+h2#page-title{
+  clear: both;
+  font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
+}
+/* Menus hauts ****************************************************************/
+#top_bar{
+  background-color: #3b3b3b;
+  min-height: 41px;
+}
+#block-menu-menu-top{
+  float: left;
+}
+#block-menu-menu-top ul.menu{
+  margin-left: 440px;
+}
+#block-menu-menu-top ul.menu a{
+  color: #7abed6;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  display: block;
+  padding: 10px 5px;
+}
+/* Moteur de recherche ********************************************************/
+#search-block-form{
+  padding-top: 10px;
+  float: left;
+}
+/* logos **********************************************************************/
+#paul_bousquet{
+  margin-top: 40px;
+}
+#link_ldlm,#link_pdfm{
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size:  0.9em;
+  display: block;
+  float: left;
+}
+#link_ldlm{
+  color: #236f8b;
+  margin-right: 5px;
+}
+#link_pdfm{
+  color: #ef8c0c; 
+}
+/* Menus principaux ***********************************************************/
+#main_menu{
+  clear: both;
+}
+#superfish-1{
+  margin-top: 30px;
+}
+#superfish-1 li{
+  padding: 0;
+  margin: 0;
+}
+#superfish-1 > li > a{
+  background-color: #e6edf2;
+  padding: 10px;
+  color: #566174;
+  border-right: 1px solid white;
+}
+#superfish-1 > li.active-trail> a{
+  background-color: #236f8b;
+  color: white;
+}
+#superfish-1 li a{
+  text-decoration: none;
+  display: block;
+  text-decoration: none;
+}
+/* actualités home*************************************************************/
+body.front .block-views h2{
+  color: #91979f;
+  font-size: 2em;
+  paddin-left: 65px;
+  line-height: 54px;
+  background: url(../images/icons/flamme.png) no-repeat 0 50%;
+  padding-left: 65px;
+  margin: 30px 0;
+}
+.group-title-img{
+  position: relative;
+}
+body.front h3.h3-event{
+  position: absolute;
+  bottom: 3px;
+  min-height: 60px;
+  border-left: 5px solid #236f8b;
+  background: #58a8c9 url(../images/bg/bg_event.jpg) no-repeat 0 50%;
+  width: 95.9%;
+  opacity: 0.9;
+}
+body.front h3.h3-event a{
+  display: block;
+  font-family: 'Open Sans', sans-serif;
+  padding: 5px 0 0 22px;
+  color: white;
+  font-size: 1.3em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+body.front .block-views .field-name-body{
+  color: #444a52;
+  font-family: 'Open Sans', sans-serif;
+}

@@ -1,0 +1,37 @@
+/*
+    Created on : 19 févr. 2015, 12:12:24
+    Author     : coopernet
+*/
+/* Conteneur principal ********************************************************/
+
+/* Grille : Largeur des colonnes **********************************************/
+.container .grid-1{width : 6.25%;}/*60/960=*/
+.container .grid-2{width : 14.583333333333333333333333333333%;}/* 140/960 */
+.container .grid-3{width : 22.916666666666666666666666666667%;}/* 220/960 */
+.container .grid-4{width : 31.25%;}/* 300/960 */
+.container .grid-5{width : 39.583333333333333333333333333333%;}/* 380/960 */
+.container .grid-6{width : 47.916666666666666666666666666667%;}/* 460/960 */
+.container .grid-7{width : 56.25;}/* 540/960 */
+.container .grid-8{width : 64.583333333333333333333333333333%;}/* 620/960 */
+.container .grid-9{width : 72.916666666666666666666666666667%;}/* 700/960 */
+.container .grid-10{width: 81.25%;}/* 780/960 */
+.container .grid-11{width: 89.583333333333333333333333333333%;}/* 860/960 */
+.container .grid-12{width: 97.916666666666666666666666666667%;}/* 940/960 */
+
+
+/* Largeur et omportement des colonnes ****************************************/
+.grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9, 
+.grid-10, .grid-11, .grid-12{
+    float : left;
+    margin : 0 1.041666666666666666666666666667%; /* 10/960 */
+    background-color : transparent;
+}
+
+.container h1, .container h2, .container h3, .container .no-height, .no-height{
+    min-height : 0;
+}
+
+/* Comportement des images ****************************************************/
+img{
+    max-width: 100%;
+}
