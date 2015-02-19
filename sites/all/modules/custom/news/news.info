@@ -43,6 +43,7 @@ features[field_base][] = field_scald_video
 features[field_base][] = field_visible_bas_accueil
 features[field_base][] = field_zoom
 features[field_group][] = group_event_summa_dates|node|news|zoom
+features[field_group][] = group_title_img|node|news|teaser
 features[field_instance][] = node-news-body
 features[field_instance][] = node-news-field_date
 features[field_instance][] = node-news-field_new_window

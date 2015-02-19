@@ -127,6 +127,10 @@ function news_strongarm() {
             'weight' => '15',
             'visible' => FALSE,
           ),
+          'teaser' => array(
+            'weight' => '12',
+            'visible' => FALSE,
+          ),
         ),
       ),
     ),
