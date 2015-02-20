@@ -84,8 +84,53 @@ h2#page-title{
   display: block;
   text-decoration: none;
 }
+/* zoom ***********************************************************************/
+.group-all-home-zoom{
+  position: relative;
+}
+.group-all-home-zoom .field-name-zoom-sur{
+  position: absolute;
+  top: 20%;
+  left: 20%;
+}
+.group-all-home-zoom .field-name-over-zoom-small{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  max-width: 19%;
+}
+.group-all-home-zoom .field-name-field-scald-image{
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  max-width: 19%;
+}
+h2.title2_zoom_home{
+  font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
+  font-size:  2em;
+  color: white;
+}
+
+.group-all-home-zoom .field-name-title{
+  position: absolute;
+  top: 46%;
+  left: 20%;
+}
+.h3-zoom-home{
+  font-family: 'Open Sans', sans-serif;
+  font-size:  1.5em;
+  color: white;
+}
+body.front .block-views .group-all-home-zoom .field-name-body{
+  position: absolute;
+  top: 52%;
+  left: 20%;
+  width: 28%;
+  color: white;
+}
 /* actualités home*************************************************************/
-body.front .block-views h2{
+body.front .region-home-col1 .block-views h2{
   color: #91979f;
   font-size: 2em;
   paddin-left: 65px;
