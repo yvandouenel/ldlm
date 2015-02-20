@@ -22,6 +22,9 @@
   </div>
 </header>
 <section id="main_content">
+  <div class="big-container">
+    <?php print render($page['above_content']); ?>
+  </div>
   <div class="container">
     <div class='grid-12' class='clearfix'>
       <?php if ($messages): ?>
