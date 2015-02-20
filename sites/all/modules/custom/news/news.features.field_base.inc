@@ -69,6 +69,26 @@ function news_field_default_field_bases() {
     'type' => 'date',
   );
 
+  // Exported field_base: 'field_images'
+  $field_bases['field_images'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_images',
+    'foreign keys' => array(),
+    'indexes' => array(
+      'sid' => array(
+        0 => 'sid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'atom_reference',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'atom_reference',
+  );
+
   // Exported field_base: 'field_new_window'
   $field_bases['field_new_window'] = array(
     'active' => 1,

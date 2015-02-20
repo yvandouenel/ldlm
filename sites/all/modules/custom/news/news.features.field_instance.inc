@@ -44,10 +44,10 @@ function news_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(
-          'trim_length' => 50,
+          'trim_length' => 250,
         ),
         'type' => 'text_summary_or_trimmed',
-        'weight' => 4,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'node',
@@ -114,16 +114,9 @@ function news_field_default_field_instances() {
       ),
       'zoom' => array(
         'label' => 'hidden',
-        'module' => 'date',
-        'settings' => array(
-          'format_type' => 'shows_block',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 2,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'node',
@@ -150,6 +143,66 @@ function news_field_default_field_instances() {
       ),
       'type' => 'date_popup',
       'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-news-field_images'
+  $field_instances['node-news-field_images'] = array(
+    'bundle' => 'news',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'domainedo_media',
+        'settings' => array(),
+        'type' => 'title',
+        'weight' => 28,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'zoom' => array(
+        'label' => 'hidden',
+        'module' => 'domainedo_media',
+        'settings' => array(),
+        'type' => 'tv_img',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_images',
+    'label' => 'Grande image',
+    'required' => 0,
+    'settings' => array(
+      'referencable_types' => array(
+        'audio' => 0,
+        'file' => 0,
+        'gallery' => 0,
+        'image' => 'image',
+        'twitter' => 0,
+        'video' => 0,
+      ),
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'atom_reference',
+      'settings' => array(
+        'context' => 'tv_img',
+      ),
+      'type' => 'atom_reference_textfield',
+      'weight' => 5,
     ),
   );
 
@@ -186,7 +239,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 23,
       ),
     ),
     'entity_type' => 'node',
@@ -203,7 +256,7 @@ function news_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -240,10 +293,9 @@ function news_field_default_field_instances() {
       ),
       'zoom' => array(
         'label' => 'hidden',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 3,
+        'type' => 'hidden',
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'node',
@@ -260,7 +312,7 @@ function news_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -292,7 +344,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'node',
@@ -352,7 +404,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 22,
       ),
     ),
     'entity_type' => 'node',
@@ -373,7 +425,7 @@ function news_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -410,7 +462,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 17,
       ),
     ),
     'entity_type' => 'node',
@@ -427,7 +479,7 @@ function news_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -460,7 +512,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 21,
       ),
     ),
     'entity_type' => 'node',
@@ -485,7 +537,7 @@ function news_field_default_field_instances() {
         'context' => 'sdl_editor_representation',
       ),
       'type' => 'atom_reference_textfield',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -521,7 +573,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 19,
       ),
     ),
     'entity_type' => 'node',
@@ -546,7 +598,7 @@ function news_field_default_field_instances() {
         'context' => 'sdl_editor_representation',
       ),
       'type' => 'atom_reference_textfield',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -584,11 +636,9 @@ function news_field_default_field_instances() {
       'zoom' => array(
         'label' => 'hidden',
         'module' => 'domainedo_media',
-        'settings' => array(
-          'link' => 1,
-        ),
-        'type' => 'title',
-        'weight' => 1,
+        'settings' => array(),
+        'type' => 'home_zoom',
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'node',
@@ -649,7 +699,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 20,
       ),
     ),
     'entity_type' => 'node',
@@ -674,7 +724,7 @@ function news_field_default_field_instances() {
         'context' => 'sdl_editor_representation',
       ),
       'type' => 'atom_reference_textfield',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -710,7 +760,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 18,
       ),
     ),
     'entity_type' => 'node',
@@ -735,7 +785,7 @@ function news_field_default_field_instances() {
         'context' => 'sdl_editor_representation',
       ),
       'type' => 'atom_reference_textfield',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -773,7 +823,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'node',
@@ -790,7 +840,7 @@ function news_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -827,7 +877,7 @@ function news_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'node',
@@ -844,7 +894,7 @@ function news_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -856,6 +906,7 @@ function news_field_default_field_instances() {
   t('Evénement visible sur la partie zoom de la page d\'accueil ?');
   t('Fichiers attachés');
   t('Galerie');
+  t('Grande image');
   t('Image');
   t('Lien vers nouvelle fenêtre');
   t('Placer ici l\'url où doit emmener l\'actualité sous la forme : http://www.siteweb.com');

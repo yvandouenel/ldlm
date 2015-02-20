@@ -66,8 +66,8 @@ function news_node_view_alter(&$build) {
       }
     }
   }
-  if ($build['#bundle'] == 'news' && $build['#view_mode'] == 'zoom') {
-
+  if ($build['#bundle'] == 'news' && $build['#view_mode'] == 'zoom' &&
+      isset($build['field_news_only_video'][0]['#markup']) && $build['field_news_only_video'][0]['#markup']) {
     $path_alias = drupal_get_path_alias('node/'.$build['#node']->vid);
     $build['field_scald_image'][0]['#markup'] = '<div style="position:relative">'.
             '<a href="'.$path_alias.'">'.
