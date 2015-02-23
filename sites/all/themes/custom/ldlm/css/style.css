@@ -172,9 +172,10 @@ body.front .block-views .field-name-body{
   font-family: 'Open Sans', sans-serif;
 }
 /* formation ******************************************************************/
-#block-webform-client-block-4{
+#block-webform-client-block-4,#block-webform-client-block-6{
     display:none;
 }
-#block-webform-client-block-4:target{
+#block-webform-client-block-4:target,
+#block-webform-client-block-6:target{
     display:block;
 }
