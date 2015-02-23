@@ -1,0 +1,25 @@
+<?php
+/**
+ * @file
+ * Code for the ldlm_formation feature.
+ */
+
+include_once 'ldlm_formation.features.inc';
+
+
+/**
+ * Implements hook_node_view_alter().
+ */
+function ldlm_formation_node_view_alter(&$build) {
+  $link = '';
+  $path_alias = drupal_get_path_alias('node/'.$build['#node']->vid);
+  if ($build['#bundle'] == 'formation' && $build['#view_mode'] == 'full') {
+    $link = $build['field_preinscription_scolaire'][0]['#markup'];
+    if($link) {
+      $build['field_preinscription_scolaire'][0]['#markup'] = 
+         '<a href="/'.$path_alias.'?formation='.$build['#node']->title.'#block-webform-client-block-4">Faire une demande de pré-inscription</a>';
+      
+    }
+    
+  }
+}
