@@ -93,18 +93,25 @@ h2#page-title{
   top: 20%;
   left: 20%;
 }
-.group-all-home-zoom .field-name-over-zoom-small{
+.group-all-home-zoom .field-name-over-zoom-small img#over-zoom-1{
   position: absolute;
-  bottom: 0;
+  bottom: 53.6%;
+  left: 0;
+  z-index: 2;
+  max-width: 19%;
+}
+.group-all-home-zoom .field-name-over-zoom-small img#over-zoom-2{
+  position: absolute;
+  bottom: 2px;
   left: 0;
   z-index: 2;
   max-width: 19%;
 }
 .group-all-home-zoom .field-name-field-scald-image{
   position: absolute;
-  bottom: 5px;
+  bottom: 4px;
   left: 0;
-  max-width: 19%;
+  max-width: 18.9%;
 }
 h2.title2_zoom_home{
   font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
@@ -163,4 +170,11 @@ body.front h3.h3-event a{
 body.front .block-views .field-name-body{
   color: #444a52;
   font-family: 'Open Sans', sans-serif;
+}
+/* formation ******************************************************************/
+#block-webform-client-block-4{
+    display:none;
+}
+#block-webform-client-block-4:target{
+    display:block;
 }
