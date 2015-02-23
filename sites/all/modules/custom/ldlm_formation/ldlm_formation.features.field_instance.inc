@@ -238,6 +238,49 @@ Tél. 04 67 89 56 98',
     ),
   );
 
+  // Exported field_instance: 'node-formation-field_demande_entretien'
+  $field_instances['node-formation-field_demande_entretien'] = array(
+    'bundle' => 'formation',
+    'default_value' => array(
+      0 => array(
+        'target_id' => 6,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 17,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_demande_entretien',
+    'label' => 'Demander un entretien',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 50,
+    ),
+  );
+
   // Exported field_instance: 'node-formation-field_diaporama'
   $field_instances['node-formation-field_diaporama'] = array(
     'bundle' => 'formation',
@@ -468,7 +511,7 @@ Tél. 04 67 89 56 98',
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'entityreference',
         'settings' => array(
           'link' => 1,
@@ -721,6 +764,7 @@ Tél. 04 67 89 56 98',
   t('Body');
   t('Conditions d\'admission');
   t('Contact');
+  t('Demander un entretien');
   t('Diaporama');
   t('Faire une demande de pré-inscription');
   t('Financement');

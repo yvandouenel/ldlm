@@ -63,6 +63,7 @@ function ldlm_formation_field_group_info() {
       0 => 'field_objectif',
       1 => 'field_temoignages',
       2 => 'field_activites_parascolaires',
+      3 => 'field_preinscription_scolaire',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -95,8 +96,7 @@ function ldlm_formation_field_group_info() {
     'label' => 'Pré-inscription',
     'weight' => '47',
     'children' => array(
-      0 => 'field_complete_form',
-      1 => 'field_contact',
+      0 => 'field_contact',
     ),
     'format_type' => 'div',
     'format_settings' => array(
