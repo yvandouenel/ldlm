@@ -16,6 +16,9 @@ h2#page-title{
   clear: both;
   font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
 }
+a:hover{
+  text-decoration: underline;
+}
 /* Menus hauts ****************************************************************/
 #top_bar{
   background-color: #3b3b3b;
@@ -124,11 +127,16 @@ h2.title2_zoom_home{
   top: 46%;
   left: 20%;
 }
-.h3-zoom-home{
+.h3-zoom-home a{
   font-family: 'Open Sans', sans-serif;
   font-size:  1.5em;
   color: white;
+  text-decoration: none;
 }
+.h3-zoom-home a:hover{
+  text-decoration: underline;
+}
+
 body.front .block-views .group-all-home-zoom .field-name-body{
   position: absolute;
   top: 52%;
@@ -172,10 +180,54 @@ body.front .block-views .field-name-body{
   font-family: 'Open Sans', sans-serif;
 }
 /* formation ******************************************************************/
-#block-webform-client-block-4,#block-webform-client-block-6{
+#block-webform-client-block-4,#block-webform-client-block-6,
+#block-webform-client-block-7, #block-webform-client-block-8, #block-webform-client-block-9{
     display:none;
 }
 #block-webform-client-block-4:target,
-#block-webform-client-block-6:target{
+#block-webform-client-block-6:target,
+#block-webform-client-block-7:target,
+#block-webform-client-block-8:target,
+#block-webform-client-block-9:target{
     display:block;
+}
+body.no-pro .group-pre-inscription-pro{
+  display: none;
+}
+body.pro .group-scolaire{
+  display: none;
+}
+.group-en-tete{
+  position: relative;
+}
+.group-titre-sous-titre{
+  width: 353px;
+  background-color: #e68c04;
+  opacity: 0.9;
+  position: absolute;
+  top: 33px;
+  height: 78px;
+  background: #58a8c9 url(../images/icons/rose-vent-orange.png) no-repeat 5px 50%;
+  padding-left: 68px;
+}
+.group-titre-sous-titre h2{
+  color: white;
+  font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
+  font-size: 2em;
+  margin-top: 18px;
+}
+.group-titre-sous-titre .field-item{
+  color: white;
+}
+.h3-formation{
+  font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+body.no-pro .h3-formation{
+  color: #236e8b;
+}
+body.pro .h3-formation{
+  color: #f88904;
 }
