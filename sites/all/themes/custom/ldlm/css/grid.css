@@ -7,10 +7,10 @@
 /* Grille : Largeur des colonnes **********************************************/
 .container .grid-1{width : 6.25%;}/*60/960=*/
 .container .grid-2{width : 14.583333333333333333333333333333%;}/* 140/960 */
-.container .grid-3{width : 22.916666666666666666666666666667%;}/* 220/960 */
+.container .grid-3,.ds-2col-fluid > .group-right{width : 22.916666666666666666666666666667%;}/* 220/960 */
 .container .grid-4{width : 31.25%;}/* 300/960 */
 .container .grid-5{width : 39.583333333333333333333333333333%;}/* 380/960 */
-.container .grid-6{width : 47.916666666666666666666666666667%;}/* 460/960 */
+.container .grid-6,.ds-2col-fluid > .group-left{width : 47.916666666666666666666666666667%;}/* 460/960 */
 .container .grid-7{width : 56.25;}/* 540/960 */
 .container .grid-8{width : 64.583333333333333333333333333333%;}/* 620/960 */
 .container .grid-9{width : 72.916666666666666666666666666667%;}/* 700/960 */
@@ -26,7 +26,9 @@
     margin : 0 1.041666666666666666666666666667%; /* 10/960 */
     background-color : transparent;
 }
-
+.container .grid .first-col{
+  margin-left: 0;
+}
 .container h1, .container h2, .container h3, .container .no-height, .no-height{
     min-height : 0;
 }

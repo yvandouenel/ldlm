@@ -2,6 +2,7 @@
 /* Général ********************************************************************/
 body{
   font-family: arial;
+  line-height: 1.5em;
 }
 body.pro{
   border: 1px solid #ef8c0c;
@@ -12,13 +13,54 @@ body.pro{
 ul li.leaf {
   list-style: none;
 }
+#main_content .group-left ul li{
+  padding-left: 22px;
+  background: url(../images/icons/bullet.png) no-repeat 9px 10px;
+}
+#main_content{
+  color: #444a52
+}
 h2#page-title{
   clear: both;
-  font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
 }
 a:hover{
   text-decoration: underline;
 }
+h2,h3{
+  font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
+}
+h2{
+  font-size: 2em;
+}
+h3{
+  font-size: 1.4em;
+}
+
+/* Coordonnées ****************************************************************/
+.iti_adress{
+  background: url(../images/icons/pointer-small.png) no-repeat 5% 50%;
+}
+.iti_tel{
+  background: url(../images/icons/tel-small.png) no-repeat 5% 50%;
+}
+.iti_email{
+  background: url(../images/icons/mail-small.png) no-repeat 5% 50%;
+}
+.iti_train{
+  background: url(../images/icons/train-small.png) no-repeat 5% 50%;
+}
+.iti_bus{
+  background: url(../images/icons/bus-small.png) no-repeat 5% 50%;
+}
+.iti_car{
+  background: url(../images/icons/car-small.png) no-repeat 5% 50%;
+}
+a.vie_lyceenne{
+  background: url(../images/icons/eye-small.png) no-repeat 5% 50%;
+  display: block;
+  padding : 10px 3px 10px 44px;
+}
+
 /* Menus hauts ****************************************************************/
 #top_bar{
   background-color: #3b3b3b;
@@ -213,21 +255,129 @@ body.pro .group-scolaire{
 .group-titre-sous-titre h2{
   color: white;
   font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
-  font-size: 2em;
   margin-top: 18px;
 }
 .group-titre-sous-titre .field-item{
   color: white;
 }
 .h3-formation{
-  font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
+  
   font-size: 1.5em;
   text-transform: uppercase;
-  margin-top: 20px;
+  margin: 20px 0 10px 0;
 }
 body.no-pro .h3-formation{
   color: #236e8b;
 }
 body.pro .h3-formation{
   color: #f88904;
+}
+.group-metier-secteur{
+  background: #18516d url(../images/bg/bg_arrow_white_blue.png) no-repeat 0 0;
+  padding: 15px 2px 15px 22px;
+}
+.group-metier-secteur h3{
+  
+  font-size: 1.2em;
+  text-transform: uppercase;
+  color: white;
+}
+.group-metier-secteur a{
+  color: #49aad3;
+  font-family: 'Open Sans', sans-serif;
+  text-decoration: none;
+  display: block;
+  
+}
+.group-metier-secteur a:before {
+    content: ">";
+    margin-right: 13px;
+}
+.group-scolaire-right {
+  font-size: 0.9em;
+  line-height: 1em;
+}
+.h3-secteur-act{
+  border-top: 1px solid #437e9c;
+  margin-top: 15px;
+  padding-top: 15px;
+}
+.group-scolaire-right div.div-scol-right{
+  margin-top: 33px;
+  border: 1px solid #58a7c9;
+}
+.group-scolaire-right h3{
+  background-color: #58a7c9;
+  color: white;
+  padding: 12px 15px;
+}
+.group-scolaire-right h3.bg-rose-vent{
+  background: #4aaad3 url(../images/bg/bg_blue_draw.jpg) no-repeat 0 0;
+  padding: 23px 15px;
+}
+.group-scolaire-right ul{
+  margin : 10px 0;
+}
+.group-scolaire-right a{
+  color: #49aad3;
+}
+.group-scolaire-right ul li{
+  padding : 10px 3px 10px 44px;
+}
+.field-name-field-nom-formation{
+  color: #ef8c0c;
+  font-size: 1.1em;
+  padding: 10px 0 20px 0;
+  border-bottom: 1px dotted #cfd1d3;
+  
+}
+.group-scolaire-right .node-t-moignage{
+  padding: 20px 10px 5px 10px;
+}
+.field-name-field-preinscription-scolaire,.field-name-field-demande-entretien,
+.field-name-field-portes-ouvertes,.field-name-field-documentation{
+  width: 44%;
+  margin: 20px 3% 0 0;
+  float: left;
+  border: 1px solid #e7d401;
+  display: block;
+}
+.field-name-field-preinscription-scolaire{
+  background: #FFFFFF url(../images/bg/bg-pre-inscription.gif) no-repeat 0 0;
+}
+.field-name-field-demande-entretien{
+  background: #FFFFFF url(../images/bg/bg-dde-entretien.gif) no-repeat 0 0;
+}
+.field-name-field-portes-ouvertes{
+  background: #FFFFFF url(../images/bg/bg-portes-ouvertes.gif) no-repeat 0 0;
+}
+.field-name-field-documentation{
+  background: #FFFFFF url(../images/bg/bg-dde-doc.gif) no-repeat 0 0;
+}
+.field-name-field-preinscription-scolaire a,
+.field-name-field-demande-entretien a,
+.field-name-field-portes-ouvertes a,
+.field-name-field-documentation a{
+  display: block;
+  padding: 16px 20% 5px 16px;
+  color: #131415;
+  font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  text-decoration: none;
+  height: 136px;
+}
+/* Formulaires d'inscription **************************************************/
+#block-webform-client-block-4,#block-webform-client-block-6,
+#block-webform-client-block-7,#block-webform-client-block-8,
+#block-webform-client-block-8{
+  width: 50%;
+  margin: 0 auto;
+}
+.webform-component-fieldset{
+  border: 2px solid #e7d401;
+  border-radius: 8px;
+  width: 50%;
+  padding: 20px;
+  margin: 20px 0 0 0;
 }
