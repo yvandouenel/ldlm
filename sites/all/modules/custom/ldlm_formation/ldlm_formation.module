@@ -11,7 +11,12 @@ include_once 'ldlm_formation.features.inc';
  * Implements hook_node_view_alter().
  */
 function ldlm_formation_node_view_alter(&$build) {
-  //dpm($build);
+  /*
+   * Piste pour faire une lien "en savoir plus intelligent sur les témoignages :
+   * Compter le nombre de caractère et s'il il y en a plus que 150 (attention,
+   * les balises html comptent, alors aficher le lien "more" sinon, ne pas l'afficher
+   * dpm($build['field_temoignages'][0]['node'][12]['body']['#object']->body['und'][0]);
+   */
   $link = '';
   $path_alias = drupal_get_path_alias('node/'.$build['#node']->vid);
   
