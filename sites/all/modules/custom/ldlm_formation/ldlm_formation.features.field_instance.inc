@@ -13,10 +13,40 @@ function ldlm_formation_field_default_field_instances() {
   // Exported field_instance: 'node-formation-field_acces_centre'
   $field_instances['node-formation-field_acces_centre'] = array(
     'bundle' => 'formation',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'mee' => array(
+          'resource_manager' => array(
+            0 => array(
+              'weight' => 0,
+            ),
+          ),
+        ),
+        'value' => '<ul>
+	<li class="iti_adress">Pôle de Formation Maritime,<br />
+	rue des cormorans<br />
+	34207 Sète CEDEX</li>
+	<li class="iti_tel">Tél. 04 67 51 63 63<br />
+	Fax : 04 67 51 63 64</li>
+	<li class="iti_email">Email : contact@lyceedelamer.fr</li>
+	<li class="iti_train"><a href="/contact#train">En train</a></li>
+	<li class="iti_bus"><a href="/contact#bus">En bus</a></li>
+	<li class="iti_car"><a href="/contact#car">En voiture</a></li>
+</ul>
+',
+        'format' => 'full_html',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 8,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -31,6 +61,7 @@ function ldlm_formation_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_acces_centre',
     'label' => 'Accès au centre',
@@ -57,10 +88,23 @@ function ldlm_formation_field_default_field_instances() {
   // Exported field_instance: 'node-formation-field_activites_parascolaires'
   $field_instances['node-formation-field_activites_parascolaires'] = array(
     'bundle' => 'formation',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => '<p><a class="vie_lyceenne" href="/vie_lyceenne">Découvrez toutes nos activités !</a></p>
+',
+        'format' => 'full_html',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 33,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -75,6 +119,7 @@ function ldlm_formation_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_activites_parascolaires',
     'label' => 'Activités parascolaires',
@@ -94,7 +139,7 @@ function ldlm_formation_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 48,
+      'weight' => 47,
     ),
   );
 
@@ -105,12 +150,19 @@ function ldlm_formation_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 3,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -138,7 +190,7 @@ function ldlm_formation_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -154,6 +206,13 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -187,7 +246,104 @@ Tél. 04 67 89 56 98',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 54,
+      'weight' => 19,
+    ),
+  );
+
+  // Exported field_instance: 'node-formation-field_date_portes_ouvertes'
+  $field_instances['node-formation-field_date_portes_ouvertes'] = array(
+    'bundle' => 'formation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 1,
+          'view_mode' => 'date_portes_ouvertes',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 32,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_date_portes_ouvertes',
+    'label' => 'Date Portes Ouvertes',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 55,
+    ),
+  );
+
+  // Exported field_instance: 'node-formation-field_dates_compl'
+  $field_instances['node-formation-field_dates_compl'] = array(
+    'bundle' => 'formation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_dates_compl',
+    'label' => 'Dates - complément d\'info',
+    'required' => 0,
+    'settings' => array(
+      'context' => 'debug',
+      'context_default' => 'sdl_editor_representation',
+      'dnd_enabled' => 1,
+      'mee_enabled' => 1,
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 11,
     ),
   );
 
@@ -202,12 +358,19 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 29,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 27,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -241,6 +404,13 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'domainedo_media',
+        'settings' => array(),
+        'type' => 'title',
+        'weight' => 9,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'domainedo_media',
@@ -277,7 +447,7 @@ Tél. 04 67 89 56 98',
         'context' => 'sdl_editor_representation',
       ),
       'type' => 'atom_reference_textfield',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -292,12 +462,19 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 32,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 17,
+        'weight' => 32,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -320,7 +497,7 @@ Tél. 04 67 89 56 98',
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 52,
+      'weight' => 53,
     ),
   );
 
@@ -331,6 +508,13 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -375,6 +559,13 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 6,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -408,7 +599,7 @@ Tél. 04 67 89 56 98',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -419,6 +610,13 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'hidden',
+        'module' => 'domainedo_media',
+        'settings' => array(),
+        'type' => 'formation',
+        'weight' => 6,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'domainedo_media',
@@ -466,6 +664,15 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 10,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'entityreference',
@@ -473,7 +680,7 @@ Tél. 04 67 89 56 98',
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 11,
+        'weight' => 10,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -498,7 +705,7 @@ Tél. 04 67 89 56 98',
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -509,12 +716,19 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 2,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -557,12 +771,19 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 31,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 29,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -600,6 +821,13 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 28,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'list',
@@ -639,12 +867,19 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -687,11 +922,17 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 24,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -714,7 +955,74 @@ Tél. 04 67 89 56 98',
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 16,
+      'weight' => 17,
+    ),
+  );
+
+  // Exported field_instance: 'node-formation-field_prochaines_dates'
+  $field_instances['node-formation-field_prochaines_dates'] = array(
+    'bundle' => 'formation',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 4,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_prochaines_dates',
+    'label' => 'Prochaines dates',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'now',
+      'default_value2' => 'strtotime',
+      'default_value_code' => '',
+      'default_value_code2' => '+30 days',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 10,
     ),
   );
 
@@ -729,6 +1037,13 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 30,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'list',
@@ -757,7 +1072,7 @@ Tél. 04 67 89 56 98',
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 53,
+      'weight' => 18,
     ),
   );
 
@@ -768,6 +1083,13 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 7,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -801,7 +1123,7 @@ Tél. 04 67 89 56 98',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -812,6 +1134,15 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => 1,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 11,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'entityreference',
@@ -819,7 +1150,7 @@ Tél. 04 67 89 56 98',
           'link' => 1,
         ),
         'type' => 'entityreference_label',
-        'weight' => 12,
+        'weight' => 11,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -844,7 +1175,7 @@ Tél. 04 67 89 56 98',
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -855,6 +1186,13 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 8,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
@@ -895,6 +1233,13 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 9,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -939,11 +1284,24 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 1,
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 32,
+      ),
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 1,
+          'view_mode' => 'teaser',
+        ),
+        'type' => 'entityreference_entity_view',
         'weight' => 32,
       ),
       'teaser' => array(
@@ -953,26 +1311,20 @@ Tél. 04 67 89 56 98',
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_temoignages',
     'label' => 'Témoignages',
     'required' => 0,
     'settings' => array(
-      'context' => 'debug',
-      'context_default' => 'sdl_editor_representation',
-      'dnd_enabled' => 1,
-      'mee_enabled' => 1,
-      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 47,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 48,
     ),
   );
 
@@ -983,11 +1335,17 @@ Tél. 04 67 89 56 98',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 26,
+        'weight' => 25,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1015,10 +1373,40 @@ Tél. 04 67 89 56 98',
   // Exported field_instance: 'node-formation-field_venir_lycee'
   $field_instances['node-formation-field_venir_lycee'] = array(
     'bundle' => 'formation',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'mee' => array(
+          'resource_manager' => array(
+            0 => array(
+              'weight' => 0,
+            ),
+          ),
+        ),
+        'value' => '<ul>
+	<li class="iti_adress">Lycée de la mer Paul Bousquet,<br />
+	rue des cormorans<br />
+	34207 Sète CEDEX</li>
+	<li class="iti_tel">Tél. 04 67 51 63 63<br />
+	Fax : 04 67 51 63 64</li>
+	<li class="iti_email">Email : contact@lyceedelamer.fr</li>
+	<li class="iti_train"><a href="/contact#train">En train</a></li>
+	<li class="iti_bus"><a href="/contact#bus">En bus</a></li>
+	<li class="iti_car"><a href="/contact#car">En voiture</a></li>
+</ul>
+',
+        'format' => 'full_html',
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 31,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'text',
@@ -1033,6 +1421,7 @@ Tél. 04 67 89 56 98',
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_venir_lycee',
     'label' => 'Venir au Lycée',
@@ -1052,7 +1441,7 @@ Tél. 04 67 89 56 98',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 53,
+      'weight' => 54,
     ),
   );
 
@@ -1196,6 +1585,8 @@ Tél. 04 67 89 56 98',
   t('Body');
   t('Conditions d\'admission');
   t('Contact');
+  t('Date Portes Ouvertes');
+  t('Dates - complément d\'info');
   t('Demander un entretien');
   t('Diaporama');
   t('Financement');
@@ -1206,6 +1597,7 @@ Tél. 04 67 89 56 98',
   t('Métiers');
   t('Objectif');
   t('Pro');
+  t('Prochaines dates');
   t('Pré-inscription');
   t('Prérogatives');
   t('Recevoir une documentation');

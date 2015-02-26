@@ -190,11 +190,14 @@ function ldlm_formation_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'date_portes_ouvertes' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '7',
+          'weight' => '6',
         ),
         'title' => array(
           'weight' => '0',
@@ -209,7 +212,11 @@ function ldlm_formation_strongarm() {
       'display' => array(
         'sharethis' => array(
           'default' => array(
-            'weight' => '24',
+            'weight' => '23',
+            'visible' => FALSE,
+          ),
+          'date_portes_ouvertes' => array(
+            'weight' => '23',
             'visible' => FALSE,
           ),
         ),

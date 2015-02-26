@@ -118,6 +118,76 @@ function ldlm_formation_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_date_portes_ouvertes'
+  $field_bases['field_date_portes_ouvertes'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_date_portes_ouvertes',
+    'foreign keys' => array(
+      'node' => array(
+        'columns' => array(
+          'target_id' => 'nid',
+        ),
+        'table' => 'node',
+      ),
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'news' => 'news',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_dates_compl'
+  $field_bases['field_dates_compl'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_dates_compl',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_demande_entretien'
   $field_bases['field_demande_entretien'] = array(
     'active' => 1,
@@ -482,6 +552,36 @@ function ldlm_formation_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_prochaines_dates'
+  $field_bases['field_prochaines_dates'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_prochaines_dates',
+    'foreign keys' => array(),
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'date',
+    'settings' => array(
+      'cache_count' => 4,
+      'cache_enabled' => 0,
+      'granularity' => array(
+        'day' => 'day',
+        'hour' => 0,
+        'minute' => 0,
+        'month' => 'month',
+        'second' => 0,
+        'year' => 'year',
+      ),
+      'timezone_db' => '',
+      'todate' => 'optional',
+      'tz_handling' => 'none',
+    ),
+    'translatable' => 0,
+    'type' => 'datetime',
+  );
+
   // Exported field_base: 'field_remplir_formulaire'
   $field_bases['field_remplir_formulaire'] = array(
     'active' => 1,
@@ -644,28 +744,44 @@ function ldlm_formation_field_default_field_bases() {
   // Exported field_base: 'field_temoignages'
   $field_bases['field_temoignages'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_temoignages',
     'foreign keys' => array(
-      'format' => array(
+      'node' => array(
         'columns' => array(
-          'format' => 'format',
+          'target_id' => 'nid',
         ),
-        'table' => 'filter_format',
+        'table' => 'node',
       ),
     ),
     'indexes' => array(
-      'format' => array(
-        0 => 'format',
+      'target_id' => array(
+        0 => 'target_id',
       ),
     ),
     'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          't_moignage' => 't_moignage',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
     'translatable' => 0,
-    'type' => 'text_long',
+    'type' => 'entityreference',
   );
 
   // Exported field_base: 'field_type_formation'

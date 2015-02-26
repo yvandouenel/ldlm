@@ -54,7 +54,7 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'infos pro',
-    'weight' => '14',
+    'weight' => '15',
     'children' => array(
       0 => 'field_financement',
       1 => 'field_acces_centre',
@@ -91,16 +91,16 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'infos scolaire',
-    'weight' => '15',
+    'weight' => '16',
     'children' => array(
       0 => 'field_objectif',
-      1 => 'field_temoignages',
-      2 => 'field_activites_parascolaires',
-      3 => 'field_documentation',
-      4 => 'field_demande_entretien',
-      5 => 'field_preinscription_scolaire',
-      6 => 'field_portes_ouvertes',
-      7 => 'field_venir_lycee',
+      1 => 'field_activites_parascolaires',
+      2 => 'field_documentation',
+      3 => 'field_demande_entretien',
+      4 => 'field_preinscription_scolaire',
+      5 => 'field_portes_ouvertes',
+      6 => 'field_venir_lycee',
+      7 => 'field_temoignages',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -119,6 +119,72 @@ function ldlm_formation_field_group_info() {
     ),
   );
   $export['group_infos_scolaire|node|formation|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_metier_secteur|node|formation|default';
+  $field_group->group_name = 'group_metier_secteur';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'formation';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Métiers et secteurs',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_metiers',
+      1 => 'field_secteur_activite',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Métiers et secteurs',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-metier-secteur field-group-div',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_metier_secteur|node|formation|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_portes_ouvertes|node|formation|default';
+  $field_group->group_name = 'group_portes_ouvertes';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'formation';
+  $field_group->mode = 'default';
+  $field_group->parent_name = 'group_scolaire';
+  $field_group->data = array(
+    'label' => 'Portes ouvertes',
+    'weight' => '30',
+    'children' => array(
+      0 => 'field_portes_ouvertes',
+      1 => 'field_date_portes_ouvertes',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Portes ouvertes',
+      'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-portes-ouvertes field-group-div',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_portes_ouvertes|node|formation|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -264,24 +330,25 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Scolaire droite',
-    'weight' => '13',
+    'weight' => '12',
     'children' => array(
-      0 => 'field_temoignages',
-      1 => 'field_activites_parascolaires',
-      2 => 'field_venir_lycee',
+      0 => 'field_activites_parascolaires',
+      1 => 'field_venir_lycee',
+      2 => 'field_temoignages',
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Scolaire droite',
       'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-scolaire-right field-group-div',
         'description' => '',
-        'show_label' => 1,
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
-        'classes' => 'group-scolaire-right field-group-div',
-        'id' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_scolaire_right|node|formation|default'] = $field_group;
@@ -302,7 +369,7 @@ function ldlm_formation_field_group_info() {
       0 => 'field_documentation',
       1 => 'field_demande_entretien',
       2 => 'field_preinscription_scolaire',
-      3 => 'field_portes_ouvertes',
+      3 => 'group_portes_ouvertes',
     ),
     'format_type' => 'div',
     'format_settings' => array(
