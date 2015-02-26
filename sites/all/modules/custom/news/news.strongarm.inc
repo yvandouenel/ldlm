@@ -101,6 +101,9 @@ function news_strongarm() {
       'list' => array(
         'custom_settings' => FALSE,
       ),
+      'date_portes_ouvertes' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -129,6 +132,14 @@ function news_strongarm() {
           ),
           'teaser' => array(
             'weight' => '12',
+            'visible' => FALSE,
+          ),
+          'default' => array(
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+          'date_portes_ouvertes' => array(
+            'weight' => '13',
             'visible' => FALSE,
           ),
         ),

@@ -17,6 +17,12 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 11,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
@@ -80,6 +86,19 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'hidden',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'short',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'date',
@@ -153,11 +172,16 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
       'default' => array(
         'label' => 'above',
-        'module' => 'domainedo_media',
         'settings' => array(),
-        'type' => 'title',
+        'type' => 'hidden',
         'weight' => 28,
       ),
       'full' => array(
@@ -217,6 +241,12 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -271,11 +301,16 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 27,
       ),
       'full' => array(
@@ -322,6 +357,12 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -381,6 +422,12 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Placer ici l\'url où doit emmener l\'actualité sous la forme : http://www.siteweb.com',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -440,6 +487,12 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 15,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -490,6 +543,12 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -548,6 +607,12 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -609,6 +674,12 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 16,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -676,6 +747,12 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -737,6 +814,12 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
@@ -802,11 +885,16 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 26,
       ),
       'full' => array(
@@ -857,6 +945,12 @@ function news_field_default_field_instances() {
     'deleted' => 0,
     'description' => 'Evénement visible sur la partie zoom de la page d\'accueil ?',
     'display' => array(
+      'date_portes_ouvertes' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
       'default' => array(
         'label' => 'above',
         'settings' => array(),
