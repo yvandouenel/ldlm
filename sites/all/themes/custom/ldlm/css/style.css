@@ -244,13 +244,15 @@ body.pro .group-scolaire{
 }
 .group-titre-sous-titre{
   width: 353px;
-  background-color: #e68c04;
   opacity: 0.9;
   position: absolute;
   top: 33px;
   height: 78px;
   background: #58a8c9 url(../images/icons/rose-vent-orange.png) no-repeat 5px 50%;
   padding-left: 68px;
+}
+body.pro .group-titre-sous-titre{
+  background: #e68c04 url(../images/icons/rose-vent-orange.png) no-repeat 5px 50%;
 }
 .group-titre-sous-titre h2{
   color: white;
@@ -260,7 +262,7 @@ body.pro .group-scolaire{
 .group-titre-sous-titre .field-item{
   color: white;
 }
-.h3-formation{
+#block-system-main .group-left h3,.h3-formation{
   
   font-size: 1.5em;
   text-transform: uppercase;
@@ -302,11 +304,12 @@ body.pro .h3-formation{
   margin-top: 15px;
   padding-top: 15px;
 }
-.group-scolaire-right div.div-scol-right{
+div.div-scol-right{
   margin-top: 33px;
   border: 1px solid #58a7c9;
 }
-.group-scolaire-right h3{
+.group-scolaire-right h3,
+.group-pro h3{
   background-color: #58a7c9;
   color: white;
   padding: 12px 15px;
@@ -331,16 +334,23 @@ body.pro .h3-formation{
   border-bottom: 1px dotted #cfd1d3;
   
 }
-.group-scolaire-right .node-t-moignage{
+.group-scolaire-right .node-t-moignage,
+.group-pro {
   padding: 20px 10px 5px 10px;
 }
 .field-name-field-preinscription-scolaire,.field-name-field-demande-entretien,
-.field-name-field-portes-ouvertes,.field-name-field-documentation{
+.group-portes-ouvertes,.field-name-field-documentation{
   width: 44%;
   margin: 20px 3% 0 0;
   float: left;
   border: 1px solid #e7d401;
   display: block;
+}
+.group-portes-ouvertes{
+  position: relative;
+}
+.group-portes-ouvertes .field-name-node-link a{
+  color: #49aad3;
 }
 .field-name-field-preinscription-scolaire{
   background: #FFFFFF url(../images/bg/bg-pre-inscription.gif) no-repeat 0 0;
@@ -367,6 +377,20 @@ body.pro .h3-formation{
   text-decoration: none;
   height: 136px;
 }
+
+.field-name-field-date-portes-ouvertes{
+  position: absolute;
+  top: 45%;
+  left: 7%;
+  color: #000000;
+}
+.dates-debut-fin{
+  padding-left: 22px;
+  background: url(../images/icons/bullet.png) no-repeat 9px 10px;
+}
+body.pro .group-scolaire-right{
+  display: none;
+}
 /* Formulaires d'inscription **************************************************/
 #block-webform-client-block-4,#block-webform-client-block-6,
 #block-webform-client-block-7,#block-webform-client-block-8,
@@ -377,7 +401,11 @@ body.pro .h3-formation{
 .webform-component-fieldset{
   border: 2px solid #e7d401;
   border-radius: 8px;
-  width: 50%;
+  width: 75%;
   padding: 20px;
   margin: 20px 0 0 0;
 }
+input.form-text, textarea{
+  width: 99.9%;
+}
+
