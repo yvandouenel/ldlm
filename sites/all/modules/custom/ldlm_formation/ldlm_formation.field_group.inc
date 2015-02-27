@@ -376,7 +376,7 @@ function ldlm_formation_field_group_info() {
       'label' => 'Scolaire',
       'instance_settings' => array(
         'id' => '',
-        'classes' => 'group-scolaire field-group-div',
+        'classes' => 'group-scolaire field-group-div separator-top',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',

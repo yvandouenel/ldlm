@@ -218,7 +218,7 @@ Tél. 04 67 89 56 98',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
