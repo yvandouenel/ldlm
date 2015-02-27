@@ -4,8 +4,11 @@ body{
   font-family: arial;
   line-height: 1.5em;
 }
-body.pro{
-  border: 1px solid #ef8c0c;
+#block-superfish-1:after{
+  content: "";
+  display: block;
+  clear: both;
+  margin-bottom: 30px;
 }
 #main_content{
   clear: both;
@@ -17,16 +20,19 @@ ul li.leaf {
   padding-left: 22px;
   background: url(../images/icons/bullet.png) no-repeat 9px 10px;
 }
+#main_content a{
+  color: #49aad3;
+}
 #main_content{
   color: #444a52
 }
 h2#page-title{
-  clear: both;
+  
 }
 a:hover{
   text-decoration: underline;
 }
-h2,h3{
+h2,h3,h4{
   font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
 }
 h2{
@@ -34,6 +40,10 @@ h2{
 }
 h3{
   font-size: 1.4em;
+}
+h4{
+  font-size: 1.25em;
+  margin: 0.4em 0 0.2em 0;
 }
 
 /* Coordonnées ****************************************************************/
@@ -53,7 +63,7 @@ h3{
   background: url(../images/icons/bus-small.png) no-repeat 5% 50%;
 }
 .iti_car{
-  background: url(../images/icons/car-small.png) no-repeat 5% 50%;
+  background: url(../images/icons/car-small.png) no-repeat 3% 50%;
 }
 a.vie_lyceenne{
   background: url(../images/icons/eye-small.png) no-repeat 5% 50%;
@@ -103,32 +113,7 @@ a.vie_lyceenne{
 #link_pdfm{
   color: #ef8c0c; 
 }
-/* Menus principaux ***********************************************************/
-#main_menu{
-  clear: both;
-}
-#superfish-1{
-  margin-top: 30px;
-}
-#superfish-1 li{
-  padding: 0;
-  margin: 0;
-}
-#superfish-1 > li > a{
-  background-color: #e6edf2;
-  padding: 10px;
-  color: #566174;
-  border-right: 1px solid white;
-}
-#superfish-1 > li.active-trail> a{
-  background-color: #236f8b;
-  color: white;
-}
-#superfish-1 li a{
-  text-decoration: none;
-  display: block;
-  text-decoration: none;
-}
+
 /* zoom ***********************************************************************/
 .group-all-home-zoom{
   position: relative;
@@ -140,14 +125,14 @@ a.vie_lyceenne{
 }
 .group-all-home-zoom .field-name-over-zoom-small img#over-zoom-1{
   position: absolute;
-  bottom: 53.6%;
+  bottom: 53.9%;
   left: 0;
   z-index: 2;
   max-width: 19%;
 }
 .group-all-home-zoom .field-name-over-zoom-small img#over-zoom-2{
   position: absolute;
-  bottom: 2px;
+  bottom: 11px;
   left: 0;
   z-index: 2;
   max-width: 19%;
@@ -263,10 +248,24 @@ body.pro .group-titre-sous-titre{
   color: white;
 }
 #block-system-main .group-left h3,.h3-formation{
-  
+  background: transparent url(../images/icons/separator-blue.png) no-repeat 50% 0;
+  padding-top:  30px;
   font-size: 1.5em;
   text-transform: uppercase;
   margin: 20px 0 10px 0;
+}
+body.pro #block-system-main .group-left h3,body.pro .h3-formation{
+  background: transparent url(../images/icons/separator-orange.png) no-repeat 50% 0;
+}
+.separator-top{
+  background: transparent url(../images/icons/separator-blue.png) no-repeat 50% 0;
+  padding-top:  20px;
+  margin-top: 20px;
+}
+body.pro .separator-top{
+  background: transparent url(../images/icons/separator-orange.png) no-repeat 50% 0;
+  padding-top:  20px;
+  margin-top: 20px;
 }
 body.no-pro .h3-formation{
   color: #236e8b;
@@ -308,24 +307,42 @@ div.div-scol-right{
   margin-top: 33px;
   border: 1px solid #58a7c9;
 }
+div.div-scol-right.last{
+  margin-bottom: 33px;
+}
+body.pro div.div-scol-right.first{
+  margin-top: 0;
+}
+div.group-pre-inscription-pro{
+  margin-top: 33px;
+  border: 1px solid #ffd202;
+  background: white url(../images/bg/bg-orange-hand.gif) no-repeat 0 0;
+}
 .group-scolaire-right h3,
-.group-pro h3{
+.group-pro h3,
+div.group-pre-inscription-pro h3{
   background-color: #58a7c9;
   color: white;
   padding: 12px 15px;
+}
+div.group-pre-inscription-pro h3{
+  background-color: transparent;
+  color: black;
 }
 .group-scolaire-right h3.bg-rose-vent{
   background: #4aaad3 url(../images/bg/bg_blue_draw.jpg) no-repeat 0 0;
   padding: 23px 15px;
 }
+
 .group-scolaire-right ul{
   margin : 10px 0;
 }
 .group-scolaire-right a{
   color: #49aad3;
 }
-.group-scolaire-right ul li{
-  padding : 10px 3px 10px 44px;
+.group-scolaire-right ul li,
+.div-scol-right ul li{
+  padding : 10px 3px 10px 12%;
 }
 .field-name-field-nom-formation{
   color: #ef8c0c;
@@ -335,8 +352,18 @@ div.div-scol-right{
   
 }
 .group-scolaire-right .node-t-moignage,
-.group-pro {
-  padding: 20px 10px 5px 10px;
+.group-pro .div-scol-right p,
+div.field-name-field-contact,
+.field-name-field-remplir-formulaire a{
+  padding: 20px 10px 5px 15px;
+}
+div.field-name-field-contact{
+  padding-top: 0;
+}
+.field-name-field-remplir-formulaire a{
+  margin-top: 20px;
+  display: block;
+  color: #49aad3;
 }
 .field-name-field-preinscription-scolaire,.field-name-field-demande-entretien,
 .group-portes-ouvertes,.field-name-field-documentation{
@@ -394,7 +421,7 @@ body.pro .group-scolaire-right{
 /* Formulaires d'inscription **************************************************/
 #block-webform-client-block-4,#block-webform-client-block-6,
 #block-webform-client-block-7,#block-webform-client-block-8,
-#block-webform-client-block-8{
+#block-webform-client-block-9{
   width: 50%;
   margin: 0 auto;
 }
@@ -407,5 +434,93 @@ body.pro .group-scolaire-right{
 }
 input.form-text, textarea{
   width: 99.9%;
+}
+/* Menus principaux ***********************************************************/
+#main_menu{
+  clear: both;
+}
+#superfish-1{
+  margin-top: 30px;
+}
+#superfish-1 li{
+  padding: 0;
+  margin: 0;
+}
+#superfish-1 > li > a{
+  background-color: #e6edf2;
+  padding: 10px 30px 10px 10px;
+  color: #566174;
+  border-right: 1px solid white;
+}
+#superfish-1 > li.sf-no-children > a{
+  padding: 10px;
+  
+}
+#superfish-1 > li.active-trail> a{
+  background-color: #236f8b;
+  color: white;
+}
+#superfish-1 li a{
+  text-decoration: none;
+  display: block;
+  text-decoration: none;
+  font-size: 1.4em;
+}
+ul#superfish-1 li > ul > li a{
+  background-color: #566174;
+  padding: 10px;
+  color: white;
+}
+.sf-sub-indicator {
+  right: 0.2em;
+}
+/* Menus secondaires **********************************************************/
+ul.menu li {
+  margin: 0;
+}
+li.expanded, li.collapsed, li.leaf {
+  padding: 0;
+  margin: 0;
+}
+.region-sidebar-left #block-menu-block-1 h2{
+  background-color: #18516e;
+  padding: 20px 10px;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2em;
+}
+.region-sidebar-left .menu-block-wrapper > ul.menu > li{
+  margin: 5px 0 20px 6px;
+  border-top: 1px solid #e6edf2;
+}
+.region-sidebar-left .menu-block-wrapper > ul.menu > li.first{
+  border-top: 0px;
+}
+.region-sidebar-left .menu-block-wrapper > ul.menu > li a{
+  display: block;
+  padding: 5px 0;
+}
+ul#superfish-1 > li > li a{
+  display: block;
+  padding: 10px 0;
+}
+.region-sidebar-left .menu-block-wrapper > ul.menu > li > a{
+  color: #18516e;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.region-sidebar-left .menu-block-wrapper > ul.menu > li.expanded{
+  list-style: none;
+}
+.region-sidebar-left .menu-block-wrapper > ul.menu > li > ul > li > a{
+  display: block;
+  padding-left: 22px;
+  background: url(../images/icons/arrow-sous-menu-3.png) no-repeat 0 50%;
+  text-decoration: none;
+}
+.region-sidebar-left .menu-block-wrapper > ul.menu > li > ul > li.active > a{
+  background: #18516e url(../images/icons/arrow-sous-menu-3-selected.png) no-repeat 3px 50%;
 }
 

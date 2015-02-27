@@ -55,5 +55,21 @@
     font-size: 1em;
     margin-top: 4px;
   }
+  #sidebar-left{
+    display: none;
+  }
+  .ds-2col-fluid > .group-left, .ds-2col-fluid > .group-right{
+    width : 100%;
+  }
+  #block-webform-client-block-4,#block-webform-client-block-6,
+  #block-webform-client-block-7,#block-webform-client-block-8,
+  #block-webform-client-block-9{
+    width: 100%;
+    margin: 0 auto;
+  }
+  .webform-component-fieldset{
+    width: 92%;
+  }
+  
   
 }
