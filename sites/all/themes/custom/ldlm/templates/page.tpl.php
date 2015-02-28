@@ -6,7 +6,7 @@
 <header id="head_band">
   <div class="container">
     <div class="grid-12 grid">
-      <h1 id="paul_bousquet"><a href="<?php print $front_page; ?>"><img src="<?php print base_path() . path_to_theme(); ?>/images/logo-Paul-Bousquet.gif" alt="Paul Bousquet"></a></h1>
+      <h1 id="paul_bousquet"><a href="<?php print $front_page; ?>"><img src="<?php print base_path() . path_to_theme(); ?>/images/logo-Paul-Bousquet.gif" alt="Paul Bousquet - Lycée de la mer - Pôle de formation maritime"></a></h1>
       <a id="link_ldlm" href="/vie-lyceenne">Lycée de la mer</a><a id="link_pdfm" href="/pole-formation-maritime">Pôle de formation maritime</a>
     </div>
     <div class="grid-6 grid">
@@ -65,9 +65,26 @@
     <?php endif; ?>
     <?php if ($page['home_col3']): ?>
       <div class='grid-3 grid'><?php print render($page['home_col3']) ?></div>
-    <?php endif; ?>
+    <?php endif; ?> 
         
-        
-
 </div>
 </section>
+<footer id="main_footer">
+   <div class="big-container container">
+    <img src="<?php print base_path() . path_to_theme(); ?>/images/bg/bg_footer.jpg" alt="">
+    <div id="footer-ldlm-pfm">
+      <a id="link_ldlm" href="/vie-lyceenne">Lycée de la mer</a><span id="paul-bousquet-bas">Paul Bousquet</span><a id="link_pdfm" href="/pole-formation-maritime">Pôle de formation maritime</a>
+    </div>
+    <div id="cols-footer">
+      <?php if ($page['footer_col1']): ?>
+        <div class='grid-3 grid'><?php print render($page['footer_col1']) ?></div>
+      <?php endif; ?>
+      <?php if ($page['footer_col2']): ?>
+        <div class='grid-3 grid'><?php print render($page['footer_col2']) ?></div>
+      <?php endif; ?>
+      <?php if ($page['footer_col3']): ?>
+        <div class='grid-6 grid'><?php print render($page['footer_col3']) ?></div>
+      <?php endif; ?> 
+    </div>
+  </div>  
+</footer> 

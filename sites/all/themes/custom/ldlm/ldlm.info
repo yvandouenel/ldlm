@@ -22,3 +22,6 @@ regions[content] = Content
 regions[home_col1] = Home Col 1
 regions[home_col2] = Home Col 2
 regions[home_col3] = Home Col 3
+regions[footer_col1] = Footer col1
+regions[footer_col2] = Footer col2
+regions[footer_col3] = Footer col3
