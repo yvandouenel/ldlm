@@ -4,7 +4,7 @@
     width: 1200px;
     margin: auto;
   }
-  .big-container{
+  .big-container, .big-container.container{
     width: 1583px;
     margin: auto;
   }
