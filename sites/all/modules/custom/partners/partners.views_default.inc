@@ -85,6 +85,31 @@ function partners_views_default_views() {
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'partenaires:page_1';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Contenu: Publié */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Contenu: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'partenaires' => 'partenaires',
+  );
+  /* Filter criterion: Contenu: Type de partenaire (field_type_partner) */
+  $handler->display->display_options['filters']['field_type_partner_tid']['id'] = 'field_type_partner_tid';
+  $handler->display->display_options['filters']['field_type_partner_tid']['table'] = 'field_data_field_type_partner';
+  $handler->display->display_options['filters']['field_type_partner_tid']['field'] = 'field_type_partner_tid';
+  $handler->display->display_options['filters']['field_type_partner_tid']['value'] = array(
+    21 => '21',
+  );
+  $handler->display->display_options['filters']['field_type_partner_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_type_partner_tid']['vocabulary'] = 'type_partenaire';
   $handler->display->display_options['block_description'] = ' Block Partner 1';
 
   /* Display: Page classement */
@@ -169,6 +194,71 @@ function partners_views_default_views() {
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'self';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   $handler->display->display_options['path'] = 'partenaires-classement';
+
+  /* Display:  Block Partner 2 */
+  $handler = $view->new_display('block', ' Block Partner 2', 'block_1');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Champ: Contenu: Titre */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Champ: Contenu: URL */
+  $handler->display->display_options['fields']['field_url_partner']['id'] = 'field_url_partner';
+  $handler->display->display_options['fields']['field_url_partner']['table'] = 'field_data_field_url_partner';
+  $handler->display->display_options['fields']['field_url_partner']['field'] = 'field_url_partner';
+  $handler->display->display_options['fields']['field_url_partner']['label'] = '';
+  $handler->display->display_options['fields']['field_url_partner']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_url_partner']['element_label_colon'] = FALSE;
+  /* Champ: Contenu: Logo */
+  $handler->display->display_options['fields']['field_images']['id'] = 'field_images';
+  $handler->display->display_options['fields']['field_images']['table'] = 'field_data_field_images';
+  $handler->display->display_options['fields']['field_images']['field'] = 'field_images';
+  $handler->display->display_options['fields']['field_images']['label'] = '';
+  $handler->display->display_options['fields']['field_images']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_images']['alter']['text'] = '<a href="[field_url_partner]" target="_blank">[field_images]</a>';
+  $handler->display->display_options['fields']['field_images']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_images']['type'] = 'partner_2';
+  $handler->display->display_options['fields']['field_images']['settings'] = array(
+    'link' => '0',
+  );
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Draggableviews: Poids */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'partenaires:page_1';
+  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Contenu: Publié */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Contenu: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'partenaires' => 'partenaires',
+  );
+  /* Filter criterion: Contenu: Type de partenaire (field_type_partner) */
+  $handler->display->display_options['filters']['field_type_partner_tid']['id'] = 'field_type_partner_tid';
+  $handler->display->display_options['filters']['field_type_partner_tid']['table'] = 'field_data_field_type_partner';
+  $handler->display->display_options['filters']['field_type_partner_tid']['field'] = 'field_type_partner_tid';
+  $handler->display->display_options['filters']['field_type_partner_tid']['value'] = array(
+    20 => '20',
+  );
+  $handler->display->display_options['filters']['field_type_partner_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_type_partner_tid']['vocabulary'] = 'type_partenaire';
+  $handler->display->display_options['block_description'] = ' Block Partner 2';
   $translatables['partenaires'] = array(
     t('Master'),
     t('Partenaires'),
@@ -181,6 +271,7 @@ function partners_views_default_views() {
     t('<a href="[field_url_partner]" target="_blank">[field_images]</a>'),
     t(' Block Partner 1'),
     t('Page classement'),
+    t(' Block Partner 2'),
   );
   $export['partenaires'] = $view;
 

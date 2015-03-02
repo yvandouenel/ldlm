@@ -68,7 +68,7 @@ function partners_field_default_field_instances() {
         'label' => 'above',
         'module' => 'domainedo_media',
         'settings' => array(),
-        'type' => 'title',
+        'type' => 'partner_2',
         'weight' => 3,
       ),
       'teaser' => array(
