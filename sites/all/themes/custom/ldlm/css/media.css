@@ -14,6 +14,9 @@
     width: 1200px;
     margin: auto;
   }
+  .view-id-partenaires .view-content{
+    width: 100%;
+  }
 }
 @media screen and (max-width:1280px){
   .container{
@@ -40,8 +43,37 @@
     font-size: 1.5em;
     margin-top: 8px;
   }
+  #cols-footer .grid-3{
+    width : 47.916666666666666666666666666667%;
+  }
+  #cols-footer .grid-6{
+    width: 97.916666666666666666666666666667%;
+  }
+  .view-id-partenaires .view-content{
+    width: 100%;
+  }
+  #cols-footer {
+  top: 20%;
+  }
+  #footer-ldlm-pfm{
+    width: 90%;
+    left: 4%;
+  }
+  #footer-ldlm-pfm a,#paul-bousquet-bas{
+    font-size: 1.3em;
+  }
+  #cols-footer .block-bean .field-items p br {
+    display: none;
+  }
+  #cols-footer .bean-adresse{
+    background-color: #002A38;
+    opacity: 0.9;
+  }
 }
 @media screen and (max-width:740px){
+  body{
+    font-size:  0.8em;
+  }
   #block-menu-menu-top ul.menu{
     margin-left: 10px;
   }
@@ -69,6 +101,34 @@
   }
   .webform-component-fieldset{
     width: 92%;
+  }
+  .view-id-partenaires .view-content{
+    width: 100%;
+  }
+  footer{
+    background-color: #002A38;
+  }
+  #footer-ldlm-pfm{
+    width: 100%;
+    left: 2%;
+  }
+  #footer-ldlm-pfm a,#paul-bousquet-bas{
+    font-size: 1em;
+  }
+  #footer-ldlm-pfm{
+    position: inherit;
+    
+  }
+  #cols-footer{
+   position: inherit;
+  }
+  
+  #img-bg-footer{
+    position: absolute;
+    bottom: 0;
+  }
+  #footer-ldlm-pfm{
+    display: none;
   }
   
   

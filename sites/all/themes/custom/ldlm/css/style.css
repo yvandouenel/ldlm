@@ -206,6 +206,12 @@ body.front .block-views .field-name-body{
   color: #444a52;
   font-family: 'Open Sans', sans-serif;
 }
+body.front .region-home-col1 .views-row-last{
+  content: "";
+  display: block;
+  clear: both;
+  margin-bottom: 20px;
+}
 /* formation ******************************************************************/
 #block-webform-client-block-4,#block-webform-client-block-6,
 #block-webform-client-block-7, #block-webform-client-block-8, #block-webform-client-block-9{
@@ -528,9 +534,15 @@ ul#superfish-1 > li > li a{
 /* Pied de page footer ********************************************************/
 #main_footer{
   clear: both;
+  margin-top: 20px;
 }
 #main_footer .big-container{
   position: relative;
+}
+#main_footer .big-container:after{
+  content: "";
+  display: block;
+  clear: both;
 }
 #footer-ldlm-pfm{
   position: absolute;
@@ -538,6 +550,11 @@ ul#superfish-1 > li > li a{
   z-index: 5;
   width: 70%;
   left: 23%;
+}
+#cols-footer{
+  position: absolute;
+  top: 56%;
+  width: 100%;
 }
 #footer-ldlm-pfm #link_ldlm{
   color: #02BAFD;
@@ -553,11 +570,7 @@ ul#superfish-1 > li > li a{
   padding: 0 30px;
   float: left;
 }
-#cols-footer{
-  position: absolute;
-  top: 56%;
-  width: 100%;
-}
+
 #cols-footer .block-bean{
   font-size: 0.9em;
   padding-left: 1%;
@@ -580,14 +593,18 @@ ul#superfish-1 > li > li a{
   color: #6E7B83;
 }
 /* partenaires ****************************************************************/
-.region-footer-col3 img{
+.region-footer-col3 .views-row{
   float: left;
-  margin: 0 20px 10px 0;
+  margin: 0 2% 3px 0;
 }
+
 .view-id-partenaires{
   min-height: 50px;
 }
 .view-id-partenaires .view-content{
   float: right;
-  min-width: 300px;
+  width: 40%;
+}
+#block-views-partenaires-block-1{
+  clear: both;
 }
