@@ -579,3 +579,15 @@ ul#superfish-1 > li > li a{
   padding-left: 5%;
   color: #6E7B83;
 }
+/* partenaires ****************************************************************/
+.region-footer-col3 img{
+  float: left;
+  margin: 0 20px 10px 0;
+}
+.view-id-partenaires{
+  min-height: 50px;
+}
+.view-id-partenaires .view-content{
+  float: right;
+  min-width: 300px;
+}
