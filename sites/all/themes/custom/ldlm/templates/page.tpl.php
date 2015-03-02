@@ -71,7 +71,7 @@
 </section>
 <footer id="main_footer">
    <div class="big-container container">
-    <img src="<?php print base_path() . path_to_theme(); ?>/images/bg/bg_footer.jpg" alt="">
+    <img id="img-bg-footer" src="<?php print base_path() . path_to_theme(); ?>/images/bg/bg_footer.jpg" alt="">
     <div id="footer-ldlm-pfm">
       <a id="link_ldlm" href="/vie-lyceenne">Lycée de la mer</a><span id="paul-bousquet-bas">Paul Bousquet</span><a id="link_pdfm" href="/pole-formation-maritime">Pôle de formation maritime</a>
     </div>
@@ -86,5 +86,5 @@
         <div class='grid-6 grid'><?php print render($page['footer_col3']) ?></div>
       <?php endif; ?> 
     </div>
-  </div>  
+  </div> 
 </footer> 
