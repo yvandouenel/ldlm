@@ -4,6 +4,9 @@ body{
   font-family: arial;
   line-height: 1.5em;
 }
+strong{
+  font-weight: bold;
+}
 #block-superfish-1:after{
   content: "";
   display: block;
@@ -172,7 +175,9 @@ body.front .block-views .group-all-home-zoom .field-name-body{
   color: white;
 }
 /* actualités home*************************************************************/
-body.front .region-home-col1 .block-views h2{
+body.front .region-home-col1 .block-views h2,
+body.front .region-home-col2 h2,
+body.front #block-bean-edito h2{
   color: #91979f;
   font-size: 2em;
   paddin-left: 65px;
@@ -180,6 +185,34 @@ body.front .region-home-col1 .block-views h2{
   background: url(../images/icons/flamme.png) no-repeat 0 50%;
   padding-left: 65px;
   margin: 30px 0;
+}
+body.front .region-home-col2 h2,{
+  background: url(../images/icons/rose-vent.png) no-repeat 0 50%;
+}
+body.front .region-home-col2 h3{
+  color: #7786a1;
+}
+body.front #block-bean-edito h2{
+  background: url(../images/icons/drapeau.png) no-repeat 0 50%;
+}
+
+body.front #main_content .region-home-col2 h4 a{
+  color: #444a52;
+  padding-left: 22px;
+  background: url(../images/icons/bullet.png) no-repeat 9px 10px;
+  display: block;
+  text-decoration: none;
+}
+body.front .region-home-col2 .block-views{
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e6edf2;
+  border-top: 1px solid #e6edf2;
+  padding-top: 15px;    
+  margin-bottom: 1px;
+}
+body.front .region-home-col2 #block-views-formations-block-3{
+  border-top: 0;
+  padding-top: 0;
 }
 .group-title-img{
   position: relative;
@@ -206,7 +239,7 @@ body.front .block-views .field-name-body{
   color: #444a52;
   font-family: 'Open Sans', sans-serif;
 }
-body.front .region-home-col1 .views-row-last{
+#main_content > .container:after{
   content: "";
   display: block;
   clear: both;
@@ -607,4 +640,23 @@ ul#superfish-1 > li > li a{
 }
 #block-views-partenaires-block-1{
   clear: both;
+}
+/* ckeditor styles ************************************************************/
+.bg-deep-blue{
+  padding: 20px 10px 40px 20px;
+  color: white;
+  background: #18516d url(../images/bg/bg_arrow_blue_white.png) no-repeat 0 100%;
+}
+.bg-deep-blue .link-blue-arrow, .fleche-bleue{
+  display: block;
+  padding-left: 15px;
+  background: url(../images/icons/arrow-blue-small.png) no-repeat 0 50%;
+  color: #84d3ee;
+}
+.signature{
+  color: #8c9aaa;
+  background: url(../images/icons/guillemets-grises.png) no-repeat 0 0;
+  padding-left: 30px;
+  line-height: 19px;
+  float: right;
 }
