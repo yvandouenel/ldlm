@@ -12,6 +12,38 @@ function ldlm_blocks_menus_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
+  $export['bean-activités-accueil'] = array(
+    'cache' => 1,
+    'custom' => 0,
+    'delta' => 'activités-accueil',
+    'module' => 'bean',
+    'node_types' => array(),
+    'pages' => '<front>',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'ldlm' => array(
+        'region' => 'home_col3',
+        'status' => 1,
+        'theme' => 'ldlm',
+        'weight' => -24,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 1,
+  );
+
   $export['bean-adresse-lycée'] = array(
     'cache' => 1,
     'custom' => 0,
@@ -63,7 +95,7 @@ function ldlm_blocks_menus_default_fe_block_settings() {
         'region' => 'footer_col2',
         'status' => 1,
         'theme' => 'ldlm',
-        'weight' => -19,
+        'weight' => -20,
       ),
       'seven' => array(
         'region' => '',
@@ -74,6 +106,102 @@ function ldlm_blocks_menus_default_fe_block_settings() {
     ),
     'title' => '',
     'visibility' => 0,
+  );
+
+  $export['bean-edito'] = array(
+    'cache' => 1,
+    'custom' => 0,
+    'delta' => 'edito',
+    'module' => 'bean',
+    'node_types' => array(),
+    'pages' => '<front>',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'ldlm' => array(
+        'region' => 'home_col3',
+        'status' => 1,
+        'theme' => 'ldlm',
+        'weight' => -25,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 1,
+  );
+
+  $export['bean-taxe-apprentissage'] = array(
+    'cache' => 1,
+    'custom' => 0,
+    'delta' => 'taxe-apprentissage',
+    'module' => 'bean',
+    'node_types' => array(),
+    'pages' => '<front>',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'ldlm' => array(
+        'region' => 'home_col3',
+        'status' => 1,
+        'theme' => 'ldlm',
+        'weight' => -23,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 1,
+  );
+
+  $export['block-titre_formations'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'machine_name' => 'titre_formations',
+    'module' => 'block',
+    'node_types' => array(),
+    'pages' => '<front>',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'ldlm' => array(
+        'region' => 'home_col2',
+        'status' => 1,
+        'theme' => 'ldlm',
+        'weight' => -23,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 1,
   );
 
   $export['menu-menu-top'] = array(
@@ -330,6 +458,262 @@ function ldlm_blocks_menus_default_fe_block_settings() {
     ),
     'title' => 'Actualités',
     'visibility' => 1,
+  );
+
+  $export['views-formations-block'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'formations-block',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'ldlm' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'ldlm',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['views-formations-block_1'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'formations-block_1',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '<front>',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'ldlm' => array(
+        'region' => 'home_col2',
+        'status' => 1,
+        'theme' => 'ldlm',
+        'weight' => -18,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['views-formations-block_2'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'formations-block_2',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '<front>',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'ldlm' => array(
+        'region' => 'home_col2',
+        'status' => 1,
+        'theme' => 'ldlm',
+        'weight' => -21,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['views-formations-block_3'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'formations-block_3',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '<front>',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'ldlm' => array(
+        'region' => 'home_col2',
+        'status' => 1,
+        'theme' => 'ldlm',
+        'weight' => -22,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 1,
+  );
+
+  $export['views-formations-block_4'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'formations-block_4',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '<front>',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'ldlm' => array(
+        'region' => 'home_col2',
+        'status' => 1,
+        'theme' => 'ldlm',
+        'weight' => -20,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['views-formations-block_5'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'formations-block_5',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '<front>',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'ldlm' => array(
+        'region' => 'home_col2',
+        'status' => 1,
+        'theme' => 'ldlm',
+        'weight' => -19,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
+  );
+
+  $export['views-partenaires-block'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'partenaires-block',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'ldlm' => array(
+        'region' => 'footer_col3',
+        'status' => 1,
+        'theme' => 'ldlm',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '<none>',
+    'visibility' => 0,
+  );
+
+  $export['views-partenaires-block_1'] = array(
+    'cache' => -1,
+    'custom' => 0,
+    'delta' => 'partenaires-block_1',
+    'module' => 'views',
+    'node_types' => array(),
+    'pages' => '',
+    'roles' => array(),
+    'themes' => array(
+      'bartik' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'bartik',
+        'weight' => 0,
+      ),
+      'ldlm' => array(
+        'region' => 'footer_col3',
+        'status' => 1,
+        'theme' => 'ldlm',
+        'weight' => 0,
+      ),
+      'seven' => array(
+        'region' => '',
+        'status' => 0,
+        'theme' => 'seven',
+        'weight' => 0,
+      ),
+    ),
+    'title' => '',
+    'visibility' => 0,
   );
 
   $export['webform-client-block-4'] = array(
