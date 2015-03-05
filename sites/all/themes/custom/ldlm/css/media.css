@@ -73,6 +73,17 @@
     background-color: #002A38;
     opacity: 0.9;
   }
+  body.front .view-display-id-block_2 .views-row {
+    width : 47.916666666666666666666666666667%;
+    float: left;
+  }
+  body.front .view-display-id-block_2 .views-row-even{
+    margin-left : 1.041666666666666666666666666667%;
+  }
+  
+  body.front view-display-id-block_2 .views-row-even h3.h3-event{ 
+    /*left: 45%*/
+  }
 }
 @media screen and (max-width:740px){
   body{

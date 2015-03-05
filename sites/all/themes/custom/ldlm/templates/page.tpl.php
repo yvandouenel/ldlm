@@ -58,13 +58,13 @@
         <?php print render($page['content']); ?>
     </div>
     <?php if ($page['home_col1']): ?>
-      <div class='grid-6 grid'><?php print render($page['home_col1']) ?></div>
+      <div class='grid-6 grid narrow-12'><?php print render($page['home_col1']) ?></div>
     <?php endif; ?>
     <?php if ($page['home_col2']): ?>
-      <div class='grid-3 grid'><?php print render($page['home_col2']) ?></div>
+      <div class='grid-3 grid narrow-6'><?php print render($page['home_col2']) ?></div>
     <?php endif; ?>
     <?php if ($page['home_col3']): ?>
-      <div class='grid-3 grid'><?php print render($page['home_col3']) ?></div>
+      <div class='grid-3 grid narrow-6'><?php print render($page['home_col3']) ?></div>
     <?php endif; ?> 
         
 </div>
