@@ -28,11 +28,15 @@
   .group-all-home-zoom .field-name-over-zoom-small, .group-all-home-zoom .field-name-field-scald-image{
     display: none;
   }
-  .field-name-field-images picture{
+  .view-display-id-block_1{
+    width: 100%;
+    overflow: hidden;
+  }
+  .view-display-id-block_1 .field-name-field-images picture {
     position: relative;
     left: -23.5%;
   }
-  .field-name-field-images picture img{
+  .view-display-id-block_1 .field-name-field-images picture img{
     max-width: 123.5%;
   }
   .group-titre-sous-titre{
@@ -80,6 +84,7 @@
   body.front .block-views .group-all-home-zoom .field-name-body{
     font-size: 0.6em;
   }
+  
   .group-titre-sous-titre{
     width: 70%;
   }
