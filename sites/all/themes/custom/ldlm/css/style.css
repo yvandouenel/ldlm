@@ -174,7 +174,7 @@ body.front .block-views .group-all-home-zoom .field-name-body{
   width: 28%;
   color: white;
 }
-/* actualités home*************************************************************/
+/* actualités home et blocks accueil ******************************************/
 body.front .region-home-col1 .block-views h2,
 body.front .region-home-col2 h2,
 body.front #block-bean-edito h2{
@@ -244,6 +244,23 @@ body.front .block-views .field-name-body{
   display: block;
   clear: both;
   margin-bottom: 20px;
+}
+.block-bean h2{
+  color: #236f8b;
+  font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+.block-bean{
+  margin-top: 20px;
+}
+.block-bean .field-name-field-contenu{
+  color: #444a52;
+  padding-left: 5%;
+  font-size
+}
+#block-bean-edito{
+  margin-top: 0;
 }
 /* formation ******************************************************************/
 #block-webform-client-block-4,#block-webform-client-block-6,
