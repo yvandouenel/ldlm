@@ -122,7 +122,7 @@ function domainedo_editors_ckeditor_profile_defaults() {
     \'/\',
     [\'Format\',\'Font\',\'FontSize\'],
     [\'TextColor\',\'BGColor\'],
-    [\'Maximize\',\'ShowBlocks\']
+    [\'Maximize\',\'ShowBlocks\',\'Styles\']
 ]',
         'expand' => 't',
         'width' => '100%',
@@ -131,7 +131,7 @@ function domainedo_editors_ckeditor_profile_defaults() {
         'language_direction' => 'default',
         'enter_mode' => 'p',
         'shift_enter_mode' => 'br',
-        'font_format' => 'p;div;pre;address;h1;h2;h3;h4;h5;h6',
+        'font_format' => 'p;div;pre;address;h2;h3;h4;h5;h6',
         'custom_formatting' => 'f',
         'formatting' => array(
           'custom_formatting_options' => array(
@@ -145,8 +145,8 @@ function domainedo_editors_ckeditor_profile_defaults() {
         ),
         'css_mode' => 'none',
         'css_path' => '',
-        'css_style' => 'theme',
-        'styles_path' => '',
+        'css_style' => 'self',
+        'styles_path' => '%tjs/ckeditor.styles.js',
         'filebrowser' => 'imce',
         'filebrowser_image' => '',
         'filebrowser_flash' => '',
@@ -158,6 +158,12 @@ function domainedo_editors_ckeditor_profile_defaults() {
         'theme_config_js' => 'f',
         'js_conf' => 'config.allowedContent = true;',
         'loadPlugins' => array(
+          'ckeditor_link' => array(
+            'name' => 'drupal_path',
+            'desc' => 'CKEditor Link - A plugin to easily create links to Drupal internal paths',
+            'path' => '%base_path%sites/all/modules/contrib/ckeditor_link/plugins/link/',
+            'buttons' => FALSE,
+          ),
           'dnd' => array(
             'name' => 'dnd',
             'desc' => 'Scald Drag and Drop integration',
