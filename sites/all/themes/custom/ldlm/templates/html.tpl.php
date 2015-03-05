@@ -51,6 +51,7 @@
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
   <?php print $scripts; ?>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="http://use.typekit.net/rpw5ezq.js"></script>
   <script>try{Typekit.load();}catch(e){}</script>
 </head>
