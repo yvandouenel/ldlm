@@ -158,7 +158,8 @@
     opacity: 0.9;
     font-size: 1.4em;
   }
-  body.front .region-home-col1 .block-views h2{
+  body.front .region-home-col2 .block-views h2,
+  body.front .region-home-col3 .block-views h2{
     font-size: 1.4em;
   }
   
