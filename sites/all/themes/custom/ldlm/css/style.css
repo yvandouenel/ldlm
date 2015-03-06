@@ -13,6 +13,9 @@ strong{
   clear: both;
   margin-bottom: 30px;
 }
+.dnd-atom-wrapper {
+    display: block;
+}
 #main_content{
   clear: both;
 }
