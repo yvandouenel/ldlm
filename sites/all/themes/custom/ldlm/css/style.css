@@ -496,6 +496,9 @@ body.pro .group-scolaire-right{
   width: 99.9%;
 }
 /* Menus principaux ***********************************************************/
+div.menu-block-2{
+    display: none;
+  }
 #main_menu{
   clear: both;
 }

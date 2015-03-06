@@ -103,6 +103,12 @@
   body{
     font-size:  0.6em;
   }
+  #block-superfish-1{
+    display: none;
+  }
+  div.menu-block-2{
+    display: block;
+  }
   #block-menu-menu-top ul.menu{
     margin-left: 10px;
   }
