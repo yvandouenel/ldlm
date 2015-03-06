@@ -158,6 +158,9 @@
     opacity: 0.9;
     font-size: 1.4em;
   }
+  body.front #block-bean-edito h2{
+    font-size: 1.4em;
+  }
   
   
 }
