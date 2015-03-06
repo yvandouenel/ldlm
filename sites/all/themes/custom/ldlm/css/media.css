@@ -72,7 +72,12 @@
   #cols-footer .bean-adresse{
     background-color: #002A38;
     opacity: 0.9;
+    padding: 5px;
   }
+  #cols-footer .block-bean .field-items{
+    color: #FFFFFF;
+  }
+  
   body.front #block-views-evenements-block-2 .views-row {
     width : 47.916666666666666666666666666667%;
     float: left;
