@@ -73,11 +73,11 @@
     background-color: #002A38;
     opacity: 0.9;
   }
-  body.front .view-display-id-block_2 .views-row {
+  body.front #block-views-evenements-block-2 .views-row {
     width : 47.916666666666666666666666666667%;
     float: left;
   }
-  body.front .view-display-id-block_2 .views-row-even{
+  body.front #block-views-evenements-block-2 .views-row-even{
     margin-left : 1.041666666666666666666666666667%;
   }
   

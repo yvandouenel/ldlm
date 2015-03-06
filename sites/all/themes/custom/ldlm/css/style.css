@@ -206,7 +206,7 @@ body.front #main_content .region-home-col2 h4 a{
   display: block;
   text-decoration: none;
 }
-body.front .region-home-col2 .block-views{
+body.front .region-home-col2 > .block-views{
   padding-bottom: 15px;
   border-bottom: 1px solid #e6edf2;
   border-top: 1px solid #e6edf2;
