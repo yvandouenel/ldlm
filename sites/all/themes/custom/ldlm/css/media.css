@@ -84,6 +84,14 @@
   body.front view-display-id-block_2 .views-row-even h3.h3-event{ 
     /*left: 45%*/
   }
+  body.front .block-views .group-all-home-zoom .field-name-body{
+    top: 56%;
+    left: 2%;
+    width: 50%;
+    color: white;
+    background-color: #1D6A94;
+    opacity: 0.9;
+  }
 }
 @media screen and (max-width:740px){
   body{
@@ -92,10 +100,6 @@
   #block-menu-menu-top ul.menu{
     margin-left: 10px;
   }
-  body.front .block-views .group-all-home-zoom .field-name-body{
-    font-size: 0.6em;
-  }
-  
   .group-titre-sous-titre{
     width: 70%;
   }
@@ -145,6 +149,14 @@
   }
   #footer-ldlm-pfm{
     display: none;
+  }
+  body.front .block-views .group-all-home-zoom .field-name-body{
+    left: 2%;
+    width: 80%;
+    color: white;
+    background-color: #1D6A94;
+    opacity: 0.9;
+    font-size: 1.4em;
   }
   
   
