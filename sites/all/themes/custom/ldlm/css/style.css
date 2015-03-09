@@ -691,9 +691,13 @@ ul#superfish-1 > li > li a{
 .field-name-ds-user-picture img,
 .field-name-field-titre{
   float: right;
+  clear: right;
 }
 .field-name-field-nom,.field-name-field-prenom{
   float: left;
   text-decoration: underline;
   color: #49AAD3;
+}
+.field-name-field-courriel-public{
+  clear: left;
 }
