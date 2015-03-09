@@ -692,16 +692,20 @@ ul#superfish-1 > li > li a{
 .field-name-field-titre{
   float: right;
   clear: right;
-  padding-right: 1em;
+  
 }
 .field-name-field-nom,.field-name-field-prenom{
   float: left;
   text-decoration: underline;
   color: #49AAD3;
+  padding-right: 0.5em;
 }
 .field-name-field-courriel-public{
   clear: left;
 }
 .field-name-field-courriel-public.clearfix:after{
   clear: left;
+}
+.group-apres-click .field-group-format-toggler a{
+  border: 1px solid red;
 }
