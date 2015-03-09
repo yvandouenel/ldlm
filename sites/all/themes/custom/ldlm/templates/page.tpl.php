@@ -26,10 +26,14 @@
     <?php print render($page['above_content']); ?>
   </div>
   <div class="container">
-    <div class='grid-12 grid' class='clearfix'>
+    
       <!-- Colonne de gauche -->
       <?php if ($page['sidebar_left']): ?>
         <div class='grid-3 first-col' id="sidebar-left"><?php print render($page['sidebar_left']) ?></div>
+        <div class='grid-9 grid' class='clearfix'>
+      <?php endif; ?>
+      <?php if (!$page['sidebar_left']): ?>
+        <div class='grid-12 grid' class='clearfix'>
       <?php endif; ?>
       <!-- Colonne de droite -->   
       <?php if ($messages): ?>
