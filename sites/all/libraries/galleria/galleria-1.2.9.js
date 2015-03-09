@@ -913,11 +913,9 @@ var undef,
                             $loader.remove();
 
                             // If failed, tell the dev to download the latest theme
-                            Galleria.raise( 'Theme CSS could not load after 20 sec. ' + ( Galleria.QUIRK ?
-                                'Your browser is in Quirks Mode, please add a correct doctype.' :
-                                'Please download the latest theme at http://galleria.io/customer/.' ), true );
+                            Galleria.raise( "Une erreur réseau est survenue. Merci de recharger cette page afin d'afficher la galerie d'images.", true );
                         },
-                        timeout: 5000
+                        timeout: 20000
                     });
                 }
                 return link;
