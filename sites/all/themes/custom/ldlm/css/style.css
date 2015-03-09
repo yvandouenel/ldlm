@@ -701,3 +701,6 @@ ul#superfish-1 > li > li a{
 .field-name-field-courriel-public{
   clear: left;
 }
+.field-name-field-courriel-public.clearfix:after{
+  clear: none;
+}
