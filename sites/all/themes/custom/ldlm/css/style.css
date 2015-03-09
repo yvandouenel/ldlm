@@ -478,6 +478,9 @@ div.field-name-field-contact{
 body.pro .group-scolaire-right{
   display: none;
 }
+.galleria-container {
+  background: none repeat scroll 0 0 #18516D;
+}
 /* Formulaires d'inscription **************************************************/
 #block-webform-client-block-4,#block-webform-client-block-6,
 #block-webform-client-block-7,#block-webform-client-block-8,
