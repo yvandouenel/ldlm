@@ -712,7 +712,9 @@ ul#superfish-1 > li > li a{
   text-indent: -6000px;
 }
 div.view-annuaire .views-row{
-  border: 1px solid #E6EDF2;
-  padding: 20px;
-  border: 1px solid #286E89;
+  border: 1px solid #EF8C0C;
+  border-left: 5px solid #E6EDF2;
+  padding: 10px;
+  margin : 5px 0;
+  
 }
