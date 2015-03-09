@@ -687,3 +687,13 @@ ul#superfish-1 > li > li a{
   line-height: 19px;
   float: right;
 }
+/* Annuaire *******************************************************************/
+.field-name-ds-user-picture img,
+.field-name-field-titre{
+  float: right;
+}
+.field-name-field-nom,.field-name-field-prenom{
+  float: left;
+  text-decoration: underline;
+  color: #49AAD3;
+}
