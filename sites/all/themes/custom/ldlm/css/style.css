@@ -692,6 +692,7 @@ ul#superfish-1 > li > li a{
 .field-name-field-titre{
   float: right;
   clear: right;
+  padding-right: 1em;
 }
 .field-name-field-nom,.field-name-field-prenom{
   float: left;
