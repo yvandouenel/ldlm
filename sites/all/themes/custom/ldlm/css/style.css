@@ -688,7 +688,7 @@ ul#superfish-1 > li > li a{
   float: right;
 }
 /* Annuaire *******************************************************************/
-.field-name-ds-user-picture img,
+.field-name-field-image-publique img,
 .field-name-field-titre{
   float: right;
   clear: right;
