@@ -1,0 +1,14 @@
+name = Annuaire
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = annuaire
+dependencies[] = ds
+dependencies[] = views
+features[ctools][] = ds:ds:1
+features[ctools][] = views:views_default:3.0
+features[ds_field_settings][] = user|user|default
+features[features_api][] = api:2
+features[views_view][] = annuaire
+features_exclude[dependencies][ctools] = ctools
+project path = sites/all/modules/custom
