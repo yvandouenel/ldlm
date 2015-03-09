@@ -9,6 +9,29 @@
  */
 function ldlm_formation_taxonomy_default_vocabularies() {
   return array(
+    'niveau_de_formation' => array(
+      'name' => 'Niveau de formation',
+      'machine_name' => 'niveau_de_formation',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
     'sigles_abr' => array(
       'name' => 'Sigles et abréviations',
       'machine_name' => 'sigles_abr',

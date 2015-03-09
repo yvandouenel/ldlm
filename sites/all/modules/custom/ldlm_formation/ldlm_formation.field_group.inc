@@ -131,7 +131,7 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Métiers et secteurs',
-    'weight' => '11',
+    'weight' => '12',
     'children' => array(
       0 => 'field_metiers',
       1 => 'field_secteur_activite',
@@ -233,20 +233,20 @@ function ldlm_formation_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'field_sigles_abr',
-      1 => 'field_diaporama',
     ),
     'format_type' => 'div',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Pro bas',
       'instance_settings' => array(
+        'id' => '',
+        'classes' => 'group-pro-bottom field-group-div',
         'description' => '',
-        'show_label' => 1,
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
-        'classes' => 'group-pro-bottom field-group-div',
-        'id' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_pro_bottom|node|formation|default'] = $field_group;
@@ -296,7 +296,7 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'pro',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_financement',
       1 => 'field_acces_centre',
@@ -330,7 +330,7 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Scolaire droite',
-    'weight' => '12',
+    'weight' => '13',
     'children' => array(
       0 => 'field_activites_parascolaires',
       1 => 'field_venir_lycee',
