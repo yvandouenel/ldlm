@@ -707,5 +707,7 @@ ul#superfish-1 > li > li a{
   clear: left;
 }
 .group-apres-click .field-group-format-toggler a{
-  border: 1px solid red;
+  display: block;
+  position: relative;
+  text-indent: -6000px;
 }
