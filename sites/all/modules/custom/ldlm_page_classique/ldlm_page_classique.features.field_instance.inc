@@ -118,7 +118,7 @@ function ldlm_page_classique_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'domainedo_media',
         'settings' => array(),
-        'type' => 'formation',
+        'type' => 'en_tete_page_classique',
         'weight' => 3,
       ),
       'teaser' => array(
@@ -168,9 +168,8 @@ function ldlm_page_classique_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 7,
       ),
       'teaser' => array(
@@ -244,6 +243,47 @@ function ldlm_page_classique_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-page-field_tag'
+  $field_instances['node-page-field_tag'] = array(
+    'bundle' => 'page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_tag',
+    'label' => 'Tag',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 12,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
@@ -251,6 +291,7 @@ function ldlm_page_classique_field_default_field_instances() {
   t('Image en-tête');
   t('Pro');
   t('Sous-titre');
+  t('Tag');
 
   return $field_instances;
 }
