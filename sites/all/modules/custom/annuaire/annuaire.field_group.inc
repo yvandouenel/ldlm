@@ -23,9 +23,9 @@ function annuaire_field_group_info() {
     'label' => 'apres click',
     'weight' => '1',
     'children' => array(
-      0 => 'field_tel',
-      1 => 'field_courriel_public',
-      2 => 'field_image_publique',
+      0 => 'field_courriel_public',
+      1 => 'field_image_publique',
+      2 => 'field_tel',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -34,7 +34,7 @@ function annuaire_field_group_info() {
         'id' => '',
         'classes' => 'group-apres-click field-group-div',
         'description' => '',
-        'show_label' => '0',
+        'show_label' => '1',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
