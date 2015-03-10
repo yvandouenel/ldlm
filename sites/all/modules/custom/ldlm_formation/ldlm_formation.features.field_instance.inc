@@ -1315,6 +1315,47 @@ Tél. 04 67 89 56 98',
     ),
   );
 
+  // Exported field_instance: 'node-formation-field_tag'
+  $field_instances['node-formation-field_tag'] = array(
+    'bundle' => 'formation',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 34,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_tag',
+    'label' => 'Tag',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 57,
+    ),
+  );
+
   // Exported field_instance: 'node-formation-field_temoignages'
   $field_instances['node-formation-field_temoignages'] = array(
     'bundle' => 'formation',
@@ -1569,6 +1610,47 @@ Tél. 04 67 89 56 98',
     ),
   );
 
+  // Exported field_instance: 'node-metier-field_tag'
+  $field_instances['node-metier-field_tag'] = array(
+    'bundle' => 'metier',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 2,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_tag',
+    'label' => 'Tag',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 43,
+    ),
+  );
+
   // Exported field_instance: 'node-secteur_activite-body'
   $field_instances['node-secteur_activite-body'] = array(
     'bundle' => 'secteur_activite',
@@ -1646,6 +1728,7 @@ Tél. 04 67 89 56 98',
   t('Secteur d\'activité');
   t('Sigles et abréviations');
   t('Sous titre');
+  t('Tag');
   t('Type de formation');
   t('Témoignages');
   t('Venir au Lycée');
