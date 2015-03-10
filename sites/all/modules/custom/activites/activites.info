@@ -20,6 +20,7 @@ features[field_group][] = group_en_tete|node|activite|default
 features[field_instance][] = node-activite-body
 features[field_instance][] = node-activite-field_diaporama
 features[field_instance][] = node-activite-field_image_en_tete
+features[field_instance][] = node-activite-field_tag
 features[field_instance][] = node-activite-field_type_activite
 features[node][] = activite
 features[taxonomy][] = type_activite

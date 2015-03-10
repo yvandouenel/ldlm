@@ -156,6 +156,47 @@ function activites_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-activite-field_tag'
+  $field_instances['node-activite-field_tag'] = array(
+    'bundle' => 'activite',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 19,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_tag',
+    'label' => 'Tag',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-activite-field_type_activite'
   $field_instances['node-activite-field_type_activite'] = array(
     'bundle' => 'activite',
@@ -203,6 +244,7 @@ function activites_field_default_field_instances() {
   t('Body');
   t('Diaporama');
   t('Image en-tête');
+  t('Tag');
   t('Type d\'activité');
 
   return $field_instances;
