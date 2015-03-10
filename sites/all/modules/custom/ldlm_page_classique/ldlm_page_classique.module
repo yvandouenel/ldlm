@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the LDLM page classique feature.
+ */
+
+include_once 'ldlm_page_classique.features.inc';
