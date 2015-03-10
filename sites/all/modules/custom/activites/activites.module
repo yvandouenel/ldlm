@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Activités feature.
+ */
+
+include_once 'activites.features.inc';
