@@ -9,7 +9,7 @@ function ldlm_preprocess_html(&$variables) {
   /* Ajoute une class à body si c'est une page pro */
   $node = menu_get_object();
   if ($node && isset($node->field_pro)) {
-    if($node->field_pro['und'][0]['value']) $variables['classes_array'][] = 'pro'; 
+    if(isset($node->field_pro['und'][0]['value']) && $node->field_pro['und'][0]['value']) $variables['classes_array'][] = 'pro'; 
     else  $variables['classes_array'][] = 'no-pro'; 
   }
   
