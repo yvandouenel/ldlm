@@ -723,8 +723,24 @@ div.view-annuaire .views-row{
   color: #ef8c0c;
   margin: 15px 0 5px 0;
   background: transparent url(../images/icons/separator-blue.png) no-repeat 50% 0;
-  padding-top: 15px;
+  padding-top: 30px;
 }
 body.pro .field-name-body h3{
   background: transparent url(../images/icons/separator-orange.png) no-repeat 50% 0;
+}
+/* Activités ******************************************************************/
+.view-activites .views-row{
+  width : 31.25%;
+  float : left;
+  margin-right : 1.041666666666666666666666666667%;
+  margin-top: 30px;
+}
+#main_content .view-activites .views-row h2 a{
+  color: #131514;
+  font-size: 0.8em;
+  text-decoration: none;
+}
+#main_content .view-activites .views-row .field-name-body{
+  height: 48px;
+  overflow: hidden;
 }
