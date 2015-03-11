@@ -15,6 +15,8 @@ function domainedo_editors_user_default_permissions() {
     'name' => 'administer ckeditor',
     'roles' => array(
       'administrator' => 'administrator',
+      'redacteur' => 'redacteur',
+      'webmaster' => 'webmaster',
     ),
     'module' => 'ckeditor',
   );
@@ -24,6 +26,7 @@ function domainedo_editors_user_default_permissions() {
     'name' => 'customize ckeditor',
     'roles' => array(
       'administrator' => 'administrator',
+      'redacteur' => 'redacteur',
       'webmaster' => 'webmaster',
     ),
     'module' => 'ckeditor',
