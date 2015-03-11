@@ -54,7 +54,7 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'infos pro',
-    'weight' => '15',
+    'weight' => '16',
     'children' => array(
       0 => 'field_financement',
       1 => 'field_acces_centre',
@@ -91,7 +91,7 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'infos scolaire',
-    'weight' => '16',
+    'weight' => '17',
     'children' => array(
       0 => 'field_objectif',
       1 => 'field_activites_parascolaires',
@@ -101,6 +101,7 @@ function ldlm_formation_field_group_info() {
       5 => 'field_portes_ouvertes',
       6 => 'field_venir_lycee',
       7 => 'field_temoignages',
+      8 => 'field_debouches',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -131,7 +132,7 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Métiers et secteurs',
-    'weight' => '12',
+    'weight' => '13',
     'children' => array(
       0 => 'field_metiers',
       1 => 'field_secteur_activite',
@@ -230,7 +231,7 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Pro bas',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_sigles_abr',
     ),
@@ -296,7 +297,7 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'pro',
-    'weight' => '11',
+    'weight' => '12',
     'children' => array(
       0 => 'field_financement',
       1 => 'field_acces_centre',
@@ -330,7 +331,7 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Scolaire droite',
-    'weight' => '13',
+    'weight' => '14',
     'children' => array(
       0 => 'field_activites_parascolaires',
       1 => 'field_venir_lycee',
@@ -364,7 +365,7 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Scolaire',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_documentation',
       1 => 'field_demande_entretien',

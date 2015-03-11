@@ -212,7 +212,7 @@ function ldlm_formation_strongarm() {
       'display' => array(
         'sharethis' => array(
           'default' => array(
-            'weight' => '24',
+            'weight' => '25',
             'visible' => FALSE,
           ),
           'date_portes_ouvertes' => array(
