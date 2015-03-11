@@ -542,6 +542,13 @@ ul#superfish-1 li > ul > li a{
 .sf-sub-indicator {
   right: 0.5em;
 }
+#superfish-1 li#menu-652-1{
+  margin-left: 20%;
+}
+#superfish-1 li#menu-652-1 a{
+  background-color: #236f89;
+  color: #FFFFFF;
+}
 /* Menus secondaires **********************************************************/
 ul.menu li {
   margin: 0;
