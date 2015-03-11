@@ -15,7 +15,6 @@ breakpoints[mobile] = (min-width: 0px)
 regions[top_bar] = Top bar
 regions[user_menu] = User Menu
 regions[main_menu] = Main Menu
-regions[secondary_menu] = Secondary Menu
 regions[above_content] = Above Content
 regions[sidebar_left] = Sidebar left
 regions[content] = Content

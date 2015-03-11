@@ -9,16 +9,12 @@
       <h1 id="paul_bousquet"><a href="<?php print $front_page; ?>"><img src="<?php print base_path() . path_to_theme(); ?>/images/logo-Paul-Bousquet.gif" alt="Paul Bousquet - Lycée de la mer - Pôle de formation maritime"></a></h1>
       <a id="link_ldlm" href="/vie-lyceenne">Lycée de la mer</a><a id="link_pdfm" href="/pole-formation-maritime">Pôle de formation maritime</a>
     </div>
-    <div class="grid-6 grid">
+    <div class="grid-12 grid">
       <nav id="main_menu">
         <?php print render($page['main_menu']); ?>
       </nav>
     </div>
-    <div class="grid-6 grid">
-      <nav id="secondary_menu">
-        <?php print render($page['secondary_menu']); ?>
-      </nav>
-    </div>
+    
   </div>
 </header>
 <section id="main_content">
