@@ -115,7 +115,7 @@ function annuaire_views_default_views() {
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'self';
   $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
-  $handler->display->display_options['path'] = 'etablissement/equipe-classement';
+  $handler->display->display_options['path'] = 'equipe-classement';
   $translatables['annuaire'] = array(
     t('Master'),
     t('ÉQUIPE'),
