@@ -32,6 +32,7 @@ function scald_galleria_scald_player() {
       'settings' => array(
         'width' => '690',
         'height' => '450',
+        'fullscreen_link' => FALSE,
         'thumb_style' => 'thumbnail',
         'normal_style' => 'large',
         'big_style' => 'original',
@@ -73,6 +74,13 @@ function scald_galleria_scald_player_settings_form($form, &$form_state) {
     '#description' => t('Height of Galleria (in px or other explicit css unit).'),
     '#size' => 40,
     '#default_value' => $form['#scald']['player_settings']['height'],
+  );
+
+  $form['fullscreen_link'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable fullscreen link'),
+    '#description' => t('A fullscreen link will be visible above the gallery if enabled.'),
+    '#default_value' => $form['#scald']['player_settings']['fullscreen_link'],
   );
 
   $styles = image_styles();
@@ -163,11 +171,21 @@ function scald_galleria_scald_prerender($atom, $context, $options, $mode) {
     $normal_style = $settings['normal_style'];
     $thumb_style = $settings['thumb_style'];
     $big_style = $settings['big_style'];
-    $width = $settings['width'];
+    if (empty($config->data['width'])) {
+      $width = $settings['width'];
+    }
+    else {
+      $width = $config->data['width'];
+    }
     if (is_numeric($width)) {
       $width .= 'px';
     }
-    $height = $settings['height'];
+    if (empty($config->data['height'])) {
+      $height = $settings['height'];
+    }
+    else {
+      $height = $config->data['height'];
+    }
     if (is_numeric($height)) {
       $height .= 'px';
     }
@@ -177,6 +195,7 @@ function scald_galleria_scald_prerender($atom, $context, $options, $mode) {
       'height' => $height,
       'theme' => $settings['theme'],
       'options' => $settings['options'],
+      'fullscreen_link' => $settings['fullscreen_link'],
     );
 
     // Load URLs to thumb, normal and fullscreen images.
@@ -197,6 +216,20 @@ function scald_galleria_scald_prerender($atom, $context, $options, $mode) {
             'big' => $big_style == 'original' ? file_create_url($file->uri) : image_style_url($big_style, $file->uri),
             'title' => check_plain($item_atom->title),
           );
+          if (!empty($thumbnail[0]['alt'])) {
+            $image['alt_attr'] = check_plain($thumbnail[0]['alt']);
+          }
+          if (!empty($thumbnail[0]['title'])) {
+            $image['title_attr'] = check_plain($thumbnail[0]['title']);
+          }
+
+          $field = field_get_items('scald_atom', $item_atom, 'scald_authors');
+          if (!empty($field)) {
+            $authors = field_view_value('scald_atom', $item_atom, 'scald_authors', $field[0], array(
+              'type' => 'taxonomy_term_reference_plain',
+            ));
+            $image['authors'] = $authors['#markup'];
+          }
 
           if (isset($atom->data['items'])) {
             $item_data = $atom->data['items'][$item['sid']];
@@ -227,12 +260,18 @@ function scald_galleria_scald_prerender($atom, $context, $options, $mode) {
 
     $galleria_id = 'scald-gallery-' . $atom->sid;
     $options = empty($galleria_opts['options']) ? '' : ', ' . $galleria_opts['options'];
-    $inline_js = "Galleria.loadTheme('" . url(scald_galleria_get_library_file($galleria_opts['theme']), array(
-        'language' => (object) array(
-          'language' => LANGUAGE_NONE,
-        ),
-      )) . "');";
-    $inline_js .= "Galleria.run('#" . $galleria_id . "'" . $options . ");";
+    // Prevents multiple loading of the same theme.
+    static $processed_themes = array();
+    $inline_js = '';
+    if (!in_array($galleria_opts['theme'], $processed_themes)) {
+      $processed_themes[] = $galleria_opts['theme'];
+      $inline_js = "Galleria.loadTheme('" . url(scald_galleria_get_library_file($galleria_opts['theme']), array(
+          'language' => (object) array(
+            'language' => LANGUAGE_NONE,
+          ),
+        )) . "');";
+    }
+    $inline_js .= "Galleria.run('." . $galleria_id . "'" . $options . ");";
 
     $atom->rendered->player = array(
       '#theme' => 'scald_galleria',
@@ -243,13 +282,15 @@ function scald_galleria_scald_prerender($atom, $context, $options, $mode) {
         'js' => array(
           scald_galleria_get_library_file() => array(),
           $inline_js => array('type' => 'inline', 'scope' => 'footer'),
+          drupal_get_path('module', 'scald_galleria') . '/scald_galleria.js',
         ),
       ),
     );
 
-    // Scald does not cache renderable array properly until 1.2.
-    // @todo remove when Scald 1.2 is released.
-    $atom->rendered->nocache = TRUE;
+    if (!empty($settings['fullscreen_link'])) {
+      $fullscreen_toggle_js = drupal_get_path('module', 'scald_galleria') . '/scald_galleria_fullscreen_toggle.js';
+      $atom->rendered->player['#attached']['js'][$fullscreen_toggle_js] = array();
+    }
   }
 }
 
@@ -257,6 +298,14 @@ function scald_galleria_scald_prerender($atom, $context, $options, $mode) {
  * Preprocess function for scald_galleria.tpl.php.
  */
 function scald_galleria_preprocess_scald_galleria(&$vars) {
+  // Prevents multiple loading of the same atom.
+  static $atom_processed = array();
+  if (!empty($atom_processed[$vars['atom']->sid])) {
+    $vars['items'] = $atom_processed[$vars['atom']->sid]['items'];
+    $vars['galleria_id'] = $atom_processed[$vars['atom']->sid]['id'];
+    return;
+  }
+
   // Prepare items.
   $items = array();
   foreach ($vars['images'] as $image) {
@@ -264,6 +313,9 @@ function scald_galleria_preprocess_scald_galleria(&$vars) {
       'data-title' => $image['title'],
       'data-big' => $image['big'],
     );
+    if (isset($image['authors'])) {
+      $attributes['data-authors'] = $image['authors'];
+    }
     if (isset($image['description'])) {
       $attributes['data-description'] = $image['description'];
     }
@@ -274,6 +326,8 @@ function scald_galleria_preprocess_scald_galleria(&$vars) {
     $thumb = theme(
       'image',
       array(
+        'alt' => isset($image['alt_attr']) ? $image['alt_attr'] : '',
+        'title' => isset($image['title_attr']) ? $image['title_attr'] : '',
         'path' => $image['thumb'],
         'attributes' => $attributes,
       )
@@ -283,6 +337,11 @@ function scald_galleria_preprocess_scald_galleria(&$vars) {
 
   $vars['items'] = $items;
   $vars['galleria_id'] = 'scald-gallery-' . $vars['atom']->sid;
+  // Keep the loaded data of the atom in the static variable.
+  $atom_processed[$vars['atom']->sid] = array(
+    'id'    => $vars['galleria_id'],
+    'items' => $items,
+  );
 }
 
 /**
@@ -298,7 +357,7 @@ function scald_galleria_get_library_file($theme = NULL) {
     return $cache->data;
   }
 
-  // Search for library file
+  // Search for library file.
   $libpath = libraries_get_path('galleria');
 
   // Seach for minimized files first.
@@ -317,7 +376,7 @@ function scald_galleria_get_library_file($theme = NULL) {
     return $js[0];
   }
   else {
-    // Could not find JavaScript library
+    // Could not find JavaScript library.
     return FALSE;
   }
 }

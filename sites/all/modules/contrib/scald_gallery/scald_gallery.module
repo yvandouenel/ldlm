@@ -59,7 +59,11 @@ function scald_gallery_library() {
         ),
         'animation' => 'fadeIn',
         'modalTheme' => 'CToolsSampleModal',
-        'throbber' => theme('image', array('path' => ctools_image_path('ajax-loader.gif', 'ctools_ajax_sample'), 'alt' => t('Loading...'), 'title' => t('Loading'))),
+        'throbber' => theme('image', array(
+          'path' => ctools_image_path('ajax-loader.gif', 'ctools_ajax_sample'),
+          'alt' => t('Loading...'),
+          'title' => t('Loading'),
+        )),
       ),
     ),
   );
@@ -129,13 +133,15 @@ function scald_gallery_field_widget_atom_reference_textfield_form_alter(&$elemen
     '#default_value' => $data['title_overriden'],
     '#weight' => 20,
   );
+
+  $langcode = !isset($context['langcode']) ? $context['langcode'] : LANGUAGE_NONE;
   $element['title'] = array(
     '#title' => t('Title'),
     '#type' => 'textfield',
     '#default_value' => $data['title'],
     '#states' => array(
       'visible' => array(
-        ':input[name="atom0[gallery_items][und][' . $context['delta'] .'][title_overriden]"]' => array('checked' => TRUE),
+        ':input[name="atom0[gallery_items][' . $langcode . '][' . $context['delta'] . '][title_overriden]"]' => array('checked' => TRUE),
       ),
     ),
     '#size' => 90,
@@ -146,7 +152,7 @@ function scald_gallery_field_widget_atom_reference_textfield_form_alter(&$elemen
     '#title' => t('Description'),
     '#type' => 'textarea',
     '#default_value' => $data['description'],
-    '#maxlength' => 255,
+    '#maxlength' => 1000,
     '#rows' => 2,
     '#weight' => 22,
   );
@@ -168,7 +174,8 @@ function scald_gallery_submit_items(&$form, &$form_state) {
 
   // Save extra gallery items title and description.
   $atom->data['items'] = array();
-  foreach ($form_state['values']['atom0']['gallery_items'][LANGUAGE_NONE] as $input) {
+  $gallery_items_langcode = $form['atom0']['gallery_items']['#language'];
+  foreach ($form_state['values']['atom0']['gallery_items'][$gallery_items_langcode] as $input) {
     if (empty($input['sid'])) {
       continue;
     }
@@ -191,7 +198,7 @@ function scald_gallery_submit_items(&$form, &$form_state) {
   entity_form_submit_build_entity('scald_atom', $atom, $form['atom0'], $form_state);
   $atom->title = $form_state['values']['atom0']['title'];
 
-  // Create a fake saved atom
+  // Create a fake saved atom.
   ctools_include('object-cache');
   ctools_object_cache_set('scald_atom', 'edit:-1', array('atoms' => array($atom)));
 }
@@ -201,7 +208,7 @@ function scald_gallery_submit_items(&$form, &$form_state) {
  */
 function scald_gallery_scald_atom_providers() {
   return array(
-    'gallery' => 'Gallery items upload'
+    'gallery' => 'Gallery items upload',
   );
   // This code will never be hit, but is necessary to mark the string
   // for translation on localize.d.o
