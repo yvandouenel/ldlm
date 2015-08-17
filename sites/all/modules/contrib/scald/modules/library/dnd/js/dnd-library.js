@@ -18,8 +18,8 @@ Drupal.dnd = {
   // Keep track of the last focused textarea.
   lastFocus: null,
 
-  // Setting for the qTip v2 library
-  qTipSettings: {
+  // Default settings for the qTip v2 library
+  defaultqTipSettings: {
     position: {
       my: 'right center',
       at: 'left center'
@@ -103,8 +103,16 @@ Drupal.dnd = {
 
   // Convert HTML to SAS. We consider there is no nested elements.
   html2sas: function(text) {
-    text = text.replace(/<!-- (scald=(\d+):([a-z_]+)) -->[\r\n\s\S]*?<!-- END scald=\2 -->/g, '[$1]');
+    text = text.replace(/<!-- (scald=(\d+):([a-z_]+))(.*) -->[\r\n\s\S]*?<!-- END scald=\2 -->/g, '[$1$4]');
     return text;
+  },
+
+  // Salvage data from HTML comment and return the SAS representation.
+  htmlcomment2sas: function(text) {
+    var matches = text.match(/<!-- (scald=(\d+):([a-z_]+))([^>]*) -->/);
+    if (matches && matches.length) {
+      return '[' + matches[1] + matches[4] + ']';
+    }
   },
 
   // Convert SAS to HTML.
@@ -162,10 +170,10 @@ Drupal.dnd = {
    * Insert an atom in the current RTE or textarea.
    */
   insertAtom: function(sid) {
-    var cke = Drupal.ckeditorInstance;
-    if (cke) {
-      var markup = Drupal.theme('scaldEmbed', Drupal.dnd.Atoms[sid]);
-      cke.insertElement(CKEDITOR.dom.element.createFromHtml(markup));
+    var editor = Drupal.ckeditorInstance;
+    if (editor && editor.dndInsertAtom) {
+      // Defer to the correct method given the plugin used by this editor.
+      editor.dndInsertAtom(sid);
     }
     else if (Drupal.dnd.lastFocus) {
       var markup = Drupal.dnd.Atoms[sid].sas;
@@ -292,7 +300,15 @@ renderLibrary: function(data, editor) {
 
     // And add a nice preview behavior if qTip is present
     if ($.prototype.qtip) {
-      var settings = $.extend(Drupal.dnd.qTipSettings, {
+      if (Drupal.settings.dnd.qTipSettings === '') {
+        Drupal.settings.dnd.qTipSettings = Drupal.dnd.defaultqTipSettings;
+      }
+      else {
+        if (typeof Drupal.settings.dnd.qTipSettings !== 'object') {
+          Drupal.settings.dnd.qTipSettings = JSON.parse(Drupal.settings.dnd.qTipSettings);
+        }
+      }
+      var settings = $.extend(Drupal.settings.dnd.qTipSettings, {
         content: {
           text: Drupal.dnd.Atoms[atom_id].preview
         }
@@ -365,6 +381,7 @@ renderLibrary: function(data, editor) {
         return true;
       })
       .bind('dragend', function(e) {
+        delete Drupal.dnd.currentAtom;
         return true;
       });
   });

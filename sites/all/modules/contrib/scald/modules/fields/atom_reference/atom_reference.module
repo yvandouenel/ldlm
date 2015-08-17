@@ -16,9 +16,12 @@ function atom_reference_library() {
     'version' => '1.x',
     'js' => array(
       $path . '/atom_reference.js' => array(),
+      drupal_get_path('module', 'ctools') . '/js/dropbutton.js' => array(),
     ),
     'css' => array(
       $path . '/atom_reference.css' => array(),
+      drupal_get_path('module', 'ctools') . '/css/dropbutton.css' => array(),
+      drupal_get_path('module', 'ctools') . '/css/button.css' => array(),
     ),
   );
 
@@ -58,7 +61,14 @@ function atom_reference_field_instance_settings_form($field, $instance) {
     '#title' => t('Atom types that can be referenced'),
     '#multiple' => TRUE,
     '#options' => $options,
-    '#default_value' => $instance['settings']['referencable_types']
+    '#default_value' => $instance['settings']['referencable_types'],
+  );
+
+  $allow_override = isset($instance['settings']['allow_override']) ? $instance['settings']['allow_override'] : FALSE;
+  $form['allow_override'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Allow context override'),
+    '#default_value' => $allow_override,
   );
 
   return $form;
@@ -106,6 +116,35 @@ function atom_reference_field_validate($entity_type, $entity, $field, $instance,
 }
 
 /**
+ * Implements hook_field_presave().
+ */
+function atom_reference_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items) {
+  foreach ($items as $delta => $item) {
+    if (empty($item['sid'])) {
+      continue;
+    }
+
+    $options = array();
+    if (!empty($item['options'])) {
+      $options = unserialize($item['options']);
+    }
+
+    foreach($item as $name => $option) {
+      if ($name == 'sid' || $name == 'options') {
+        continue;
+      }
+      if (!empty($item[$name])) {
+        $options[$name] = $option;
+      }
+      else {
+        unset($options[$name]);
+      }
+    }
+    $items[$delta]['options'] = serialize($options);
+  }
+}
+
+/**
  * Implements hook_field_is_empty().
  */
 function atom_reference_field_is_empty($item, $field) {
@@ -124,7 +163,7 @@ function atom_reference_field_formatter_info() {
       $formatters[$name] = array(
         'label' => $context['title'],
         'field types' => array('atom_reference'),
-        'settings' => array('link' => 0),
+        'settings' => array('link' => 0, 'override' => 0),
       );
     }
   }
@@ -146,6 +185,14 @@ function atom_reference_field_formatter_settings_form($field, $instance, $view_m
     '#default_value' => $settings['link'],
     '#options' => array('no', 'yes'),
   );
+
+  if (isset($instance['settings']['allow_override']) && $instance['settings']['allow_override']) {
+    $element['override'] = array(
+      '#title' => t('Allow context override'),
+      '#type' => 'checkbox',
+      '#default_value' => $settings['override'],
+     );
+  }
 
   return $element;
 }
@@ -180,12 +227,20 @@ function atom_reference_field_formatter_view($entity_type, $entity, $field, $ins
 
   if (!empty($contexts[$render_context])) {
     foreach ($items as $delta => $item) {
-      $sid = $item['sid'];
       $options = array();
+      if (!empty($item['options'])) {
+        $options += unserialize($item['options']);
+      }
+      $context = $render_context;
+      if (isset($display['settings']['override']) && $display['settings']['override']
+        && !empty($options['context']) && $options['context'] !== 'use_the_default') {
+        $context = $options['context'];
+      }
+      $sid = $item['sid'];
       if ($uri) {
         $options['link'] = $uri['path'];
       }
-      $element[$delta] = array('#markup' => scald_render($sid, $render_context, drupal_json_encode($options)));
+      $element[$delta] = array('#markup' => scald_render($sid, $context, drupal_json_encode($options)));
     }
   }
 
@@ -211,18 +266,22 @@ function atom_reference_field_widget_info() {
  * Implements hook_field_widget_settings_form.
  */
 function atom_reference_field_widget_settings_form($field, $instance) {
-  $context_options = array();
-  foreach (scald_contexts() as $name => $context) {
-    $context_options[$name] = $context['title'];
-  }
-
+  $preview_context = isset($instance['widget']['settings']['context'])
+    ? $instance['widget']['settings']['context'] : variable_get('dnd_context_default', 'sdl_editor_representation');
   $form['context'] = array(
     '#type' => 'select',
-    '#title' => t('Scald context'),
-    '#description' => t('Context used in the field widget. It is not the context used in field display, which is configured separately.'),
-    '#default_value' => $instance['widget']['settings']['context'],
-    '#options' => $context_options,
+    '#title' => t('Preview context'),
+    '#options' => array(),
+    '#default_value' => $preview_context,
+    '#description' => t('Scald preview context to be displayed in the edit form.'),
   );
+
+  $contexts = scald_contexts();
+  foreach ($contexts as $name => $context) {
+    if (empty($context['hidden']) && !empty($context['parseable'])) {
+      $form['context']['#options'][$name] = $context['title'];
+    }
+  }
 
   return $form;
 }
@@ -257,7 +316,39 @@ function atom_reference_field_widget_form(&$form, &$form_state, $field, $instanc
   $element['#process'][] = 'atom_reference_field_widget_form_process';
   $element['#attached'] = array('library' => array(array('atom_reference', 'library')));
 
-  return array('sid' => $element);
+  $options = array();
+  if (!empty($items[$delta]['options'])) {
+    $options = unserialize($items[$delta]['options']);
+  }
+
+  $return = array('sid' => $element);
+
+  if (isset($instance['settings']['allow_override']) && $instance['settings']['allow_override']) {
+    $rendering_context = 'use_the_default';
+    if (!empty($options['context'])) {
+      $rendering_context = $options['context'];
+    }
+    $context_element = array(
+      '#type' => 'select',
+      '#title' => t('Representation context'),
+      '#attributes' => array('class' => array('context-select')),
+      '#options' => array(),
+      '#default_value' => $rendering_context,
+      '#description' => t('Scald rendering context used in field display.'),
+    );
+    $context_element['#weight'] = 20;
+
+    $contexts = scald_contexts();
+    $context_element['#options']['use_the_default'] = t('Use the default');
+    foreach ($contexts as $name => $context) {
+      if (empty($context['hidden']) && $name !== 'sdl_library_item') {
+        $context_element['#options'][$name] = $context['title'];
+      }
+    }
+    $return['context'] = $context_element;
+  }
+
+  return $return;
 }
 
 /**
@@ -282,18 +373,29 @@ function atom_reference_field_referenceable_types($instance) {
  * on the fly, depending on the field being filled.
  */
 function atom_reference_field_widget_form_process(&$element) {
-  // Get the default value, and format the placeholder accordingly.
+  // Get the default value, rendering context and format the placeholder accordingly.
+  $preview_context = variable_get('dnd_context_default', 'sdl_editor_representation');
+  if (isset($element['#preview_context'])) {
+    $preview_context = $element['#preview_context'];
+  }
+
   $default = $element['#value'];
   if ($default) {
-    $prefix = '<div class="atom_reference_drop_zone">' . scald_render($default, $element['#preview_context']) .'</div>';
+    $prefix = '<div class="atom_reference_drop_zone" data-rendering-context="' . $preview_context . '">' . scald_render($default, $preview_context) . '</div>';
   }
   else {
     $placeholder = t('Drop a resource from Scald media library here.');
-    $prefix = '<div class="atom_reference_drop_zone"><em>' . $placeholder . '</em></div>';
+    $prefix = '<div class="atom_reference_drop_zone" data-rendering-context="' . $preview_context . '"><em>' . $placeholder . '</em></div>';
   }
   $element['#field_prefix'] = $prefix;
-  return $element;
 
+  if (isset($element['#entity_type']) && module_exists('i18n_field')) {
+    $instance = field_info_instance($element['#entity_type'], $element['#field_name'], $element['#bundle']);
+    $translated_label = i18n_field_translate_property($instance, 'label');
+    $element['#title'] = $translated_label;
+  }
+
+  return $element;
 }
 
 /**
