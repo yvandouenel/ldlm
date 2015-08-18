@@ -267,6 +267,16 @@ body.front .block-views .field-name-body{
   margin-top: 0;
 }
 /* formation ******************************************************************/
+.view-display-id-page_index_formation h3 {
+    margin-top : 35px;
+    min-height: 45px;
+}
+.view-display-id-page_index_formation .views-field-title {
+    color: #444A52;
+    padding-left: 22px;
+    background: url('../images/icons/bullet.png') no-repeat scroll 9px 10px transparent;
+    display: block;
+}
 #block-webform-client-block-4,#block-webform-client-block-6,
 #block-webform-client-block-7, #block-webform-client-block-8, #block-webform-client-block-9{
     display:none;
