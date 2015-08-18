@@ -1,178 +1,218 @@
+@media screen and (min-width: 1583px) {
+    .container {
+        width: 1200px;
+        margin: auto;
+    }
 
-@media screen and (min-width:1583px){
-  .container{
-    width: 1200px;
-    margin: auto;
-  }
-  .big-container, .big-container.container{
-    width: 1583px;
-    margin: auto;
-  }
+    .big-container, .big-container.container {
+        width: 1583px;
+        margin: auto;
+    }
 }
-@media screen and (max-width:1583px) and (min-width:1024px){
-  .container{
-    width: 1200px;
-    margin: auto;
-  }
-  .view-id-partenaires .view-content{
-    width: 100%;
-  }
+
+@media screen and (max-width: 1583px) and (min-width: 1024px) {
+    .container {
+        width: 1200px;
+        margin: auto;
+    }
+
+    .view-id-partenaires .view-content {
+        width: 100%;
+    }
 }
-@media screen and (max-width:1024px){
-  .container{
-    width: 100%;
-  }
-  .group-all-home-zoom .field-name-zoom-sur, .group-all-home-zoom .field-name-title,body.front .block-views .group-all-home-zoom .field-name-body{
-    left: 2%;
-  }
-  .group-all-home-zoom .field-name-over-zoom-small, .group-all-home-zoom .field-name-field-scald-image{
-    display: none;
-  }
-  .view-display-id-block_1{
-    width: 100%;
-    overflow: hidden;
-  }
-  .view-display-id-block_1 .field-name-field-images picture {
-    position: relative;
-    left: -23.5%;
-  }
-  .view-display-id-block_1 .field-name-field-images picture img{
-    max-width: 123.5%;
-  }
-  .group-titre-sous-titre{
-    width: 80%;
-    height: 30%;
-  }
-  .group-titre-sous-titre h2{
-    font-size: 1.5em;
-    margin-top: 8px;
-  }
-  #cols-footer .grid-3{
-    width : 47.916666666666666666666666666667%;
-  }
-  #cols-footer .grid-6{
-    width: 97.916666666666666666666666666667%;
-  }
-  .view-id-partenaires .view-content{
-    width: 100%;
-  }
-  #cols-footer {
-  top: 20%;
-  }
-  #footer-ldlm-pfm{
-    width: 90%;
-    left: 4%;
-  }
-  #footer-ldlm-pfm a,#paul-bousquet-bas{
-    font-size: 1.3em;
-  }
-  #cols-footer .block-bean .field-items p br {
-    display: none;
-  }
-  #cols-footer .bean-adresse{
-    background-color: #002A38;
-    opacity: 0.9;
-    padding: 5px;
-    margin-bottom: 5px;
-  }
-  #cols-footer .block-bean .field-items{
-    color: #FFFFFF;
-  }
-  
-  body.front #block-views-evenements-block-2 .views-row {
-    width : 47.916666666666666666666666666667%;
-    float: left;
-  }
-  body.front #block-views-evenements-block-2 .views-row-even{
-    margin-left : 1.041666666666666666666666666667%;
-  }
-  
-  body.front view-display-id-block_2 .views-row-even h3.h3-event{ 
-    /*left: 45%*/
-  }
-  body.front .block-views .group-all-home-zoom .field-name-body{
-    top: 56%;
-    left: 2%;
-    width: 50%;
-    color: white;
-    background-color: #1D6A94;
-    opacity: 0.9;
-  }
+
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 100%;
+    }
+
+    .group-all-home-zoom .field-name-zoom-sur, .group-all-home-zoom .field-name-title, body.front .block-views .group-all-home-zoom .field-name-body {
+        left: 2%;
+    }
+
+    .group-all-home-zoom .field-name-over-zoom-small, .group-all-home-zoom .field-name-field-scald-image {
+        display: none;
+    }
+
+    .view-display-id-block_1 {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .view-display-id-block_1 .field-name-field-images picture {
+        position: relative;
+        left: -23.5%;
+    }
+
+    .view-display-id-block_1 .field-name-field-images picture img {
+        max-width: 123.5%;
+    }
+
+    .group-titre-sous-titre {
+        width: 80%;
+        height: 30%;
+    }
+
+    .group-titre-sous-titre h2 {
+        font-size: 1.5em;
+        margin-top: 8px;
+    }
+
+    #cols-footer .grid-3 {
+        width: 47.916666666666666666666666666667%;
+    }
+
+    #cols-footer .grid-6 {
+        width: 97.916666666666666666666666666667%;
+    }
+
+    .view-id-partenaires .view-content {
+        width: 100%;
+    }
+
+    #cols-footer {
+        top: 20%;
+    }
+
+    #footer-ldlm-pfm {
+        width: 90%;
+        left: 4%;
+    }
+
+    #footer-ldlm-pfm a, #paul-bousquet-bas {
+        font-size: 1.3em;
+    }
+
+    #cols-footer .block-bean .field-items p br {
+        display: none;
+    }
+
+    #cols-footer .bean-adresse {
+        background-color: #002A38;
+        opacity: 0.9;
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+
+    #cols-footer .block-bean .field-items {
+        color: #FFFFFF;
+    }
+
+    body.front #block-views-evenements-block-2 .views-row {
+        width: 47.916666666666666666666666666667%;
+        float: left;
+        border-right: 1px solid #F00;
+    }
+
+    body.front #block-views-evenements-block-2 .views-row-even {
+        margin-left: 1.041666666666666666666666666667%;
+    }
+
+    body.front view-display-id-block_2 .views-row-even h3.h3-event {
+        /*left: 45%*/
+    }
+
+    body.front .block-views .group-all-home-zoom .field-name-body {
+        top: 56%;
+        left: 2%;
+        width: 50%;
+        color: white;
+        background-color: #1D6A94;
+        opacity: 0.9;
+    }
 }
-@media screen and (max-width:740px){
-  body{
-    font-size:  0.6em;
-  }
-  #block-superfish-1{
-    display: none;
-  }
-  #block-menu-block-2{
-    display: block;
-  }
-  #block-menu-menu-top ul.menu{
-    margin-left: 10px;
-  }
-  .group-titre-sous-titre{
-    width: 70%;
-  }
-  .group-titre-sous-titre h2{
-    font-size: 1em;
-    margin-top: 4px;
-  }
-  #sidebar-left{
-    display: none;
-  }
-  .ds-2col-fluid > .group-left, .ds-2col-fluid > .group-right{
-    width : 100%;
-  }
-  #block-webform-client-block-4,#block-webform-client-block-6,
-  #block-webform-client-block-7,#block-webform-client-block-8,
-  #block-webform-client-block-9{
-    width: 100%;
-    margin: 0 auto;
-  }
-  .webform-component-fieldset{
-    width: 92%;
-  }
-  .view-id-partenaires .view-content{
-    width: 100%;
-  }
-  footer{
-    background-color: #002A38;
-  }
-  #footer-ldlm-pfm{
-    width: 100%;
-    left: 2%;
-  }
-  #footer-ldlm-pfm a,#paul-bousquet-bas{
-    font-size: 1em;
-  }
-  #footer-ldlm-pfm{
-    position: inherit;
-    
-  }
-  #cols-footer{
-   position: inherit;
-  }
-  
-  #img-bg-footer{
-    position: absolute;
-    bottom: 0;
-  }
-  #footer-ldlm-pfm{
-    display: none;
-  }
-  body.front .block-views .group-all-home-zoom .field-name-body{
-    left: 2%;
-    width: 90%;
-    color: white;
-    background-color: #1D6A94;
-    opacity: 0.9;
-    font-size: 1.4em;
-  }
- body.front .region-home-col2 h2, body.front #block-bean-edito h2{
-    font-size: 1.6em;
-  }
-  
-  
+
+@media screen and (max-width: 740px) {
+    body {
+        font-size: 0.6em;
+    }
+
+    #block-superfish-1 {
+        display: none;
+    }
+
+    #block-menu-block-2 {
+        display: block;
+    }
+
+    #block-menu-menu-top ul.menu {
+        margin-left: 10px;
+    }
+
+    .group-titre-sous-titre {
+        width: 70%;
+    }
+
+    .group-titre-sous-titre h2 {
+        font-size: 1em;
+        margin-top: 4px;
+    }
+
+    #sidebar-left {
+        display: none;
+    }
+
+    .ds-2col-fluid > .group-left, .ds-2col-fluid > .group-right {
+        width: 100%;
+    }
+
+    #block-webform-client-block-4, #block-webform-client-block-6,
+    #block-webform-client-block-7, #block-webform-client-block-8,
+    #block-webform-client-block-9 {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .webform-component-fieldset {
+        width: 92%;
+    }
+
+    .view-id-partenaires .view-content {
+        width: 100%;
+    }
+
+    footer {
+        background-color: #002A38;
+    }
+
+    #footer-ldlm-pfm {
+        width: 100%;
+        left: 2%;
+    }
+
+    #footer-ldlm-pfm a, #paul-bousquet-bas {
+        font-size: 1em;
+    }
+
+    #footer-ldlm-pfm {
+        position: inherit;
+
+    }
+
+    #cols-footer {
+        position: inherit;
+    }
+
+    #img-bg-footer {
+        position: absolute;
+        bottom: 0;
+    }
+
+    #footer-ldlm-pfm {
+        display: none;
+    }
+
+    body.front .block-views .group-all-home-zoom .field-name-body {
+        left: 2%;
+        width: 90%;
+        color: white;
+        background-color: #1D6A94;
+        opacity: 0.9;
+        font-size: 1.4em;
+    }
+
+    body.front .region-home-col2 h2, body.front #block-bean-edito h2 {
+        font-size: 1.6em;
+    }
+
 }
