@@ -54,28 +54,47 @@ h4{
 
 /* Coordonnées ****************************************************************/
 .iti_adress{
-  background: url(../images/icons/pointer-small.png) no-repeat 5% 50%;
+  background: url(../images/icons/pointer-small.png) no-repeat 5% 10px;
+}
+.div-scol-right.last .iti_adress{
+    background: url(../images/icons/pointer-small.png) no-repeat 5% 15px;
 }
 .iti_tel{
-  background: url(../images/icons/tel-small.png) no-repeat 5% 50%;
+  background: url(../images/icons/tel-small.png) no-repeat 5% 10px;
+}
+.div-scol-right.last .iti_tel{
+    background: url(../images/icons/tel-small.png) no-repeat 5% 15px;
 }
 .iti_email{
-  background: url(../images/icons/mail-small.png) no-repeat 5% 50%;
+  background: url(../images/icons/mail-small.png) no-repeat 5% 10px;
+}
+.div-scol-right.last .iti_email{
+    background: url(../images/icons/mail-small.png) no-repeat 5% 15px;
 }
 .iti_train{
-  background: url(../images/icons/train-small.png) no-repeat 5% 50%;
+  background: url(../images/icons/train-small.png) no-repeat 5% 10px;
+}
+.div-scol-right.last .iti_train{
+    background: url(../images/icons/train-small.png) no-repeat 5% 15px;
 }
 .iti_bus{
-  background: url(../images/icons/bus-small.png) no-repeat 5% 50%;
+  background: url(../images/icons/bus-small.png) no-repeat 5% 10px;
+}
+.div-scol-right.last .iti_bus{
+    background: url(../images/icons/bus-small.png) no-repeat 5% 15px;
 }
 .iti_car{
-  background: url(../images/icons/car-small.png) no-repeat 3% 50%;
+  background: url(../images/icons/car-small.png) no-repeat 3% 10px;
+}
+.div-scol-right.last .iti_car{
+    background: url(../images/icons/car-small.png) no-repeat 3% 15px;
 }
 a.vie_lyceenne{
   background: url(../images/icons/eye-small.png) no-repeat 5% 50%;
   display: block;
   padding : 10px 3px 10px 44px;
 }
+
 
 /* Menus hauts ****************************************************************/
 #top_bar{
@@ -377,8 +396,14 @@ div.div-scol-right{
   margin-top: 33px;
   border: 1px solid #58a7c9;
 }
+.no-pro .group-pro{
+    display: none;
+}
 div.div-scol-right.last{
   margin-bottom: 33px;
+}
+div.div-scol-right.last ul li{
+    font-size: 0.9em;
 }
 body.pro div.div-scol-right.first{
   margin-top: 0;
@@ -412,7 +437,7 @@ div.group-pre-inscription-pro h3{
 }
 .group-scolaire-right ul li,
 .div-scol-right ul li{
-  padding : 10px 3px 10px 12%;
+  padding : 10px 3px 10px 15%;
 }
 .field-name-field-nom-formation{
   color: #ef8c0c;
