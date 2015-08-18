@@ -459,8 +459,10 @@ Tél. 04 67 89 56 98',
       'default' => array(
         'label' => 'above',
         'module' => 'domainedo_media',
-        'settings' => array(),
-        'type' => 'sdl_editor_representation',
+        'settings' => array(
+          'link' => 0,
+        ),
+        'type' => 'full',
         'weight' => 11,
       ),
       'teaser' => array(
@@ -1065,7 +1067,7 @@ Tél. 04 67 89 56 98',
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'long',
+          'format_type' => 'long_sans_heure',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
