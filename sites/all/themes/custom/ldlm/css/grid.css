@@ -42,11 +42,11 @@
 img{
     max-width: 100%;
 }
-@media screen and (max-width:1024px){
+@media screen and (max-width:1025px){
   .container .narrow-12{width: 97.916666666666666666666666666667%;}/* 940/960 */
   .container .narrow-6{width : 47.916666666666666666666666666667%;}/* 460/960 */
 }
-@media screen and (max-width:1280px) and (min-width:1024px){
+@media screen and (max-width:1280px) and (min-width:1025px){
     .front .container .grid-6 {
         width: 350px;
     }

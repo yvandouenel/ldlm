@@ -10,7 +10,7 @@
     }
 }
 
-@media screen and (max-width: 1583px) and (min-width: 1024px) {
+@media screen and (max-width: 1583px) and (min-width: 1025px) {
     .container {
         width: 1200px;
         margin: auto;
@@ -21,7 +21,7 @@
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1025px) {
     .container {
         width: 100%;
     }
@@ -101,7 +101,6 @@
     body.front #block-views-evenements-block-2 .views-row {
         width: 47.916666666666666666666666666667%;
         float: left;
-        border-right: 1px solid #F00;
     }
 
     body.front #block-views-evenements-block-2 .views-row-even {
