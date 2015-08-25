@@ -119,6 +119,23 @@
         background-color: #1D6A94;
         opacity: 0.9;
     }
+    
+    #superfish-1 li#menu-652-1 {
+        margin-left: 0;
+        clear: left;
+    }
+    #superfish-1 li.sf-item-1{
+        display: none;
+    }
+    #superfish-1>li{
+        width: 33%;
+    }
+    #superfish-1>li>a{
+        text-align: center;
+    }
+    #superfish-1 li.sf-item-5, #superfish-1 li.sf-item-6, #superfish-1 li.sf-item-7{
+        margin-top: 20px;
+    }
 }
 
 @media screen and (max-width: 741px) {

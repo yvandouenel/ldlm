@@ -555,7 +555,7 @@ body.pro .group-scolaire-right{
   font-size: 1.2em;
 }
 #superfish-1 > li.sf-no-children > a{
-  padding: 10px;
+  padding: 10px 5px;
   
 }
 #superfish-1 > li.active-trail> a{
@@ -578,7 +578,7 @@ ul#superfish-1 li > ul > li a{
   right: 0.5em;
 }
 #superfish-1 li#menu-652-1{
-  margin-left: 12%;
+  margin-left: 5%;
 }
 #superfish-1 li#menu-652-1 a{
   background-color: #236f89;
@@ -588,6 +588,10 @@ ul#superfish-1 li > ul > li a{
      background-color: #EF8C2F;
      color: #000000;
  }
+#superfish-1 li.last>a{
+    background-color: #566173;
+    color: white;
+}
 /* Menus secondaires **********************************************************/
 ul.menu li {
   margin: 0;
