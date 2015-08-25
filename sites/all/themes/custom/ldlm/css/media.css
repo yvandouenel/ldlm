@@ -210,6 +210,7 @@
         font-size: 1.4em;
     }
     #cols-footer .block-bean .field-name-field-email a {
+        background: url('../images/icons/mail-small.png') no-repeat scroll 0px 5px transparent;
         padding-left: 10%;
     }
     #footer-ldlm-pfm {
