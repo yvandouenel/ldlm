@@ -121,7 +121,11 @@
     }
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 741px) {
+    body.front #block-views-evenements-block-2 .views-row {
+        width: 97.916666666666666666666666666667%;
+        float: none;
+    }
     body {
         font-size: 0.6em;
     }

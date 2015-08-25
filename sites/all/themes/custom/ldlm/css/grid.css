@@ -51,4 +51,8 @@ img{
         width: 350px;
     }
 }
+@media screen and (max-width:741px){
+    .container .narrow-12{width: 97.916666666666666666666666666667%;}/* 940/960 */
+    .container .narrow-6{width : 97.916666666666666666666666666667%;}/* 940/960 */
+}
 
