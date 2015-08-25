@@ -229,5 +229,8 @@
     body.front .region-home-col2 h2, body.front #block-bean-edito h2 {
         font-size: 1.6em;
     }
+    .container .grid-9, .ds-2col-fluid > .group-left, .container-auto .grid-9 {
+        width: 97.916666666666666666666666666667%;
+    }
 
 }
