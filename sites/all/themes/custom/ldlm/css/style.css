@@ -558,6 +558,14 @@ body.pro .group-scolaire-right{
   padding: 10px 5px;
   
 }
+#superfish-1 > li.first{
+    width:20px;
+    overflow: hidden;
+}
+#superfish-1 > li.first > a{
+    background: url(../images/icons/home.png) no-repeat 50% 50%;
+    text-indent: -6000px;
+}
 #superfish-1 > li.active-trail> a{
   background-color: #236f8b;
   color: white;
