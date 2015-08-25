@@ -2,6 +2,8 @@ name = ldlm
 description = A custom template for the lycee de la mer
 core = 7.x
 
+scripts[] = 'js/my.js'
+
 stylesheets[all][] = css/reset.css 
 stylesheets[all][] = css/grid.css 
 stylesheets[all][] = css/style.css

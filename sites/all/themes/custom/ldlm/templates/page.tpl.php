@@ -31,7 +31,7 @@
       <?php if (!$page['sidebar_left']): ?>
         <div class='grid-12 grid' class='clearfix'>
       <?php endif; ?>
-      <!-- Colonne de droite -->   
+
       <?php if ($messages): ?>
       <div id="messages"><div class="section clearfix">
         <?php print $messages; ?>
