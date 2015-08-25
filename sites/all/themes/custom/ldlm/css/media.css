@@ -126,6 +126,10 @@
         width: 97.916666666666666666666666666667%;
         float: none;
     }
+    body.front #main_content .region-home-col2 h4 a {
+        font-size: 1.4em;
+        background: transparent url('../images/icons/bullet.png') no-repeat 9px 5px ;
+    }
     body {
         font-size: 0.6em;
     }
@@ -199,8 +203,15 @@
     #img-bg-footer {
         position: absolute;
         bottom: 0;
+        display: none;
     }
-
+    #cols-footer .block-bean h2 {
+        color: white;
+        font-size: 1.4em;
+    }
+    #cols-footer .block-bean .field-name-field-email a {
+        padding-left: 10%;
+    }
     #footer-ldlm-pfm {
         display: none;
     }
