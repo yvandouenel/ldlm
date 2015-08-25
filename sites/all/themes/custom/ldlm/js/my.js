@@ -1,4 +1,4 @@
 jQuery(function($) {
-    alert($( window ).width());
+    //alert($( window ).width());
 
 });
