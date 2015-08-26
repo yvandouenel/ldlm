@@ -4,6 +4,16 @@ body{
   font-family: arial;
   line-height: 1.5em;
 }
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0px;
+    overflow: hidden;
+    clip: rect(0px, 0px, 0px, 0px);
+    border: 0px none;
+}
 strong{
   font-weight: bold;
 }
@@ -113,6 +123,16 @@ a.vie_lyceenne{
   font-family: 'Open Sans', sans-serif;
   display: block;
   padding: 10px 5px;
+}
+/* Réseaux sociaux ************************************************************/
+#block-bean-rseaux-sociaux-hauts{
+    /*padding-top: 10px;*/
+    margin: 0;
+    padding: 0;
+    float: left;
+}
+#block-bean-rseaux-sociaux-hauts div.content{
+   padding-top: 10px;
 }
 /* Moteur de recherche ********************************************************/
 #search-block-form{
@@ -562,10 +582,10 @@ body.pro .group-scolaire-right{
     width:20px;
     overflow: hidden;
 }
-#superfish-1 > li.first > a{
+/*#superfish-1 > li.first > a{
     background: url(../images/icons/home.png) no-repeat 50% 50%;
     text-indent: -6000px;
-}
+}*/
 #superfish-1 > li.active-trail> a{
   background-color: #236f8b;
   color: white;

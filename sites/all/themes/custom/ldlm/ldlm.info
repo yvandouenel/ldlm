@@ -8,6 +8,7 @@ stylesheets[all][] = css/reset.css
 stylesheets[all][] = css/grid.css 
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/media.css
+stylesheets[all][] = css/fontello.css
 
 breakpoints[tv] = (min-width: 1280px)
 breakpoints[wide] = (min-width: 960px)
