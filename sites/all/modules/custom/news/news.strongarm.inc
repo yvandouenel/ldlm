@@ -104,6 +104,9 @@ function news_strongarm() {
       'date_portes_ouvertes' => array(
         'custom_settings' => TRUE,
       ),
+      'vie' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -123,7 +126,7 @@ function news_strongarm() {
       'display' => array(
         'sharethis' => array(
           'full' => array(
-            'weight' => '21',
+            'weight' => '26',
             'visible' => FALSE,
           ),
           'zoom' => array(
@@ -140,6 +143,10 @@ function news_strongarm() {
           ),
           'date_portes_ouvertes' => array(
             'weight' => '13',
+            'visible' => FALSE,
+          ),
+          'vie' => array(
+            'weight' => '15',
             'visible' => FALSE,
           ),
         ),
