@@ -44,6 +44,9 @@
     color: #FFFFFF;
 }
 /* Home menu ***********************************************************/
+#superfish-1>li.first>a{
+    padding-bottom: 12px;
+}
 #superfish-1>li.first>a:before{
     content: "\e819";
     margin-left: -3px;
