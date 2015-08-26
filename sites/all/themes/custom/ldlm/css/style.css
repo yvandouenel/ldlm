@@ -117,6 +117,13 @@ a.vie_lyceenne{
 #block-menu-menu-top ul.menu{
   margin-left: 440px;
 }
+#block-menu-menu-top ul li{
+    float: left;
+    border-left: 1px solid white;
+}
+#block-menu-menu-top ul li.first{
+    border-left: 0;
+}
 #block-menu-menu-top ul.menu a{
   color: #7abed6;
   text-decoration: none;
@@ -553,6 +560,7 @@ body.pro .group-scolaire-right{
 .webform-client-form input.form-text, .webform-client-form textarea{
   width: 99.9%;
 }
+
 /* Menus principaux ***********************************************************/
 #block-menu-block-2{
     display: none;
@@ -821,4 +829,19 @@ body.pro .field-name-body h3{
 #main_content .view-activites .views-row .field-name-body{
   height: 48px;
   overflow: hidden;
+}
+/* Actualités vie ***************************************************************/
+.view-display-id-block_vie_adulte .views-row,
+#block-views-evenements-block-vie-lycee .views-row {
+    width: 31.25%;
+    float: left;
+    margin-right: 1.04167%;
+    margin-top: 30px;
+    height: 250px;
+    overflow: hidden;
+}
+#block-views-evenements-block-vie-adulte  h2,
+#block-views-evenements-block-vie-lycee h2{
+    clear: both;
+    padding-top: 30px;
 }
