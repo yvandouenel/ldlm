@@ -301,8 +301,8 @@ body.front .block-views .field-name-body{
   font-size: 1.6em;
   margin-bottom: 10px;
 }
-.block-bean{
-  margin-top: 20px;
+#block-bean-rseaux-sociaux-hauts{
+    width: 80px;
 }
 .block-bean .field-name-field-contenu{
   color: #444a52;
