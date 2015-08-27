@@ -45,7 +45,8 @@
 }
 /* Home menu ***********************************************************/
 #superfish-1>li.first>a{
-    padding-bottom: 12px;
+    height: 19px;
+    overflow: hidden;
 }
 #superfish-1>li.first>a:before{
     content: "\e819";
@@ -64,12 +65,18 @@
     color: white;
 }
 /* Réseaux sociaux *****************************************************/
+.icon-facebook{
+    float: left;
+}
 .icon-facebook:before{
     content: "\e801";
     font-size: 1.4em;
 }
 .icon-facebook:hover:before{
     color: #45619D;
+}
+.icon-twitter{
+    float: left;
 }
 .icon-twitter:before{
     content: "\e800";
