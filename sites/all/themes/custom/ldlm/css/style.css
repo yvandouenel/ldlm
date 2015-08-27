@@ -119,7 +119,7 @@ a.vie_lyceenne{
 }
 #block-menu-menu-top ul li{
     float: left;
-    border-left: 1px solid white;
+    padding-right: 5px;
 }
 #block-menu-menu-top ul li.first{
     border-left: 0;
