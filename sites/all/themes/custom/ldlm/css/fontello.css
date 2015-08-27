@@ -47,6 +47,7 @@
 #superfish-1>li.first>a{
     height: 19px;
     overflow: hidden;
+    color: transparent;
 }
 #superfish-1>li.first>a:before{
     content: "\e819";
