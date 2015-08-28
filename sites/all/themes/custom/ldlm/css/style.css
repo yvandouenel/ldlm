@@ -14,6 +14,26 @@ body{
     clip: rect(0px, 0px, 0px, 0px);
     border: 0px none;
 }
+/* Corps de texte *****************************************************************/
+blockquote {
+    border-left: 5px solid #CCC;
+    margin-left: 5%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    font-family: "Times New Roman",serif;
+    font-style: italic;
+    color: #333;
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+.region-content div.content ul {
+    margin-left: 10px;
+}
+.region-content div.content ul li {
+    margin-left: 10px;
+    list-style-position: outside;
+    list-style-type: disc;
+}
 strong{
   font-weight: bold;
 }
