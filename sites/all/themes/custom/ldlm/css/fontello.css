@@ -53,6 +53,7 @@
     content: "\e819";
     margin-left: -3px;
     font-size: 1.2em;
+    color: #566173
 }
 #superfish-1>li.first.active-trail>a:before{color: #FFFFFF;}
 #superfish-1>li.first.active-trail>a:hover:before{color: #E6EDF2;}
