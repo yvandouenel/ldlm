@@ -364,7 +364,8 @@ body.pro .group-scolaire{
   display: none;
 }
 .group-en-tete{
-  position: relative;
+    position: relative;
+    min-height:100px;
 }
 .group-titre-sous-titre{
   width: 353px;
