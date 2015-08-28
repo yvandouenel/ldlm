@@ -673,7 +673,7 @@ li.expanded, li.collapsed, li.leaf {
     border-top: 1px solid #e6edf2;
 }
  .region-sidebar-left .menu-block-wrapper > ul.menu > li.active-trail{
-     margin: 5px 0 20px 6px;
+     margin: 5px 0 20px 0px;
      background-color: #e6edf2;
  }
 .region-sidebar-left .menu-block-wrapper > ul.menu > li.first{
