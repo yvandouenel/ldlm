@@ -29,6 +29,9 @@ blockquote {
 .region-content div.content ul {
     margin-left: 10px;
 }
+.region-content div.content p {
+    margin: 10px 0;
+}
 .region-content div.content ul li {
     margin-left: 10px;
     list-style-position: outside;
