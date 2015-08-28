@@ -668,9 +668,14 @@ li.expanded, li.collapsed, li.leaf {
   font-size: 1.2em;
 }
 .region-sidebar-left .menu-block-wrapper > ul.menu > li{
-  margin: 5px 0 20px 6px;
-  border-top: 1px solid #e6edf2;
+    margin: 5px 0 15px 0;
+    padding: 5px 0 5px 5px;
+    border-top: 1px solid #e6edf2;
 }
+ .region-sidebar-left .menu-block-wrapper > ul.menu > li.active-trail{
+     margin: 5px 0 20px 6px;
+     background-color: #e6edf2;
+ }
 .region-sidebar-left .menu-block-wrapper > ul.menu > li.first{
   border-top: 0px;
 }
