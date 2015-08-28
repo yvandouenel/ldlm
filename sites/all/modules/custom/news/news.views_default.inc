@@ -294,21 +294,24 @@ function news_views_default_views() {
   $handler->display->display_options['use_more_text'] = 'Voir tous les événements';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '3';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'ds';
-  $handler->display->display_options['row_options']['load_comments'] = 0;
-  $handler->display->display_options['row_options']['alternating'] = 0;
-  $handler->display->display_options['row_options']['advanced'] = 0;
-  $handler->display->display_options['row_options']['delta_fieldset']['delta_fields'] = array();
-  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Champ: Contenu: Chemin */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   /* Champ: Contenu: Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -325,24 +328,40 @@ function news_views_default_views() {
   $handler->display->display_options['fields']['field_new_window']['field'] = 'field_new_window';
   $handler->display->display_options['fields']['field_new_window']['label'] = '';
   $handler->display->display_options['fields']['field_new_window']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_new_window']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_new_window']['alter']['text'] = '_blank';
   $handler->display->display_options['fields']['field_new_window']['element_label_colon'] = FALSE;
-  /* Champ: Contenu: Url de destination */
-  $handler->display->display_options['fields']['field_news_url_target']['id'] = 'field_news_url_target';
-  $handler->display->display_options['fields']['field_news_url_target']['table'] = 'field_data_field_news_url_target';
-  $handler->display->display_options['fields']['field_news_url_target']['field'] = 'field_news_url_target';
-  $handler->display->display_options['fields']['field_news_url_target']['label'] = '';
-  $handler->display->display_options['fields']['field_news_url_target']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_new_window']['empty'] = '_self';
+  $handler->display->display_options['fields']['field_new_window']['hide_empty'] = TRUE;
   /* Champ: Contenu: Image */
   $handler->display->display_options['fields']['field_scald_image']['id'] = 'field_scald_image';
   $handler->display->display_options['fields']['field_scald_image']['table'] = 'field_data_field_scald_image';
   $handler->display->display_options['fields']['field_scald_image']['field'] = 'field_scald_image';
   $handler->display->display_options['fields']['field_scald_image']['label'] = '';
+  $handler->display->display_options['fields']['field_scald_image']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_scald_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_scald_image']['type'] = 'event_home';
+  $handler->display->display_options['fields']['field_scald_image']['click_sort_column'] = 'sid';
+  $handler->display->display_options['fields']['field_scald_image']['type'] = 'teaser';
   $handler->display->display_options['fields']['field_scald_image']['settings'] = array(
     'link' => '0',
   );
   $handler->display->display_options['fields']['field_scald_image']['delta_offset'] = '0';
+  /* Champ: Contenu: Url de destination */
+  $handler->display->display_options['fields']['field_news_url_target']['id'] = 'field_news_url_target';
+  $handler->display->display_options['fields']['field_news_url_target']['table'] = 'field_data_field_news_url_target';
+  $handler->display->display_options['fields']['field_news_url_target']['field'] = 'field_news_url_target';
+  $handler->display->display_options['fields']['field_news_url_target']['label'] = '';
+  $handler->display->display_options['fields']['field_news_url_target']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_news_url_target']['alter']['text'] = '<div class="group-title-img ">
+<a href="[field_news_url_target]" target="[field_new_window]">[field_scald_image]</a>
+  <h3 class="h3-event"><a href="[field_news_url_target]" target="[field_new_window]">[title]</a></h3>
+</div>';
+  $handler->display->display_options['fields']['field_news_url_target']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_news_url_target']['empty'] = '<div class="group-title-img ">
+<a href="[path]">[field_scald_image] </a>
+  <h3 class="h3-event"><a href="[path]">[title]</a></h3>
+</div>';
+  $handler->display->display_options['fields']['field_news_url_target']['hide_alter_empty'] = FALSE;
   /* Champ: Contenu: Body */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
@@ -755,6 +774,16 @@ function news_views_default_views() {
     t('Block home events'),
     t('Actualités '),
     t('Voir tous les événements'),
+    t('_blank'),
+    t('_self'),
+    t('<div class="group-title-img ">
+<a href="[field_news_url_target]" target="[field_new_window]">[field_scald_image]</a>
+  <h3 class="h3-event"><a href="[field_news_url_target]" target="[field_new_window]">[title]</a></h3>
+</div>'),
+    t('<div class="group-title-img ">
+<a href="[path]">[field_scald_image] </a>
+  <h3 class="h3-event"><a href="[path]">[title]</a></h3>
+</div>'),
     t('block home events'),
     t('Block home zoom'),
     t('Zoom'),
