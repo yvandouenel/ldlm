@@ -249,5 +249,8 @@
     .container .grid-9, .ds-2col-fluid > .group-left, .container-auto .grid-9 {
         width: 97.916666666666666666666666666667%;
     }
+    #block-system-main .content{
+        font-size: 1.6em;
+    }
 
 }
