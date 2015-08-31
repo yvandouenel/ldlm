@@ -20,7 +20,7 @@ body{
 }
 .field-name-scald-authors{
     position: absolute;
-    top: 0;
+    bottom: 8px;
     left: 0;
     display: table;
     background-color: #001020;
@@ -31,6 +31,9 @@ body{
     color: white;
     padding: 0 3px;
     font-size: 0.8em;
+}
+.field-name-scald-authors .field-item:before{
+    content:'\00a9';
 }
 /* Corps de texte *****************************************************************/
 blockquote {
