@@ -50,6 +50,9 @@ blockquote {
 .region-content div.content ul {
     margin-left: 10px;
 }
+.node-type-formation .region-content div.content ul {
+    margin-left: -10px;
+}
 .region-content div.content p {
     margin: 10px 0;
 }
@@ -57,6 +60,9 @@ blockquote {
     margin-left: 10px;
     list-style-position: outside;
     list-style-type: disc;
+}
+.node-type-formation .region-content div.content ul li {
+    list-style-type: none;
 }
 strong{
   font-weight: bold;

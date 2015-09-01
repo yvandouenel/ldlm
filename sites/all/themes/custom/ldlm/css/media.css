@@ -136,6 +136,9 @@
     #superfish-1 li.sf-item-5, #superfish-1 li.sf-item-6, #superfish-1 li.sf-item-7{
         margin-top: 20px;
     }
+    #cols-footer .block-bean .field-name-field-email a {
+        color: #FFFFFF;
+    }
 }
 
 @media screen and (max-width: 741px) {
@@ -253,5 +256,6 @@
         font-size: 1.6em;
         line-height: 1.6em;
     }
+
 
 }
