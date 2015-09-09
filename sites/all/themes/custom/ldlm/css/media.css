@@ -20,7 +20,12 @@
         width: 100%;
     }
 }
-
+@media screen and (max-width:1025px) and (min-width:741px){
+    body.front .view-evenements .views-row > p{
+        height: 52px;
+        overflow: hidden;
+    }
+}
 @media screen and (max-width: 1025px) {
     .container {
         width: 100%;
