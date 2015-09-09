@@ -407,10 +407,17 @@ body.pro .group-scolaire{
 body.pro .group-titre-sous-titre{
   background: #e68c04 url(../images/icons/rose-vent-orange.png) no-repeat 5px 50%;
 }
-.group-titre-sous-titre h2{
+.group-titre-sous-titre h2,
+h2#page-title{
   color: white;
   font-family: "proxima-nova-sc-osf-ext-cond",sans-serif;
   margin-top: 18px;
+}
+h2#page-title{
+    background: #58a8c9 url(../images/icons/rose-vent-orange.png) no-repeat 5px 50%;
+    padding: 20px 0 20px 68px;
+    width: 60%;
+    margin-bottom: 20px;
 }
 .group-titre-sous-titre .field-item{
   color: white;
@@ -886,6 +893,20 @@ body.pro .field-name-body h3{
 #main_content .view-activites .views-row .field-name-body{
   height: 48px;
   overflow: hidden;
+}
+/* Page événement - actualités **************************************************/
+.page-evenements .view-evenements .views-row{
+    float: left;
+    width : 47.916666666666666666666666666667%;
+    margin : 0 1.041666666666666666666666666667%; /* 10/960 */
+}
+.page-evenements .view-evenements .views-row .views-field-body .field-content{
+    height: 54px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.view-evenements .view-footer{
+    clear: both;
 }
 /* Actualités vie ***************************************************************/
 .view-display-id-block_vie_adulte .views-row,

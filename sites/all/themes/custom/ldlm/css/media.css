@@ -21,7 +21,7 @@
     }
 }
 @media screen and (max-width:1025px) and (min-width:741px){
-    body.front .view-evenements .views-row > p{
+    body.front .view-evenements .views-row .home-news-text{
         height: 52px;
         overflow: hidden;
     }
