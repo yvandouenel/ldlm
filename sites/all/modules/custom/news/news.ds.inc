@@ -90,7 +90,6 @@ function news_ds_layout_settings_info() {
         4 => 'field_scald_video',
         5 => 'field_scald_gallery',
         6 => 'field_scald_sound',
-        7 => 'field_news_only_video',
       ),
     ),
     'fields' => array(
@@ -101,7 +100,6 @@ function news_ds_layout_settings_info() {
       'field_scald_video' => 'ds_content',
       'field_scald_gallery' => 'ds_content',
       'field_scald_sound' => 'ds_content',
-      'field_news_only_video' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
