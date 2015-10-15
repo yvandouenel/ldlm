@@ -43,7 +43,7 @@ function ldlm_formation_node_view_alter(&$build) {
     $link = isset($build['field_documentation']);
     if($link) {
       $build['field_documentation'][0]['#markup'] = 
-         '<a href="/'.$path_alias.'?formation='.$build['#node']->title.'#block-webform-client-block-8">Revevoir une documentation</a>';
+         '<a href="/'.$path_alias.'?formation='.$build['#node']->title.'#block-webform-client-block-8">Recevoir une documentation</a>';
       
     }
     $link = isset($build['field_remplir_formulaire']) && $build['field_remplir_formulaire']['#items'][0]['value'];
