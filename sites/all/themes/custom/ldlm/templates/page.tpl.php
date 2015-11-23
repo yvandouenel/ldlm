@@ -83,7 +83,11 @@
         <div class='grid-3 grid'><?php print render($page['footer_col2']) ?></div>
       <?php endif; ?>
       <?php if ($page['footer_col3']): ?>
-        <div class='grid-6 grid'><?php print render($page['footer_col3']) ?></div>
+        <div class='grid-6 grid'><?php print render($page['footer_col3']) ?>
+          <div>
+            <a style="float: right;color: #6E7B83;clear: both;font-size:0.8em;margin-right: 60px;" href="http://www.coopernet.fr">Création site Internet Drupal par Coopernet</a>
+          </div>
+        </div>
       <?php endif; ?> 
     </div>
   </div> 
