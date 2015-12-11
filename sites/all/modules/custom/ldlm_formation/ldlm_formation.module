@@ -23,32 +23,31 @@ function ldlm_formation_node_view_alter(&$build) {
   
   if ($build['#bundle'] == 'formation' && $build['#view_mode'] == 'full') {
     $link = isset($build['field_preinscription_scolaire']);
-    if($link) {
+    if($link && $build['field_preinscription_scolaire']['#items'][0]['value']) {
       $build['field_preinscription_scolaire'][0]['#markup'] = 
-         '<a href="/'.$path_alias.'?formation='.$build['#node']->title.'#block-webform-client-block-4">Faire une demande de pré-inscription</a>';
-      
+         '<a href="/'.$path_alias.'?formation='.$build['#node']->title.'#block-webform-client-block-4">Faire une demande de <br />pré-inscription</a>';
     }
     $link = isset($build['field_demande_entretien']);
-    if($link) {
+    if($link && $build['field_demande_entretien']['#items'][0]['value']) {
       $build['field_demande_entretien'][0]['#markup'] = 
          '<a href="/'.$path_alias.'?formation='.$build['#node']->title.'#block-webform-client-block-6">Demander un entretien</a>';
       
     }
     $link = isset($build['field_portes_ouvertes']);
-    if($link) {
+    if($link && $build['field_portes_ouvertes']['#items'][0]['value']) {
       $build['field_portes_ouvertes'][0]['#markup'] = 
          '<a href="/'.$path_alias.'?formation='.$build['#node']->title.'#block-webform-client-block-7">S\'inscrire à la journée Portes Ouvertes</a>';
       
     }
     $link = isset($build['field_documentation']);
-    if($link) {
+    if($link && $build['field_documentation']['#items'][0]['value']) {
       $build['field_documentation'][0]['#markup'] = 
          '<a href="/'.$path_alias.'?formation='.$build['#node']->title.'#block-webform-client-block-8">Recevoir une documentation</a>';
       
     }
     $link = isset($build['field_remplir_formulaire']) && $build['field_remplir_formulaire']['#items'][0]['value'];
     //dpm($build['field_remplir_formulaire']);
-    if($link) {
+    if($link && $build['field_remplir_formulaire']['#items'][0]['value']) {
       $build['field_remplir_formulaire'][0]['#markup'] = 
          '<a href="/'.$path_alias.'?formation='.$build['#node']->title.'#block-webform-client-block-9">Remplir le formulaire</a>';
       

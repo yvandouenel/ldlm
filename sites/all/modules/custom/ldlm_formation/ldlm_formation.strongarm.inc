@@ -193,20 +193,23 @@ function ldlm_formation_strongarm() {
       'date_portes_ouvertes' => array(
         'custom_settings' => FALSE,
       ),
+      'vie' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
         'title' => array(
-          'weight' => '0',
+          'weight' => '2',
         ),
         'path' => array(
-          'weight' => '1',
+          'weight' => '3',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
       ),
       'display' => array(

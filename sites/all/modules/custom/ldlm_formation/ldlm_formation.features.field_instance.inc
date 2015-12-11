@@ -28,7 +28,7 @@ function ldlm_formation_field_default_field_instances() {
 	34207 Sète CEDEX</li>
 	<li class="iti_tel">Tél. 04 67 51 63 63<br />
 	Fax : 04 67 51 63 64</li>
-	<li class="iti_email">Email : contact@lyceedelamer.fr</li>
+	<li class="iti_email">Email : secretariat.fc@i-carre.net</li>
 	<li class="iti_train"><a href="/contact#train">En train</a></li>
 	<li class="iti_bus"><a href="/contact#bus">En bus</a></li>
 	<li class="iti_car"><a href="/contact#car">En voiture</a></li>
@@ -190,7 +190,7 @@ function ldlm_formation_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -199,8 +199,9 @@ function ldlm_formation_field_default_field_instances() {
     'bundle' => 'formation',
     'default_value' => array(
       0 => array(
-        'value' => '<a href="mailto:contact@lyceedelamer.fr">contact@lyceedelamer.fr</a><br/>
-Tél. 04 67 89 56 98',
+        'value' => '<p><a href="mailto:secretariat.fc@i-carre.net">secretariat.fc@i-carre.net</a></p>
+',
+        'format' => 'full_html',
       ),
     ),
     'deleted' => 0,
@@ -227,6 +228,7 @@ Tél. 04 67 89 56 98',
         'weight' => 32,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_contact',
     'label' => 'Contact',
@@ -255,7 +257,7 @@ Tél. 04 67 89 56 98',
     'bundle' => 'formation',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Donner ici de début du titre de l\'événement "porte ouverte" qui concerne cette formation. La date en sera extraite.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -291,7 +293,7 @@ Tél. 04 67 89 56 98',
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 18,
+      'weight' => 19,
     ),
   );
 
@@ -343,7 +345,7 @@ Tél. 04 67 89 56 98',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 13,
     ),
   );
 
@@ -463,7 +465,7 @@ Tél. 04 67 89 56 98',
           'link' => 0,
         ),
         'type' => 'full',
-        'weight' => 11,
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -494,7 +496,7 @@ Tél. 04 67 89 56 98',
         'context' => 'sdl_editor_representation',
       ),
       'type' => 'atom_reference_textfield',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -646,7 +648,7 @@ Tél. 04 67 89 56 98',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 12,
+      'weight' => 14,
     ),
   );
 
@@ -700,7 +702,7 @@ Tél. 04 67 89 56 98',
         'context' => 'teaser',
       ),
       'type' => 'atom_reference_textfield',
-      'weight' => 3,
+      'weight' => 5,
     ),
   );
 
@@ -752,7 +754,7 @@ Tél. 04 67 89 56 98',
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 7,
+      'weight' => 9,
     ),
   );
 
@@ -789,7 +791,7 @@ Tél. 04 67 89 56 98',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -1040,7 +1042,7 @@ Tél. 04 67 89 56 98',
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -1107,7 +1109,7 @@ Tél. 04 67 89 56 98',
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 10,
+      'weight' => 12,
     ),
   );
 
@@ -1208,7 +1210,7 @@ Tél. 04 67 89 56 98',
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 13,
+      'weight' => 15,
     ),
   );
 
@@ -1260,7 +1262,7 @@ Tél. 04 67 89 56 98',
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 
@@ -1358,7 +1360,7 @@ Tél. 04 67 89 56 98',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 4,
     ),
   );
 
@@ -1398,7 +1400,7 @@ Tél. 04 67 89 56 98',
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 21,
+      'weight' => 22,
     ),
   );
 
@@ -1491,7 +1493,7 @@ Tél. 04 67 89 56 98',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 6,
     ),
   );
 
@@ -1513,7 +1515,7 @@ Tél. 04 67 89 56 98',
 	34207 Sète CEDEX</li>
 	<li class="iti_tel">Tél. 04 67 51 63 63<br />
 	Fax : 04 67 51 63 64</li>
-	<li class="iti_email">Email : contact@lyceedelamer.fr</li>
+	<li class="iti_email">Email : lyceemer-lr@developpement-durable.gouv.fr</li>
 	<li class="iti_train"><a href="/contact#train">En train</a></li>
 	<li class="iti_bus"><a href="/contact#bus">En bus</a></li>
 	<li class="iti_car"><a href="/contact#car">En voiture</a></li>
@@ -1755,6 +1757,7 @@ Tél. 04 67 89 56 98',
   t('Dates - complément d\'info');
   t('Demander un entretien');
   t('Diaporama');
+  t('Donner ici de début du titre de l\'événement "porte ouverte" qui concerne cette formation. La date en sera extraite.');
   t('Débouchés');
   t('Financement');
   t('Formation');

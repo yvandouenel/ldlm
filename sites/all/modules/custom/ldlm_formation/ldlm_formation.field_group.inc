@@ -46,15 +46,57 @@ function ldlm_formation_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_genric|node|formation|form';
+  $field_group->group_name = 'group_genric';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'formation';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_main_tabs';
+  $field_group->data = array(
+    'label' => 'Infos générales',
+    'weight' => '1',
+    'children' => array(
+      0 => 'field_metiers',
+      1 => 'field_secteur_activite',
+      2 => 'field_conditions_admission',
+      3 => 'field_formation',
+      4 => 'field_sanction',
+      5 => 'field_diaporama',
+      6 => 'field_type_formation',
+      7 => 'field_sous_titre',
+      8 => 'field_image_formation',
+      9 => 'field_prochaines_dates',
+      10 => 'field_dates_compl',
+      11 => 'metatags',
+      12 => 'title',
+      13 => 'path',
+      14 => 'redirect',
+    ),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-genric field-group-htab',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $export['group_genric|node|formation|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_infos_pro|node|formation|form';
   $field_group->group_name = 'group_infos_pro';
   $field_group->entity_type = 'node';
   $field_group->bundle = 'formation';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_main_tabs';
   $field_group->data = array(
     'label' => 'infos pro',
-    'weight' => '16',
+    'weight' => '2',
     'children' => array(
       0 => 'field_financement',
       1 => 'field_acces_centre',
@@ -62,20 +104,15 @@ function ldlm_formation_field_group_info() {
       3 => 'field_sigles_abr',
       4 => 'group_pro_inscription',
     ),
-    'format_type' => 'div',
+    'format_type' => 'htab',
     'format_settings' => array(
-      'label' => 'infos pro',
+      'formatter' => 'closed',
       'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
         'required_fields' => 1,
         'id' => '',
-        'classes' => 'group-infos-pro field-group-div',
-        'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h3',
-        'effect' => 'none',
-        'speed' => 'fast',
       ),
-      'formatter' => 'collapsed',
     ),
   );
   $export['group_infos_pro|node|formation|form'] = $field_group;
@@ -88,10 +125,10 @@ function ldlm_formation_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'formation';
   $field_group->mode = 'form';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_main_tabs';
   $field_group->data = array(
     'label' => 'infos scolaire',
-    'weight' => '17',
+    'weight' => '3',
     'children' => array(
       0 => 'field_objectif',
       1 => 'field_activites_parascolaires',
@@ -103,23 +140,45 @@ function ldlm_formation_field_group_info() {
       7 => 'field_temoignages',
       8 => 'field_debouches',
     ),
-    'format_type' => 'div',
+    'format_type' => 'htab',
     'format_settings' => array(
-      'label' => 'infos scolaire',
+      'formatter' => 'closed',
       'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
         'required_fields' => 1,
         'id' => '',
-        'classes' => 'group-infos-scolaire field-group-div',
-        'description' => '',
-        'show_label' => '1',
-        'label_element' => 'h3',
-        'effect' => 'none',
-        'speed' => 'fast',
       ),
-      'formatter' => 'collapsed',
     ),
   );
   $export['group_infos_scolaire|node|formation|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_main_tabs|node|formation|form';
+  $field_group->group_name = 'group_main_tabs';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'formation';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'group tabs',
+    'weight' => '0',
+    'children' => array(
+      0 => 'group_infos_pro',
+      1 => 'group_infos_scolaire',
+      2 => 'group_genric',
+    ),
+    'format_type' => 'htabs',
+    'format_settings' => array(
+      'formatter' => '',
+      'instance_settings' => array(
+        'classes' => 'group-main-tabs field-group-htabs',
+      ),
+    ),
+  );
+  $export['group_main_tabs|node|formation|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -231,7 +290,7 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Pro bas',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_sigles_abr',
     ),
@@ -365,7 +424,7 @@ function ldlm_formation_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Scolaire',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_documentation',
       1 => 'field_demande_entretien',
