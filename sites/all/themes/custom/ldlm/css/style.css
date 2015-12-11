@@ -549,10 +549,13 @@ div.field-name-field-contact{
 .field-name-field-preinscription-scolaire,.field-name-field-demande-entretien,
 .group-portes-ouvertes,.field-name-field-documentation{
   width: 44%;
-  margin: 20px 3% 0 0;
   float: left;
-  border: 1px solid #e7d401;
   display: block;
+}
+.field-name-field-preinscription-scolaire a,.field-name-field-demande-entretien a,
+.group-portes-ouvertes a,.field-name-field-documentation a{
+  border: 1px solid #e7d401;
+  margin: 20px 3% 0 0;
 }
 .group-portes-ouvertes{
   position: relative;
@@ -561,16 +564,16 @@ div.field-name-field-contact{
   color: #49aad3;
 }
 .field-name-field-preinscription-scolaire{
-  background: #FFFFFF url(../images/bg/bg-pre-inscription.gif) no-repeat 0 0;
+  background: #FFFFFF url(../images/bg/bg-pre-inscription.gif) no-repeat 0 20px;
 }
 .field-name-field-demande-entretien{
-  background: #FFFFFF url(../images/bg/bg-dde-entretien.gif) no-repeat 0 0;
+  background: #FFFFFF url(../images/bg/bg-dde-entretien.gif) no-repeat 0 20px;
 }
 .field-name-field-portes-ouvertes{
   background: #FFFFFF url(../images/bg/bg-portes-ouvertes.gif) no-repeat 0 0;
 }
 .field-name-field-documentation{
-  background: #FFFFFF url(../images/bg/bg-dde-doc.gif) no-repeat 0 0;
+  background: #FFFFFF url(../images/bg/bg-dde-doc.gif) no-repeat 0 20px;
 }
 .field-name-field-preinscription-scolaire a,
 .field-name-field-demande-entretien a,
