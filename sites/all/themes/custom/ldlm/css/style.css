@@ -937,19 +937,19 @@ body.pro .field-name-body h3{
     padding-top: 30px;
 }
 /* Ressources documentaires *******************************************************************************************/
-.page-ressources-documentaires input.form-submit{
+.page-extra-ressources-documentaires input.form-submit{
   background-color: #E7D401;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
 }
-.page-ressources-documentaires .views-table{
+.page-extra-ressources-documentaires .views-table{
   width: 100%;
 }
-.page-ressources-documentaires .views-table tr.even{
+.page-extra-ressources-documentaires .views-table tr.even{
   background-color: white;
 }
-.page-ressources-documentaires .views-table td{
+.page-extra-ressources-documentaires .views-table td{
  padding: 5px
 }
 
