@@ -171,6 +171,9 @@ a.vie_lyceenne{
     float: left;
     padding-right: 5px;
 }
+#block-menu-menu-top ul li>ul{
+  display: none;
+}
 #block-menu-menu-top ul li.first{
     border-left: 0;
 }
@@ -180,6 +183,13 @@ a.vie_lyceenne{
   font-family: 'Open Sans', sans-serif;
   display: block;
   padding: 10px 5px;
+}
+/* Menus extranet ************************************************************/
+#block-superfish-2 ul {
+  margin-top: 20px;
+}
+#block-superfish-2 ul li a{
+  padding: 5px 5px 5px 10px;
 }
 /* Réseaux sociaux ************************************************************/
 #block-bean-rseaux-sociaux-hauts{
@@ -926,3 +936,20 @@ body.pro .field-name-body h3{
     clear: both;
     padding-top: 30px;
 }
+/* Ressources documentaires *******************************************************************************************/
+.page-ressources-documentaires input.form-submit{
+  background-color: #E7D401;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.page-ressources-documentaires .views-table{
+  width: 100%;
+}
+.page-ressources-documentaires .views-table tr.even{
+  background-color: white;
+}
+.page-ressources-documentaires .views-table td{
+ padding: 5px
+}
+
