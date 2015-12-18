@@ -949,7 +949,9 @@ body.pro .field-name-body h3{
 .page-extra-ressources-documentaires .views-table tr.even{
   background-color: white;
 }
-.page-extra-ressources-documentaires .views-table td{
- padding: 5px
+
+.page-extra-ressources-documentaires .views-table td {
+  padding: 5px;
+  border-right: 1px solid #ccc;
 }
 
