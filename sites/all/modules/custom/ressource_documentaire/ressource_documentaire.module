@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Ressource documentaire feature.
+ */
+
+include_once 'ressource_documentaire.features.inc';
