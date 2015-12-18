@@ -101,16 +101,18 @@ function news_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'news' => 'news',
   );
-  /* Filter criterion: Contenu: Date de parution (field_news_publication_date) */
+  /* Filter criterion: Contenu: Date de parution -  start date (field_news_publication_date) */
   $handler->display->display_options['filters']['field_news_publication_date_value']['id'] = 'field_news_publication_date_value';
   $handler->display->display_options['filters']['field_news_publication_date_value']['table'] = 'field_data_field_news_publication_date';
   $handler->display->display_options['filters']['field_news_publication_date_value']['field'] = 'field_news_publication_date_value';
   $handler->display->display_options['filters']['field_news_publication_date_value']['operator'] = '<';
-  /* Filter criterion: Contenu: Date de parution (field_news_publication_date:value2) */
+  $handler->display->display_options['filters']['field_news_publication_date_value']['default_date'] = 'now';
+  /* Filter criterion: Contenu: Date de parution - end date (field_news_publication_date:value2) */
   $handler->display->display_options['filters']['field_news_publication_date_value2']['id'] = 'field_news_publication_date_value2';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['table'] = 'field_data_field_news_publication_date';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['field'] = 'field_news_publication_date_value2';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_news_publication_date_value2']['default_date'] = 'now';
 
   /* Display: Page-evenement */
   $handler = $view->new_display('page', 'Page-evenement', 'page');
@@ -186,6 +188,22 @@ function news_views_default_views() {
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Contenu: Publié */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Contenu: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'news' => 'news',
+  );
   $handler->display->display_options['path'] = 'evenements';
 
   /* Display: Page-evenement-draggable */
@@ -422,16 +440,18 @@ function news_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'news' => 'news',
   );
-  /* Filter criterion: Contenu: Date de parution (field_news_publication_date) */
+  /* Filter criterion: Contenu: Date de parution -  start date (field_news_publication_date) */
   $handler->display->display_options['filters']['field_news_publication_date_value']['id'] = 'field_news_publication_date_value';
   $handler->display->display_options['filters']['field_news_publication_date_value']['table'] = 'field_data_field_news_publication_date';
   $handler->display->display_options['filters']['field_news_publication_date_value']['field'] = 'field_news_publication_date_value';
   $handler->display->display_options['filters']['field_news_publication_date_value']['operator'] = '<';
-  /* Filter criterion: Contenu: Date de parution (field_news_publication_date:value2) */
+  $handler->display->display_options['filters']['field_news_publication_date_value']['default_date'] = 'now';
+  /* Filter criterion: Contenu: Date de parution - end date (field_news_publication_date:value2) */
   $handler->display->display_options['filters']['field_news_publication_date_value2']['id'] = 'field_news_publication_date_value2';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['table'] = 'field_data_field_news_publication_date';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['field'] = 'field_news_publication_date_value2';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_news_publication_date_value2']['default_date'] = 'now';
   /* Filter criterion: Contenu: Visible bas accueil (field_visible_bas_accueil) */
   $handler->display->display_options['filters']['field_visible_bas_accueil_value']['id'] = 'field_visible_bas_accueil_value';
   $handler->display->display_options['filters']['field_visible_bas_accueil_value']['table'] = 'field_data_field_visible_bas_accueil';
@@ -536,16 +556,18 @@ function news_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'news' => 'news',
   );
-  /* Filter criterion: Contenu: Date de parution (field_news_publication_date) */
+  /* Filter criterion: Contenu: Date de parution -  start date (field_news_publication_date) */
   $handler->display->display_options['filters']['field_news_publication_date_value']['id'] = 'field_news_publication_date_value';
   $handler->display->display_options['filters']['field_news_publication_date_value']['table'] = 'field_data_field_news_publication_date';
   $handler->display->display_options['filters']['field_news_publication_date_value']['field'] = 'field_news_publication_date_value';
   $handler->display->display_options['filters']['field_news_publication_date_value']['operator'] = '<';
-  /* Filter criterion: Contenu: Date de parution (field_news_publication_date:value2) */
+  $handler->display->display_options['filters']['field_news_publication_date_value']['default_date'] = 'now';
+  /* Filter criterion: Contenu: Date de parution - end date (field_news_publication_date:value2) */
   $handler->display->display_options['filters']['field_news_publication_date_value2']['id'] = 'field_news_publication_date_value2';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['table'] = 'field_data_field_news_publication_date';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['field'] = 'field_news_publication_date_value2';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_news_publication_date_value2']['default_date'] = 'now';
   /* Filter criterion: Contenu: Zoom sur (field_zoom) */
   $handler->display->display_options['filters']['field_zoom_value']['id'] = 'field_zoom_value';
   $handler->display->display_options['filters']['field_zoom_value']['table'] = 'field_data_field_zoom';
@@ -657,16 +679,18 @@ function news_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'news' => 'news',
   );
-  /* Filter criterion: Contenu: Date de parution (field_news_publication_date) */
+  /* Filter criterion: Contenu: Date de parution -  start date (field_news_publication_date) */
   $handler->display->display_options['filters']['field_news_publication_date_value']['id'] = 'field_news_publication_date_value';
   $handler->display->display_options['filters']['field_news_publication_date_value']['table'] = 'field_data_field_news_publication_date';
   $handler->display->display_options['filters']['field_news_publication_date_value']['field'] = 'field_news_publication_date_value';
   $handler->display->display_options['filters']['field_news_publication_date_value']['operator'] = '<';
-  /* Filter criterion: Contenu: Date de parution (field_news_publication_date:value2) */
+  $handler->display->display_options['filters']['field_news_publication_date_value']['default_date'] = 'now';
+  /* Filter criterion: Contenu: Date de parution - end date (field_news_publication_date:value2) */
   $handler->display->display_options['filters']['field_news_publication_date_value2']['id'] = 'field_news_publication_date_value2';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['table'] = 'field_data_field_news_publication_date';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['field'] = 'field_news_publication_date_value2';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_news_publication_date_value2']['default_date'] = 'now';
   /* Filter criterion: Contenu: Visible vie formation adulte  (field_visible_vie_formation_adul) */
   $handler->display->display_options['filters']['field_visible_vie_formation_adul_value']['id'] = 'field_visible_vie_formation_adul_value';
   $handler->display->display_options['filters']['field_visible_vie_formation_adul_value']['table'] = 'field_data_field_visible_vie_formation_adul';
@@ -778,16 +802,18 @@ function news_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'news' => 'news',
   );
-  /* Filter criterion: Contenu: Date de parution (field_news_publication_date) */
+  /* Filter criterion: Contenu: Date de parution -  start date (field_news_publication_date) */
   $handler->display->display_options['filters']['field_news_publication_date_value']['id'] = 'field_news_publication_date_value';
   $handler->display->display_options['filters']['field_news_publication_date_value']['table'] = 'field_data_field_news_publication_date';
   $handler->display->display_options['filters']['field_news_publication_date_value']['field'] = 'field_news_publication_date_value';
   $handler->display->display_options['filters']['field_news_publication_date_value']['operator'] = '<';
-  /* Filter criterion: Contenu: Date de parution (field_news_publication_date:value2) */
+  $handler->display->display_options['filters']['field_news_publication_date_value']['default_date'] = 'now';
+  /* Filter criterion: Contenu: Date de parution - end date (field_news_publication_date:value2) */
   $handler->display->display_options['filters']['field_news_publication_date_value2']['id'] = 'field_news_publication_date_value2';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['table'] = 'field_data_field_news_publication_date';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['field'] = 'field_news_publication_date_value2';
   $handler->display->display_options['filters']['field_news_publication_date_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_news_publication_date_value2']['default_date'] = 'now';
   /* Filter criterion: Contenu: Visible vie lycéenne (field_visible_vie_lyc_enne) */
   $handler->display->display_options['filters']['field_visible_vie_lyc_enne_value']['id'] = 'field_visible_vie_lyc_enne_value';
   $handler->display->display_options['filters']['field_visible_vie_lyc_enne_value']['table'] = 'field_data_field_visible_vie_lyc_enne';
