@@ -954,4 +954,9 @@ body.pro .field-name-body h3{
   padding: 5px;
   border-right: 1px solid #ccc;
 }
+/* Calendar calendrier ************************************************************************************************/
+#main_content .view-item-calendar_reservation a{
+  color: black;
+  font-weight: bold;
+}
 
