@@ -58,4 +58,4 @@ features[views_view][] = ressources_doc
 features_exclude[dependencies][ds] = ds
 features_exclude[dependencies][feature_event] = feature_event
 features_exclude[dependencies][partners] = partners
-project path = sites/all/modules/features
+project path = sites/all/modules/custom
