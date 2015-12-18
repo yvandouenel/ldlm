@@ -185,9 +185,7 @@ a.vie_lyceenne{
   padding: 10px 5px;
 }
 /* Menus extranet ************************************************************/
-body.not-front #block-superfish-2 {
-  display: none;
-}
+
 #block-superfish-2 ul {
   margin-top: 20px;
 }
