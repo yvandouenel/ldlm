@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Feature page extranet feature.
+ */
+
+include_once 'feature_page_extranet.features.inc';
