@@ -24,7 +24,13 @@ function ressource_documentaire_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Ressources documentaires';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    3 => '3',
+    6 => '6',
+    5 => '5',
+    4 => '4',
+  );
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -41,7 +47,6 @@ function ressource_documentaire_views_default_views() {
     'title' => 'title',
     'field_scald_file' => 'field_scald_file',
   );
-  $handler->display->display_options['style_options']['class'] = 'table-hover table-bordered';
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'title' => array(
@@ -72,6 +77,7 @@ function ressource_documentaire_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Champ: Contenu: Fichiers attachés */
   $handler->display->display_options['fields']['field_scald_file']['id'] = 'field_scald_file';
   $handler->display->display_options['fields']['field_scald_file']['table'] = 'field_data_field_scald_file';
@@ -83,7 +89,13 @@ function ressource_documentaire_views_default_views() {
   );
   $handler->display->display_options['fields']['field_scald_file']['group_column'] = 'sid';
   $handler->display->display_options['fields']['field_scald_file']['delta_offset'] = '0';
-  /* Sort criterion: Contenu: Date de publication */
+  /* Champ: Contenu: Liens utiles */
+  $handler->display->display_options['fields']['field_liens_utiles']['id'] = 'field_liens_utiles';
+  $handler->display->display_options['fields']['field_liens_utiles']['table'] = 'field_data_field_liens_utiles';
+  $handler->display->display_options['fields']['field_liens_utiles']['field'] = 'field_liens_utiles';
+  $handler->display->display_options['fields']['field_liens_utiles']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_liens_utiles']['delta_offset'] = '0';
+  /* Sort criterion: Contenu: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
@@ -141,7 +153,7 @@ function ressource_documentaire_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'ressources-documentaires';
+  $handler->display->display_options['path'] = 'extra/ressources-documentaires';
   $translatables['ressources_doc'] = array(
     t('Master'),
     t('Ressources documentaires'),
@@ -161,6 +173,7 @@ function ressource_documentaire_views_default_views() {
     t('Aucune ressource documentaire ne correspond à votre requête.'),
     t('Titre de la ressource documentaire'),
     t('Fichiers attachés'),
+    t('Liens utiles'),
     t('Type de document'),
     t('Format de document'),
     t('Page'),
