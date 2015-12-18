@@ -1,0 +1,11 @@
+name = Always Visible
+description = "Allows administrators to override menu item visibility."
+package = Other
+core = 7.x
+
+; Information added by  packaging script on 2013-11-24
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "always_visible"
+datestamp = "1385258012"
+
