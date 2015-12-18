@@ -1,6 +1,6 @@
 name = Feature page extranet
 core = 7.x
-package = Features
+package = Generic Feature
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = news
