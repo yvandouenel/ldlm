@@ -46,6 +46,7 @@ features[variable][] = comment_form_location_ressource_documentaire
 features[variable][] = comment_preview_ressource_documentaire
 features[variable][] = comment_ressource_documentaire
 features[variable][] = comment_subject_field_ressource_documentaire
+features[variable][] = content_access_reservation
 features[variable][] = content_access_ressource_documentaire
 features[variable][] = field_bundle_settings_node__ressource_documentaire
 features[variable][] = language_content_type_ressource_documentaire

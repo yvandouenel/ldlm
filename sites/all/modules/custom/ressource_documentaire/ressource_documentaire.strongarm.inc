@@ -62,6 +62,25 @@ function ressource_documentaire_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'content_access_reservation';
+  $strongarm->value = array(
+    'view_own' => array(
+      0 => 1,
+      1 => 2,
+      2 => 4,
+      3 => 3,
+    ),
+    'view' => array(
+      0 => 2,
+      1 => 4,
+      2 => 3,
+    ),
+  );
+  $export['content_access_reservation'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'content_access_ressource_documentaire';
   $strongarm->value = array(
     'view_own' => array(
