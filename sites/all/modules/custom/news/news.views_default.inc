@@ -444,7 +444,7 @@ function news_views_default_views() {
   $handler->display->display_options['filters']['field_news_publication_date_value']['id'] = 'field_news_publication_date_value';
   $handler->display->display_options['filters']['field_news_publication_date_value']['table'] = 'field_data_field_news_publication_date';
   $handler->display->display_options['filters']['field_news_publication_date_value']['field'] = 'field_news_publication_date_value';
-  $handler->display->display_options['filters']['field_news_publication_date_value']['operator'] = '<';
+  $handler->display->display_options['filters']['field_news_publication_date_value']['operator'] = '<=';
   $handler->display->display_options['filters']['field_news_publication_date_value']['default_date'] = 'now';
   /* Filter criterion: Contenu: Date de parution - end date (field_news_publication_date:value2) */
   $handler->display->display_options['filters']['field_news_publication_date_value2']['id'] = 'field_news_publication_date_value2';
@@ -560,7 +560,7 @@ function news_views_default_views() {
   $handler->display->display_options['filters']['field_news_publication_date_value']['id'] = 'field_news_publication_date_value';
   $handler->display->display_options['filters']['field_news_publication_date_value']['table'] = 'field_data_field_news_publication_date';
   $handler->display->display_options['filters']['field_news_publication_date_value']['field'] = 'field_news_publication_date_value';
-  $handler->display->display_options['filters']['field_news_publication_date_value']['operator'] = '<';
+  $handler->display->display_options['filters']['field_news_publication_date_value']['operator'] = '<=';
   $handler->display->display_options['filters']['field_news_publication_date_value']['default_date'] = 'now';
   /* Filter criterion: Contenu: Date de parution - end date (field_news_publication_date:value2) */
   $handler->display->display_options['filters']['field_news_publication_date_value2']['id'] = 'field_news_publication_date_value2';
@@ -683,7 +683,7 @@ function news_views_default_views() {
   $handler->display->display_options['filters']['field_news_publication_date_value']['id'] = 'field_news_publication_date_value';
   $handler->display->display_options['filters']['field_news_publication_date_value']['table'] = 'field_data_field_news_publication_date';
   $handler->display->display_options['filters']['field_news_publication_date_value']['field'] = 'field_news_publication_date_value';
-  $handler->display->display_options['filters']['field_news_publication_date_value']['operator'] = '<';
+  $handler->display->display_options['filters']['field_news_publication_date_value']['operator'] = '<=';
   $handler->display->display_options['filters']['field_news_publication_date_value']['default_date'] = 'now';
   /* Filter criterion: Contenu: Date de parution - end date (field_news_publication_date:value2) */
   $handler->display->display_options['filters']['field_news_publication_date_value2']['id'] = 'field_news_publication_date_value2';
@@ -806,7 +806,7 @@ function news_views_default_views() {
   $handler->display->display_options['filters']['field_news_publication_date_value']['id'] = 'field_news_publication_date_value';
   $handler->display->display_options['filters']['field_news_publication_date_value']['table'] = 'field_data_field_news_publication_date';
   $handler->display->display_options['filters']['field_news_publication_date_value']['field'] = 'field_news_publication_date_value';
-  $handler->display->display_options['filters']['field_news_publication_date_value']['operator'] = '<';
+  $handler->display->display_options['filters']['field_news_publication_date_value']['operator'] = '<=';
   $handler->display->display_options['filters']['field_news_publication_date_value']['default_date'] = 'now';
   /* Filter criterion: Contenu: Date de parution - end date (field_news_publication_date:value2) */
   $handler->display->display_options['filters']['field_news_publication_date_value2']['id'] = 'field_news_publication_date_value2';
