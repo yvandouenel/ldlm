@@ -961,3 +961,11 @@ body.pro .field-name-body h3{
   font-weight: bold;
 }
 
+#main_content .view .date-nav-wrapper .date-prev {
+  padding: 5px 5px 5px 0;
+  right: 80px;
+}
+#main_content .view .date-nav-wrapper .date-next {
+  padding: 5px 0 5px 5px;
+}
+
