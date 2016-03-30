@@ -154,6 +154,47 @@ function ressource_documentaire_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-ressource_documentaire-field_mot_cle'
+  $field_instances['node-ressource_documentaire-field_mot_cle'] = array(
+    'bundle' => 'ressource_documentaire',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 9,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_mot_cle',
+    'label' => 'Mot clé',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'taxonomy',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 51,
+    ),
+  );
+
   // Exported field_instance: 'node-ressource_documentaire-field_rd_sous_titre'
   $field_instances['node-ressource_documentaire-field_rd_sous_titre'] = array(
     'bundle' => 'ressource_documentaire',
@@ -289,6 +330,7 @@ function ressource_documentaire_field_default_field_instances() {
   t('Fichiers attachés');
   t('Format de document');
   t('Liens utiles');
+  t('Mot clé');
   t('Sous-titre');
   t('Type de document');
 

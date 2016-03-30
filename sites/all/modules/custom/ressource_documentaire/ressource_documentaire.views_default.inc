@@ -153,6 +153,78 @@ function ressource_documentaire_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Contenu: Publié */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Contenu: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'ressource_documentaire' => 'ressource_documentaire',
+  );
+  /* Filter criterion: Contenu: Type de document (field_type_de_document) */
+  $handler->display->display_options['filters']['field_type_de_document_tid']['id'] = 'field_type_de_document_tid';
+  $handler->display->display_options['filters']['field_type_de_document_tid']['table'] = 'field_data_field_type_de_document';
+  $handler->display->display_options['filters']['field_type_de_document_tid']['field'] = 'field_type_de_document_tid';
+  $handler->display->display_options['filters']['field_type_de_document_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_type_de_document_tid']['expose']['operator_id'] = 'field_type_de_document_tid_op';
+  $handler->display->display_options['filters']['field_type_de_document_tid']['expose']['label'] = 'Type de document';
+  $handler->display->display_options['filters']['field_type_de_document_tid']['expose']['operator'] = 'field_type_de_document_tid_op';
+  $handler->display->display_options['filters']['field_type_de_document_tid']['expose']['identifier'] = 'field_type_de_document_tid';
+  $handler->display->display_options['filters']['field_type_de_document_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    176168899 => 0,
+    231346920 => 0,
+    30037204 => 0,
+  );
+  $handler->display->display_options['filters']['field_type_de_document_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_type_de_document_tid']['vocabulary'] = 'type_de_document';
+  /* Filter criterion: Contenu: Format de document (field_format_de_document) */
+  $handler->display->display_options['filters']['field_format_de_document_tid']['id'] = 'field_format_de_document_tid';
+  $handler->display->display_options['filters']['field_format_de_document_tid']['table'] = 'field_data_field_format_de_document';
+  $handler->display->display_options['filters']['field_format_de_document_tid']['field'] = 'field_format_de_document_tid';
+  $handler->display->display_options['filters']['field_format_de_document_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_format_de_document_tid']['expose']['operator_id'] = 'field_format_de_document_tid_op';
+  $handler->display->display_options['filters']['field_format_de_document_tid']['expose']['label'] = 'Format de document';
+  $handler->display->display_options['filters']['field_format_de_document_tid']['expose']['operator'] = 'field_format_de_document_tid_op';
+  $handler->display->display_options['filters']['field_format_de_document_tid']['expose']['identifier'] = 'field_format_de_document_tid';
+  $handler->display->display_options['filters']['field_format_de_document_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    176168899 => 0,
+    231346920 => 0,
+    30037204 => 0,
+  );
+  $handler->display->display_options['filters']['field_format_de_document_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_format_de_document_tid']['vocabulary'] = 'format_de_document';
+  /* Filter criterion: Contenu: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['value'] = '';
+  $handler->display->display_options['filters']['tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['label'] = 'Mot clé';
+  $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    5 => 0,
+    4 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'tag_ressource_documentaire';
   $handler->display->display_options['path'] = 'extra/ressources-documentaires';
   $translatables['ressources_doc'] = array(
     t('Master'),
@@ -177,6 +249,7 @@ function ressource_documentaire_views_default_views() {
     t('Type de document'),
     t('Format de document'),
     t('Page'),
+    t('Mot clé'),
   );
   $export['ressources_doc'] = $view;
 

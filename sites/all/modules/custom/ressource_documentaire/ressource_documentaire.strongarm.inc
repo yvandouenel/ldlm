@@ -65,15 +65,15 @@ function ressource_documentaire_strongarm() {
   $strongarm->name = 'content_access_reservation';
   $strongarm->value = array(
     'view_own' => array(
-      0 => 1,
-      1 => 2,
-      2 => 4,
-      3 => 3,
-    ),
-    'view' => array(
       0 => 2,
       1 => 4,
       2 => 3,
+    ),
+    'view' => array(
+      0 => 6,
+      1 => 5,
+      2 => 4,
+      3 => 3,
     ),
   );
   $export['content_access_reservation'] = $strongarm;
