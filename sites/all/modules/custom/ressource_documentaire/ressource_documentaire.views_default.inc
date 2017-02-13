@@ -62,13 +62,11 @@ function ressource_documentaire_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* No results behavior: Global: Text area */
+  /* No results behavior: Broken/missing handler */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = 'Aucune ressource documentaire ne correspond à votre requête.';
-  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Champ: Contenu: Titre */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -78,23 +76,14 @@ function ressource_documentaire_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Champ: Contenu: Fichiers attachés */
+  /* Champ: Broken/missing handler */
   $handler->display->display_options['fields']['field_scald_file']['id'] = 'field_scald_file';
   $handler->display->display_options['fields']['field_scald_file']['table'] = 'field_data_field_scald_file';
   $handler->display->display_options['fields']['field_scald_file']['field'] = 'field_scald_file';
-  $handler->display->display_options['fields']['field_scald_file']['click_sort_column'] = 'sid';
-  $handler->display->display_options['fields']['field_scald_file']['type'] = 'full';
-  $handler->display->display_options['fields']['field_scald_file']['settings'] = array(
-    'link' => '0',
-  );
-  $handler->display->display_options['fields']['field_scald_file']['group_column'] = 'sid';
-  $handler->display->display_options['fields']['field_scald_file']['delta_offset'] = '0';
-  /* Champ: Contenu: Liens utiles */
+  /* Champ: Broken/missing handler */
   $handler->display->display_options['fields']['field_liens_utiles']['id'] = 'field_liens_utiles';
   $handler->display->display_options['fields']['field_liens_utiles']['table'] = 'field_data_field_liens_utiles';
   $handler->display->display_options['fields']['field_liens_utiles']['field'] = 'field_liens_utiles';
-  $handler->display->display_options['fields']['field_liens_utiles']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_liens_utiles']['delta_offset'] = '0';
   /* Sort criterion: Contenu: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -114,7 +103,7 @@ function ressource_documentaire_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ressource_documentaire' => 'ressource_documentaire',
   );
-  /* Filter criterion: Contenu: Type de document (field_type_de_document) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_type_de_document_tid']['id'] = 'field_type_de_document_tid';
   $handler->display->display_options['filters']['field_type_de_document_tid']['table'] = 'field_data_field_type_de_document';
   $handler->display->display_options['filters']['field_type_de_document_tid']['field'] = 'field_type_de_document_tid';
@@ -130,9 +119,7 @@ function ressource_documentaire_views_default_views() {
     231346920 => 0,
     30037204 => 0,
   );
-  $handler->display->display_options['filters']['field_type_de_document_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_type_de_document_tid']['vocabulary'] = 'type_de_document';
-  /* Filter criterion: Contenu: Format de document (field_format_de_document) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_format_de_document_tid']['id'] = 'field_format_de_document_tid';
   $handler->display->display_options['filters']['field_format_de_document_tid']['table'] = 'field_data_field_format_de_document';
   $handler->display->display_options['filters']['field_format_de_document_tid']['field'] = 'field_format_de_document_tid';
@@ -148,8 +135,6 @@ function ressource_documentaire_views_default_views() {
     231346920 => 0,
     30037204 => 0,
   );
-  $handler->display->display_options['filters']['field_format_de_document_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_format_de_document_tid']['vocabulary'] = 'format_de_document';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -169,7 +154,7 @@ function ressource_documentaire_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'ressource_documentaire' => 'ressource_documentaire',
   );
-  /* Filter criterion: Contenu: Type de document (field_type_de_document) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_type_de_document_tid']['id'] = 'field_type_de_document_tid';
   $handler->display->display_options['filters']['field_type_de_document_tid']['table'] = 'field_data_field_type_de_document';
   $handler->display->display_options['filters']['field_type_de_document_tid']['field'] = 'field_type_de_document_tid';
@@ -185,9 +170,7 @@ function ressource_documentaire_views_default_views() {
     231346920 => 0,
     30037204 => 0,
   );
-  $handler->display->display_options['filters']['field_type_de_document_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_type_de_document_tid']['vocabulary'] = 'type_de_document';
-  /* Filter criterion: Contenu: Format de document (field_format_de_document) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_format_de_document_tid']['id'] = 'field_format_de_document_tid';
   $handler->display->display_options['filters']['field_format_de_document_tid']['table'] = 'field_data_field_format_de_document';
   $handler->display->display_options['filters']['field_format_de_document_tid']['field'] = 'field_format_de_document_tid';
@@ -203,13 +186,11 @@ function ressource_documentaire_views_default_views() {
     231346920 => 0,
     30037204 => 0,
   );
-  $handler->display->display_options['filters']['field_format_de_document_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_format_de_document_tid']['vocabulary'] = 'format_de_document';
-  /* Filter criterion: Contenu: Has taxonomy term */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['tid']['id'] = 'tid';
   $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
   $handler->display->display_options['filters']['tid']['field'] = 'tid';
-  $handler->display->display_options['filters']['tid']['value'] = '';
+  $handler->display->display_options['filters']['tid']['operator'] = 'or';
   $handler->display->display_options['filters']['tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
   $handler->display->display_options['filters']['tid']['expose']['label'] = 'Mot clé';
@@ -224,7 +205,6 @@ function ressource_documentaire_views_default_views() {
     4 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['tid']['vocabulary'] = 'tag_ressource_documentaire';
   $handler->display->display_options['path'] = 'extra/ressources-documentaires';
   $translatables['ressources_doc'] = array(
     t('Master'),
@@ -242,10 +222,10 @@ function ressource_documentaire_views_default_views() {
     t('‹ précédent'),
     t('suivant ›'),
     t('dernier »'),
-    t('Aucune ressource documentaire ne correspond à votre requête.'),
+    t('area'),
     t('Titre de la ressource documentaire'),
-    t('Fichiers attachés'),
-    t('Liens utiles'),
+    t('Broken handler field_data_field_scald_file.field_scald_file'),
+    t('Broken handler field_data_field_liens_utiles.field_liens_utiles'),
     t('Type de document'),
     t('Format de document'),
     t('Page'),
