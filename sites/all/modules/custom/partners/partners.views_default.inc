@@ -49,7 +49,7 @@ function partners_views_default_views() {
   $handler->display->display_options['fields']['field_url_partner']['label'] = '';
   $handler->display->display_options['fields']['field_url_partner']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_url_partner']['element_label_colon'] = FALSE;
-  /* Champ: Contenu: Logo */
+  /* Champ: Contenu: Grande image */
   $handler->display->display_options['fields']['field_images']['id'] = 'field_images';
   $handler->display->display_options['fields']['field_images']['table'] = 'field_data_field_images';
   $handler->display->display_options['fields']['field_images']['field'] = 'field_images';
@@ -57,10 +57,12 @@ function partners_views_default_views() {
   $handler->display->display_options['fields']['field_images']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_images']['alter']['text'] = '<a href="[field_url_partner]" target="_blank">[field_images]</a>';
   $handler->display->display_options['fields']['field_images']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_images']['click_sort_column'] = 'sid';
   $handler->display->display_options['fields']['field_images']['type'] = 'partner_1';
   $handler->display->display_options['fields']['field_images']['settings'] = array(
     'link' => '0',
   );
+  $handler->display->display_options['fields']['field_images']['group_column'] = 'sid';
   /* Filter criterion: Contenu: Publié */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -165,7 +167,7 @@ function partners_views_default_views() {
   $handler->display->display_options['fields']['field_url_partner']['label'] = '';
   $handler->display->display_options['fields']['field_url_partner']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_url_partner']['element_label_colon'] = FALSE;
-  /* Champ: Contenu: Logo */
+  /* Champ: Contenu: Grande image */
   $handler->display->display_options['fields']['field_images']['id'] = 'field_images';
   $handler->display->display_options['fields']['field_images']['table'] = 'field_data_field_images';
   $handler->display->display_options['fields']['field_images']['field'] = 'field_images';
@@ -173,10 +175,12 @@ function partners_views_default_views() {
   $handler->display->display_options['fields']['field_images']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_images']['alter']['text'] = '<a href="[field_url_partner]" target="_blank">[field_images]</a>';
   $handler->display->display_options['fields']['field_images']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_images']['click_sort_column'] = 'sid';
   $handler->display->display_options['fields']['field_images']['type'] = 'partner_1';
   $handler->display->display_options['fields']['field_images']['settings'] = array(
     'link' => '0',
   );
+  $handler->display->display_options['fields']['field_images']['group_column'] = 'sid';
   /* Champ: Draggableviews: Contenu */
   $handler->display->display_options['fields']['draggableviews']['id'] = 'draggableviews';
   $handler->display->display_options['fields']['draggableviews']['table'] = 'node';
@@ -214,7 +218,7 @@ function partners_views_default_views() {
   $handler->display->display_options['fields']['field_url_partner']['label'] = '';
   $handler->display->display_options['fields']['field_url_partner']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_url_partner']['element_label_colon'] = FALSE;
-  /* Champ: Contenu: Logo */
+  /* Champ: Contenu: Grande image */
   $handler->display->display_options['fields']['field_images']['id'] = 'field_images';
   $handler->display->display_options['fields']['field_images']['table'] = 'field_data_field_images';
   $handler->display->display_options['fields']['field_images']['field'] = 'field_images';
@@ -222,10 +226,12 @@ function partners_views_default_views() {
   $handler->display->display_options['fields']['field_images']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_images']['alter']['text'] = '<a href="[field_url_partner]" target="_blank">[field_images]</a>';
   $handler->display->display_options['fields']['field_images']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_images']['click_sort_column'] = 'sid';
   $handler->display->display_options['fields']['field_images']['type'] = 'partner_2';
   $handler->display->display_options['fields']['field_images']['settings'] = array(
     'link' => '0',
   );
+  $handler->display->display_options['fields']['field_images']['group_column'] = 'sid';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Draggableviews: Poids */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
