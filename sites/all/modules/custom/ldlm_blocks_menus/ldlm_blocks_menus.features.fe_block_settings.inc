@@ -191,7 +191,7 @@ function ldlm_blocks_menus_default_fe_block_settings() {
         'region' => 'home_col2',
         'status' => 1,
         'theme' => 'ldlm',
-        'weight' => -23,
+        'weight' => -26,
       ),
       'seven' => array(
         'region' => '',
@@ -223,7 +223,7 @@ function ldlm_blocks_menus_default_fe_block_settings() {
         'region' => 'top_bar',
         'status' => 1,
         'theme' => 'ldlm',
-        'weight' => -15,
+        'weight' => -26,
       ),
       'seven' => array(
         'region' => '',
@@ -287,7 +287,7 @@ function ldlm_blocks_menus_default_fe_block_settings() {
         'region' => 'top_bar',
         'status' => 1,
         'theme' => 'ldlm',
-        'weight' => -13,
+        'weight' => -23,
       ),
       'seven' => array(
         'region' => 'dashboard_sidebar',
@@ -306,7 +306,7 @@ function ldlm_blocks_menus_default_fe_block_settings() {
     'delta' => 1,
     'module' => 'superfish',
     'node_types' => array(),
-    'pages' => '',
+    'pages' => 'extra*',
     'roles' => array(),
     'themes' => array(
       'bartik' => array(
@@ -511,7 +511,7 @@ function ldlm_blocks_menus_default_fe_block_settings() {
         'region' => 'home_col2',
         'status' => 1,
         'theme' => 'ldlm',
-        'weight' => -18,
+        'weight' => -24,
       ),
       'seven' => array(
         'region' => '',
@@ -543,7 +543,7 @@ function ldlm_blocks_menus_default_fe_block_settings() {
         'region' => 'home_col2',
         'status' => 1,
         'theme' => 'ldlm',
-        'weight' => -21,
+        'weight' => -25,
       ),
       'seven' => array(
         'region' => '',
@@ -572,8 +572,8 @@ function ldlm_blocks_menus_default_fe_block_settings() {
         'weight' => 0,
       ),
       'ldlm' => array(
-        'region' => 'home_col2',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'ldlm',
         'weight' => -22,
       ),
@@ -604,8 +604,8 @@ function ldlm_blocks_menus_default_fe_block_settings() {
         'weight' => 0,
       ),
       'ldlm' => array(
-        'region' => 'home_col2',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'ldlm',
         'weight' => -20,
       ),
@@ -616,8 +616,8 @@ function ldlm_blocks_menus_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
-    'title' => '',
-    'visibility' => 0,
+    'title' => '<none>',
+    'visibility' => 1,
   );
 
   $export['views-formations-block_5'] = array(
@@ -639,7 +639,7 @@ function ldlm_blocks_menus_default_fe_block_settings() {
         'region' => 'home_col2',
         'status' => 1,
         'theme' => 'ldlm',
-        'weight' => -19,
+        'weight' => -23,
       ),
       'seven' => array(
         'region' => '',
