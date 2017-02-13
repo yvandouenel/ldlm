@@ -52,24 +52,14 @@ function feature_reservation_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Champ: Contenu: Date de réservation */
+  /* Champ: Broken/missing handler */
   $handler->display->display_options['fields']['field_date_reservation']['id'] = 'field_date_reservation';
   $handler->display->display_options['fields']['field_date_reservation']['table'] = 'field_data_field_date_reservation';
   $handler->display->display_options['fields']['field_date_reservation']['field'] = 'field_date_reservation';
   $handler->display->display_options['fields']['field_date_reservation']['label'] = '';
   $handler->display->display_options['fields']['field_date_reservation']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_date_reservation']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_date_reservation']['settings'] = array(
-    'format_type' => 'short',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_repeat_rule' => '',
-  );
-  $handler->display->display_options['fields']['field_date_reservation']['group_rows'] = FALSE;
-  $handler->display->display_options['fields']['field_date_reservation']['delta_offset'] = '0';
-  /* Sort criterion: Contenu: Date de réservation -  start date (field_date_reservation) */
+  /* Sort criterion: Broken/missing handler */
   $handler->display->display_options['sorts']['field_date_reservation_value']['id'] = 'field_date_reservation_value';
   $handler->display->display_options['sorts']['field_date_reservation_value']['table'] = 'field_data_field_date_reservation';
   $handler->display->display_options['sorts']['field_date_reservation_value']['field'] = 'field_date_reservation_value';
@@ -80,7 +70,7 @@ function feature_reservation_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 0;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Contenu: Objet de la réservation (field_objet_reservation) */
+  /* Filter criterion: Broken/missing handler */
   $handler->display->display_options['filters']['field_objet_reservation_tid']['id'] = 'field_objet_reservation_tid';
   $handler->display->display_options['filters']['field_objet_reservation_tid']['table'] = 'field_data_field_objet_reservation';
   $handler->display->display_options['filters']['field_objet_reservation_tid']['field'] = 'field_objet_reservation_tid';
@@ -97,8 +87,6 @@ function feature_reservation_views_default_views() {
     4 => 0,
     3 => 0,
   );
-  $handler->display->display_options['filters']['field_objet_reservation_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_objet_reservation_tid']['vocabulary'] = 'objet_reservation';
 
   /* Display: Month */
   $handler = $view->new_display('page', 'Month', 'page_1');
@@ -247,23 +235,13 @@ function feature_reservation_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
-  /* Champ: Contenu: Date de réservation */
+  /* Champ: Broken/missing handler */
   $handler->display->display_options['fields']['field_date_reservation']['id'] = 'field_date_reservation';
   $handler->display->display_options['fields']['field_date_reservation']['table'] = 'field_data_field_date_reservation';
   $handler->display->display_options['fields']['field_date_reservation']['field'] = 'field_date_reservation';
   $handler->display->display_options['fields']['field_date_reservation']['label'] = '';
   $handler->display->display_options['fields']['field_date_reservation']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_date_reservation']['hide_alter_empty'] = FALSE;
-  $handler->display->display_options['fields']['field_date_reservation']['settings'] = array(
-    'format_type' => 'short',
-    'fromto' => 'both',
-    'multiple_number' => '',
-    'multiple_from' => '',
-    'multiple_to' => '',
-    'show_repeat_rule' => '',
-  );
-  $handler->display->display_options['fields']['field_date_reservation']['group_rows'] = FALSE;
-  $handler->display->display_options['fields']['field_date_reservation']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Date: Date (node) */
   $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
