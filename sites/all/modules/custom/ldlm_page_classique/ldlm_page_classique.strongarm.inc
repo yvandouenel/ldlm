@@ -95,6 +95,9 @@ function ldlm_page_classique_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'vie' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

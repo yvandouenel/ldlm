@@ -67,10 +67,12 @@ function ldlm_page_classique_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'domainedo_media',
-        'settings' => array(),
-        'type' => 'title',
+        'settings' => array(
+          'link' => 0,
+        ),
+        'type' => 'full',
         'weight' => 3,
       ),
       'teaser' => array(
@@ -252,9 +254,8 @@ function ldlm_page_classique_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 8,
       ),
       'teaser' => array(
