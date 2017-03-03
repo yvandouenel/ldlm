@@ -1,6 +1,6 @@
 name = News
 core = 7.x
-package = Domaine d'O
+package = Generic Feature
 version = 7.x-0.4
 project = news
 dependencies[] = atom_reference

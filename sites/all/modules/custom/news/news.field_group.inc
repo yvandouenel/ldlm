@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function news_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -45,7 +45,7 @@ function news_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_all_home_zoom|node|news|zoom'] = $field_group;
+  $field_groups['group_all_home_zoom|node|news|zoom'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -74,7 +74,7 @@ function news_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_event_summa_dates|node|news|zoom'] = $field_group;
+  $field_groups['group_event_summa_dates|node|news|zoom'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -107,7 +107,13 @@ function news_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_title_img|node|news|teaser'] = $field_group;
+  $field_groups['group_title_img|node|news|teaser'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Group event summary and dates');
+  t('groupe titre et image');
+  t('groupe_all');
+
+  return $field_groups;
 }
