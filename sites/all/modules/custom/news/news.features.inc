@@ -30,6 +30,53 @@ function news_views_api($module = NULL, $api = NULL) {
 }
 
 /**
+ * Implements hook_image_default_styles().
+ */
+function news_image_default_styles() {
+  $styles = array();
+
+  // Exported image style: home_event.
+  $styles['home_event'] = array(
+    'label' => 'home_event (556x313)',
+    'effects' => array(
+      13 => array(
+        'name' => 'manualcrop_crop_and_scale',
+        'data' => array(
+          'width' => 556,
+          'height' => 313,
+          'upscale' => 0,
+          'respectminimum' => 1,
+          'onlyscaleifcrop' => 0,
+          'style_name' => 'home_event',
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  // Exported image style: home_zoom_event.
+  $styles['home_zoom_event'] = array(
+    'label' => 'home zoom event (301x428)',
+    'effects' => array(
+      12 => array(
+        'name' => 'manualcrop_crop_and_scale',
+        'data' => array(
+          'width' => 301,
+          'height' => 428,
+          'upscale' => 0,
+          'respectminimum' => 1,
+          'onlyscaleifcrop' => 0,
+          'style_name' => 'home_zoom_event',
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $styles;
+}
+
+/**
  * Implements hook_node_info().
  */
 function news_node_info() {
