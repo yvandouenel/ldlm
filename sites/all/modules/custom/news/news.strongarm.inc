@@ -158,6 +158,63 @@ function news_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_scald_atom__image';
+  $strongarm->value = array(
+    'view_modes' => array(
+      'title' => array(
+        'custom_settings' => FALSE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'teaser' => array(
+        'custom_settings' => FALSE,
+      ),
+      'tv_img' => array(
+        'custom_settings' => FALSE,
+      ),
+      'home_zoom' => array(
+        'custom_settings' => FALSE,
+      ),
+      'formation' => array(
+        'custom_settings' => FALSE,
+      ),
+      'small' => array(
+        'custom_settings' => FALSE,
+      ),
+      'partner_1' => array(
+        'custom_settings' => FALSE,
+      ),
+      'partner_2' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'en_tete_page_classique' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
+    'extra_fields' => array(
+      'form' => array(),
+      'display' => array(
+        'atom' => array(
+          'default' => array(
+            'weight' => '1',
+            'visible' => TRUE,
+          ),
+        ),
+      ),
+    ),
+  );
+  $export['field_bundle_settings_scald_atom__image'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_news';
   $strongarm->value = '0';
   $export['language_content_type_news'] = $strongarm;
@@ -198,6 +255,78 @@ function news_strongarm() {
   $strongarm->name = 'node_submitted_news';
   $strongarm->value = 0;
   $export['node_submitted_news'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scald_custom_contexts';
+  $strongarm->value = array(
+    'teaser' => array(
+      'name' => 'teaser',
+      'title' => 'teaser',
+      'description' => '',
+      'render_language' => 'XHTML',
+      'parseable' => TRUE,
+      'formats' => array(),
+    ),
+    'tv_img' => array(
+      'name' => 'tv_img',
+      'title' => 'tv_img',
+      'description' => 'Les grandes images qui sont utilisées sur la page d\'accueil',
+      'render_language' => 'XHTML',
+      'parseable' => TRUE,
+      'formats' => array(),
+    ),
+    'home_zoom' => array(
+      'name' => 'home_zoom',
+      'title' => 'home_zoom',
+      'description' => '',
+      'render_language' => 'XHTML',
+      'parseable' => TRUE,
+      'formats' => array(),
+    ),
+    'formation' => array(
+      'name' => 'formation',
+      'title' => 'Formation',
+      'description' => '',
+      'render_language' => 'XHTML',
+      'parseable' => TRUE,
+      'formats' => array(),
+    ),
+    'small' => array(
+      'name' => 'small',
+      'title' => 'small',
+      'description' => '',
+      'render_language' => 'XHTML',
+      'parseable' => TRUE,
+      'formats' => array(),
+    ),
+    'partner_1' => array(
+      'name' => 'partner_1',
+      'title' => 'partner 1',
+      'description' => '',
+      'render_language' => 'XHTML',
+      'parseable' => TRUE,
+      'formats' => array(),
+    ),
+    'partner_2' => array(
+      'name' => 'partner_2',
+      'title' => 'partner 2',
+      'description' => '',
+      'render_language' => 'XHTML',
+      'parseable' => TRUE,
+      'formats' => array(),
+    ),
+    'en_tete_page_classique' => array(
+      'name' => 'en_tete_page_classique',
+      'title' => 'en-tete-page-classique',
+      'description' => '',
+      'render_language' => 'XHTML',
+      'parseable' => TRUE,
+      'formats' => array(),
+    ),
+  );
+  $export['scald_custom_contexts'] = $strongarm;
 
   return $export;
 }
