@@ -272,6 +272,9 @@ h2.title2_zoom_home{
   font-size:  1.5em;
   color: white;
   text-decoration: none;
+  background: rgba(00, 00, 00, .5);
+  padding: 5px;
+  display: block;
 }
 .h3-zoom-home a:hover{
   text-decoration: underline;
