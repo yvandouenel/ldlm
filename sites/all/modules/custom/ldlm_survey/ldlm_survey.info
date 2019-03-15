@@ -1,0 +1,6 @@
+name = Enquêtes de satisfaction
+core = 7.x
+package = LDLM
+files[] = includes/LdlmSurveyController.php
+features[features_api][] = api:2
+project path = sites/all/modules/custom

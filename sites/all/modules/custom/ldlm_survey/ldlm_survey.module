@@ -1,0 +1,177 @@
+<?php
+
+/**
+ * @file
+ * Formulaires de satisfaction.
+ */
+
+/**
+ * Implements hook_entity_info().
+ */
+function ldlm_survey_entity_info() {
+  $info = [];
+
+  $info['participant'] = [
+    'label' => t('Participant à une enquête'),
+    'plural label' => t('Participants à une enquête'),
+    'description' => t('Participant à une enquête donnée'),
+    'entity keys' => ['id' => 'pid'],
+  ];
+
+  $info['campaign'] = [
+    'label' => t('Enquête de satisfaction'),
+    'plural label' => t('Enquêtes de satisfaction'),
+    'description' => t('Enquête de satisfaction (campagne)'),
+    'entity keys' => ['id' => 'cid'],
+  ];
+
+  $info['campaign_group'] = [
+    'label' => t('Groupe de campagnes de satisfaction.'),
+    'plural label' => t('Groupes de campagnes de satisfaction'),
+    'description' => t('Groupe de campagnes de satisfaction.'),
+    'entity keys' => ['id' => 'cgid'],
+  ];
+
+  $info['survey'] = [
+    'label' => t('Questionnaire'),
+    'plural label' => t('Questionnaires'),
+    'description' => t('Questionnaire.'),
+    'entity keys' => ['id' => 'sid'],
+  ];
+
+  $info['question_group'] = [
+    'label' => t('Groupe de questions'),
+    'plural label' => t('Groupes de questions'),
+    'description' => t('Groupe (bloc) de questions.'),
+    'entity keys' => ['id' => 'qgid'],
+  ];
+
+  $info['question'] = [
+    'label' => t('Question'),
+    'plural label' => t('Questions'),
+    'description' => t('Question.'),
+    'entity keys' => ['id' => 'qid'],
+  ];
+
+  $info['submitted_data'] = [
+    'label' => t('Points pour une question'),
+    'plural label' => t('Points pour une question'),
+    'description' => t('Données soumises (points) pour une question.'),
+    'entity keys' => ['id' => 'smdid'],
+  ];
+
+  $info['submission'] = [
+    'label' => t("Soumission d'un formulaire"),
+    'plural label' => t('Soumissions de formulaires'),
+    'description' => t("Soumission d'un formulaire."),
+    'entity keys' => ['id' => 'smid'],
+  ];
+
+  foreach ($info as $entity => $definition) {
+    $definition += [
+      'base table' => 'ldlm_' . $entity,
+      'module' => 'ldlm_survey',
+      'entity class' => 'Entity',
+      'controller class' => 'LdlmSurveyController',
+      'views controller class' => 'EntityDefaultViewsController',
+      'fieldable' => TRUE,
+      'label callback' => 'entity_class_label',
+      'uri callback' => 'entity_class_uri',
+    ];
+  }
+
+  return $info;
+}
+
+/**
+ * Implements hook_entity_property_info_alter().
+ */
+function ldlm_survey_entity_property_info_alter(&$info) {
+  foreach (ldlm_survey_entity_info() as $entity => $definition) {
+    $info[$entity]['properties']['created'] = [
+      'label' => t('Date de création'),
+      'description' => t('Date de création'),
+      'type' => 'date',
+      'schema field' => 'created',
+    ];
+    $info[$entity]['properties']['changed'] = [
+      'label' => t('Date de modification'),
+      'description' => t('Date de modification'),
+      'type' => 'date',
+      'schema field' => 'changed',
+    ];
+  }
+
+  $info['participant']['properties']['answered'] = [
+    'label' => t('A répondu'),
+    'description' => "Le participant a répondu à l'enquête de satisfaction associée.",
+    'type' => 'boolean',
+    'schema field' => 'answered',
+  ];
+  $info['participant']['properties']['cid'] = [
+    'label' => t('Campagne associée'),
+    'description' => t('Campagne à laquelle le participant est invité à participer.'),
+    'type' => 'campaign',
+    'schema field' => 'cid',
+  ];
+
+  $info['campaign']['properties']['begin'] = [
+    'label' => t("Date d'ouverture"),
+    'description' => t("Date d'ouverture de la campagne."),
+    'type' => 'date',
+    'schema field' => 'begin',
+  ];
+  $info['campaign']['properties']['end'] = [
+    'label' => t('Date de fermeture'),
+    'description' => t('Date de fermeture de la campagne.'),
+    'type' => 'date',
+    'schema field' => 'end',
+  ];
+  $info['campaign']['properties']['cgid'] = [
+    'label' => t('Groupe de campagnes associé'),
+    'description' => t('Groupe de campagnes associé.'),
+    'type' => 'campaign_group',
+    'schema field' => 'cgid',
+  ];
+
+  $info['campaign_group']['properties']['sid'] = [
+    'label' => t('Questionnaire associé'),
+    'description' => t('Questionnaire associé.'),
+    'type' => 'survey',
+    'schema field' => 'sid',
+  ];
+
+  $info['question_group']['properties']['sid'] = [
+    'label' => t('Questionnaire associé'),
+    'description' => t('Questionnaire associé à ce groupe de questions.'),
+    'type' => 'survey',
+    'schema field' => 'sid',
+  ];
+
+  $info['question']['properties']['qgid'] = [
+    'label' => t('Groupe de questions associé'),
+    'description' => t('Groupe de questions associé à cette question.'),
+    'type' => 'question_group',
+    'schema field' => 'qgid',
+  ];
+
+  $info['submitted_data']['properties']['qid'] = [
+    'label' => t('Question associée'),
+    'description' => t('Question associée à ces données de soumission.'),
+    'type' => 'question',
+    'schema field' => 'qid',
+  ];
+  $info['submitted_data']['properties']['smid'] = [
+    'label' => t('Soumission associée'),
+    'description' => t('Soumission associée à ces données.'),
+    'type' => 'submission',
+    'schema field' => 'smid',
+  ];
+
+  $info['submission']['properties']['sid'] = [
+    'label' => t('Questionnaire associé'),
+    'description' => t('Questionnaire associé à cette soumission.'),
+    'type' => 'survey',
+    'schema field' => 'sid',
+  ];
+}

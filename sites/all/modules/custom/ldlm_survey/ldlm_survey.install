@@ -1,0 +1,307 @@
+<?php
+
+/**
+ * @file
+ * Procédures d'installation et de mise à jour.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function ldlm_survey_schema() {
+  $schema = [];
+
+  $schema['ldlm_participant'] = [
+    'description' => 'Participant à une enquête.',
+    'fields' => [
+      'pid' => [
+        'description' => 'Identifiant',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'mail' => [
+        'description' => 'Adresse électronique (unique) du participant.',
+        'type' => 'varchar',
+        'length' => 254,
+        'not null' => FALSE,
+        'default' => '',
+      ],
+      'name' => [
+        'description' => 'Nom du participant.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'answered' => [
+        'description' => "Le participant a répondu à l'enquête de satisfaction associée.",
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+      ],
+      'cid' => [
+        'description' => 'La campagne à laquelle ce participant est appelé à répondre.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'unique keys' => [
+      'cid_mail' => ['cid', 'mail'],
+    ],
+    'primary key' => ['pid'],
+    'foreign keys' => [
+      'participant_campaign' => [
+        'table' => 'ldlm_campaign',
+        'columns' => ['cid' => 'cid'],
+      ],
+    ],
+    'indexes' => [
+      'mail' => ['mail'],
+      'cid' => ['cid'],
+    ],
+  ];
+
+  $schema['ldlm_campaign'] = [
+    'description' => 'Enquête de satisfaction.',
+    'fields' => [
+      'title' => [
+        'description' => 'Titre de la campagne.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'cid'  => [
+        'description' => 'Identifiant.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'begin' => [
+        'description' => "Date d'ouverture de la campagne.",
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'end' => [
+        'description' => "Date de fermeture de la campagne.",
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'cgid' => [
+        'description' => 'Groupe de campagnes associé.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['cid'],
+    'foreign keys' => [
+      'campaign_group' => [
+        'table' => 'ldlm_campaign_group',
+        'columns' => ['cgid' => 'cgid'],
+      ],
+    ],
+    'indexes' => ['cgid' => ['cgid']],
+  ];
+
+  $schema['ldlm_campaign_group'] = [
+    'description' => 'Groupe de campagnes de satisfaction.',
+    'fields' => [
+      'title' => [
+        'description' => 'Titre du groupe de campagnes.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'cgid' => [
+        'description' => 'Identifiant.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'sid' => [
+        'description' => 'Questionnaire associé à ce groupe de campagnes.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['cgid'],
+    'foreign keys' => [
+      'campaign_group_survey' => [
+        'table' => 'ldlm_survey',
+        'columns' => ['sid' => 'sid'],
+      ],
+    ],
+  ];
+
+  $schema['ldlm_survey'] = [
+    'description' => 'Questionnaire.',
+    'fields' => [
+      'title' => [
+        'description' => 'Titre du questionnaire.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'sid' => [
+        'description' => 'Identifiant.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['sid'],
+  ];
+
+  $schema['ldlm_question_group'] = [
+    'description' => 'Groupe (bloc) de questions.',
+    'fields' => [
+      'title' => [
+        'description' => 'Titre du groupe de questions.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'qgid' => [
+        'description' => 'Identifiant.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'sid' => [
+        'description' => 'Questionnaire auquel ce groupe de questions appartient.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['qgid'],
+    'foreign keys' => [
+      'question_group_survey' => [
+        'table' => 'ldlm_survey',
+        'columns' => ['sid' => 'sid'],
+      ],
+    ],
+  ];
+
+  $schema['ldlm_question'] = [
+    'description' => 'Question.',
+    'fields' => [
+      'qid' => [
+        'description' => 'Identifiant.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'label' => [
+        'description' => 'Libellé de la question.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'qgid' => [
+        'description' => 'Groupe de questions auquel cette question appartient.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['qid'],
+    'foreign keys' => [
+      'question_group' => [
+        'table' => 'ldlm_question_group',
+        'columns' => ['qgid' => 'qgid'],
+      ],
+    ],
+  ];
+
+  $schema['ldlm_submitted_data'] = [
+    'description' => 'Données soumises (points) pour une question.',
+    'fields' => [
+      'smdid' => [
+        'description' => 'Identifiant',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'count' => [
+        'description' => 'Nombre de points pour cette question.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+      ],
+      'qid' => [
+        'description' => 'Question.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'smid' => [
+        'description' => 'Soumission.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['smdid'],
+    'foreign keys' => [
+      'submitted_data_question' => [
+        'table' => 'ldlm_question',
+        'columns' => ['qid' => 'qid'],
+      ],
+      'submitted_data_submission' => [
+        'table' => 'ldlm_submission',
+        'columns' => ['smid' => 'smid'],
+      ],
+    ],
+  ];
+
+  $schema['ldlm_submission'] = [
+    'description' => "Soumission d'un formulaire.",
+    'fields' => [
+      'smid' => [
+        'description' => 'Identifiant',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'sid' => [
+        'description' => 'Questionnaire soumis.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['smid'],
+    'foreign keys' => [
+      'submission_survey' => [
+        'table' => 'ldlm_survey',
+        'columns' => ['sid' => 'sid'],
+      ],
+    ],
+  ];
+
+  foreach ($schema as &$table_description) {
+    $table_description['created'] = [
+      'description' => 'Date de création',
+      'type' => 'int',
+      'not null' => TRUE,
+    ];
+    $table_description['changed'] = [
+      'description' => 'Date de modification',
+      'type' => 'int',
+      'not null' => TRUE,
+    ];
+  }
+
+  return $schema;
+}
