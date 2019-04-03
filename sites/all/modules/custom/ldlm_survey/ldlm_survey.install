@@ -291,12 +291,12 @@ function ldlm_survey_schema() {
   ];
 
   foreach ($schema as &$table_description) {
-    $table_description['created'] = [
+    $table_description['fields']['created'] = [
       'description' => 'Date de création',
       'type' => 'int',
       'not null' => TRUE,
     ];
-    $table_description['changed'] = [
+    $table_description['fields']['changed'] = [
       'description' => 'Date de modification',
       'type' => 'int',
       'not null' => TRUE,

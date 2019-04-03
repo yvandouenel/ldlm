@@ -188,3 +188,22 @@ function ldlm_survey_survey_form_submit($form, &$form_state) {
 
   $form_state['redirect'] = 'admin/content/survey/survey/' . $survey->sid . '/edit';
 }
+
+/**
+ * Formulaire de confirmation de suppression d'un questionnaire.
+ */
+function ldlm_survey_survey_delete_confirm($form, &$form_state, $survey) {
+  $form['#survey'] = $survey;
+  return confirm_form($form, t('Êtes-vous sûr·e de vouloir supprimer le questionnaire %title', ['%title' => $survey->title]), 'admin/content/survey/survey');
+}
+
+/**
+ * Soumission formulaire de confirmation de suppression d'un questionnaire.
+ */
+function ldlm_survey_survey_delete_confirm_submit($form, &$form_state) {
+  $survey = $form['#survey'];
+  $survey->delete();
+  watchdog('ldlm_survey', 'Questionnaire %title supprimé', ['%title' => $survey->title]);
+  drupal_set_message(t('Questionnaire %title supprimé', ['%title' => $survey->title]));
+  $form_state['redirect'] = 'admin/content/survey/survey';
+}

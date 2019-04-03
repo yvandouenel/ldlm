@@ -5,6 +5,8 @@
  * Formulaires de satisfaction.
  */
 
+include_once 'ldlm_survey.features.inc';
+
 /**
  * Implements hook_menu().
  */
@@ -22,6 +24,13 @@ function ldlm_survey_menu() {
     'title' => 'Modifier un questionnaire',
     'page callback' => 'drupal_get_form',
     'page arguments' => ['ldlm_survey_survey_form', 4],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.survey.inc',
+  ];
+  $items['admin/content/survey/survey/%survey/delete'] = [
+    'title' => 'Supprimer un questionnaire',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['ldlm_survey_survey_delete_confirm', 4],
     'access arguments' => ['administer surveys'],
     'file' => 'ldlm_survey.survey.inc',
   ];
@@ -224,4 +233,20 @@ function ldlm_survey_entity_property_info_alter(&$info) {
 function survey_load($sid, $reset = FALSE) {
   $surveys = entity_load('survey', [$sid], [], $reset);
   return reset($surveys);
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ */
+function ldlm_survey_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  // Ajouter le lien d'ajout d'un questionnaire au-dessus de la liste.
+  if ($root_path == 'admin/content/survey/survey') {
+    $item = menu_get_item('admin/content/survey/survey/add');
+    if ($item['access']) {
+      $data['actions']['output'][] = [
+        '#theme' => 'menu_local_action',
+        '#link' => $item,
+      ];
+    }
+  }
 }
