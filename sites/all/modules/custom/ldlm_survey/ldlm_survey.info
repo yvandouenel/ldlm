@@ -1,6 +1,13 @@
 name = Enquêtes de satisfaction
 core = 7.x
 package = LDLM
-files[] = includes/LdlmSurveyController.php
 features[features_api][] = api:2
+features[user_permission][] = administer surveys
+features_exclude[dependencies][features] = features
+features_exclude[dependencies][ldlm_survey] = ldlm_survey
+files[] = includes/LdlmSurveyController.php
+files[] = includes/SurveyController.php
+files[] = includes/Survey.php
+files[] = includes/QuestionGroup.php
+files[] = includes/QuestionGroupController.php
 project path = sites/all/modules/custom

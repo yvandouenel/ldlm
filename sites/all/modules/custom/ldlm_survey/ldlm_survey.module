@@ -6,6 +6,42 @@
  */
 
 /**
+ * Implements hook_menu().
+ */
+function ldlm_survey_menu() {
+  $items = [];
+
+  $items['admin/content/survey/survey/add'] = [
+    'title' => 'Ajouter un questionnaire',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['ldlm_survey_survey_form'],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.survey.inc',
+  ];
+  $items['admin/content/survey/survey/%survey/edit'] = [
+    'title' => 'Modifier un questionnaire',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['ldlm_survey_survey_form', 4],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.survey.inc',
+  ];
+
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function ldlm_survey_permission() {
+  return [
+    'administer surveys' => [
+      'title' => t('Enquêtes de satisfaction'),
+      'description' => t('Administrer les enquêtes de satisfaction'),
+    ],
+  ];
+}
+
+/**
  * Implements hook_entity_info().
  */
 function ldlm_survey_entity_info() {
@@ -37,6 +73,8 @@ function ldlm_survey_entity_info() {
     'plural label' => t('Questionnaires'),
     'description' => t('Questionnaire.'),
     'entity keys' => ['id' => 'sid'],
+    'entity class' => 'Survey',
+    'controller class' => 'SurveyController',
   ];
 
   $info['question_group'] = [
@@ -44,6 +82,8 @@ function ldlm_survey_entity_info() {
     'plural label' => t('Groupes de questions'),
     'description' => t('Groupe (bloc) de questions.'),
     'entity keys' => ['id' => 'qgid'],
+    'entity class' => 'QuestionGroup',
+    'controller class' => 'QuestionGroupController',
   ];
 
   $info['question'] = [
@@ -67,7 +107,7 @@ function ldlm_survey_entity_info() {
     'entity keys' => ['id' => 'smid'],
   ];
 
-  foreach ($info as $entity => $definition) {
+  foreach ($info as $entity => &$definition) {
     $definition += [
       'base table' => 'ldlm_' . $entity,
       'module' => 'ldlm_survey',
@@ -174,4 +214,14 @@ function ldlm_survey_entity_property_info_alter(&$info) {
     'type' => 'survey',
     'schema field' => 'sid',
   ];
+}
+
+/**
+ * Chargement d'une enquête.
+ *
+ * Nécessaire pour utiliser un motif de substitution dans hook_menu().
+ */
+function survey_load($sid, $reset = FALSE) {
+  $surveys = entity_load('survey', [$sid], [], $reset);
+  return reset($surveys);
 }
