@@ -186,6 +186,7 @@ function ldlm_survey_survey_form_submit($form, &$form_state) {
     }
   }
 
+  drupal_set_message('Le formulaire a été enregistré.');
   $form_state['redirect'] = 'admin/content/survey/survey/' . $survey->sid . '/edit';
 }
 

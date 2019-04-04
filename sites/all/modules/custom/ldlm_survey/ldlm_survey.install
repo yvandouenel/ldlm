@@ -27,8 +27,15 @@ function ldlm_survey_schema() {
         'not null' => FALSE,
         'default' => '',
       ],
+      'surname' => [
+        'description' => 'Nom de famille du participant.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
       'name' => [
-        'description' => 'Nom du participant.',
+        'description' => 'Prénom du participant.',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,

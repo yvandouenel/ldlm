@@ -34,6 +34,20 @@ function ldlm_survey_menu() {
     'access arguments' => ['administer surveys'],
     'file' => 'ldlm_survey.survey.inc',
   ];
+  $items['admin/content/survey/campaign/add'] = [
+    'title' => 'Ajouter une campagne',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['ldlm_survey_campaign_form'],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.campaign.inc',
+  ];
+  $items['admin/content/survey/campaign/%campaign/edit'] = [
+    'title' => 'Modifier une campagne',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['ldlm_survey_campaign_form', 4],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.campaign.inc',
+  ];
 
   return $items;
 }
@@ -236,6 +250,22 @@ function survey_load($sid, $reset = FALSE) {
 }
 
 /**
+ * Chargement d'une campagne.
+ */
+function campaign_load($cid, $reset = FALSE) {
+  $campaigns = entity_load('campaign', [$cid], [], $reset);
+  return reset($campaigns);
+}
+
+/**
+ * Chargement d'un groupe de campagnes.
+ */
+function campaign_group_load($cgid, $reset = FALSE) {
+  $campaign_groups = entity_load('campaign_group', [$cgid], [], $reset);
+  return reset($campaign_groups);
+}
+
+/**
  * Implements hook_menu_local_tasks_alter().
  */
 function ldlm_survey_menu_local_tasks_alter(&$data, $router_item, $root_path) {
@@ -249,4 +279,62 @@ function ldlm_survey_menu_local_tasks_alter(&$data, $router_item, $root_path) {
       ];
     }
   }
+}
+
+/**
+ * Récupérer la liste de tous les questionnaires existants.
+ */
+function ldlm_survey_get_surveys() {
+  $surveys = [];
+
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'survey')->execute();
+  if (!empty($result['survey'])) {
+    $sids = array_keys($result['survey']);
+    $surveys = entity_load('survey', $sids);
+  }
+
+  return $surveys;
+}
+
+/**
+ * Liste de tous les questionnaires, pour utilisation dans un formulaire.
+ */
+function ldlm_survey_get_surveys_as_options() {
+  $options = ['_none' => t('- Choisir un questionnaire -')];
+
+  foreach (ldlm_survey_get_surveys() as $sid => $survey) {
+    $options[$sid] = $survey->title;
+  }
+
+  return $options;
+}
+
+/**
+ * Récupérer la liste de tous les groupes de campagnes existants.
+ */
+function ldlm_survey_get_campaign_groups() {
+  $campaign_groups = [];
+
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'campaign_group')->execute();
+  if (!empty($result['campaign_group'])) {
+    $cgids = array_keys($result['campaign_group']);
+    $campaign_groups = entity_load('campaign_group', $cgids);
+  }
+
+  return $campaign_groups;
+}
+
+/**
+ * Liste de tous les groupes de campagnes, pour utilisation dans un formulaire.
+ */
+function ldlm_survey_get_campaign_groups_as_options() {
+  $options = ['_none' => t('- Choisir un groupe de campagnes -')];
+
+  foreach (ldlm_survey_get_campaign_groups() as $cgid => $campaign_group) {
+    $options[$cgid] = $campaign_group->title;
+  }
+
+  return $options;
 }
