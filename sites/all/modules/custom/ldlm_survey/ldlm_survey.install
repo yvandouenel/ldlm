@@ -97,6 +97,13 @@ function ldlm_survey_schema() {
         'type' => 'int',
         'not null' => TRUE,
       ],
+      'status' => [
+        'description' => "État de la campagne (programmée, en cours, fermée).",
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'tiny',
+      ],
       'cgid' => [
         'description' => 'Groupe de campagnes associé.',
         'type' => 'int',
@@ -111,7 +118,10 @@ function ldlm_survey_schema() {
         'columns' => ['cgid' => 'cgid'],
       ],
     ],
-    'indexes' => ['cgid' => ['cgid']],
+    'indexes' => [
+      'cgid' => ['cgid'],
+      'status' => ['status'],
+    ],
   ];
 
   $schema['ldlm_campaign_group'] = [

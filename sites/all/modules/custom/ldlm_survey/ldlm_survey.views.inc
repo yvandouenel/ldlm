@@ -17,4 +17,11 @@ function ldlm_survey_views_data_alter(&$data) {
       'handler' => 'views_handler_field_survey_actions',
     ],
   ];
+  $data['views']['field_campaign_actions'] = [
+    'title' => t("Liens d'administration des campagnes"),
+    'help' => t("Liens permettant diverses opérations sur les campagnes d'évaluation, comme l'édition et la suppression"),
+    'field' => [
+      'handler' => 'views_handler_field_campaign_actions',
+    ],
+  ];
 }

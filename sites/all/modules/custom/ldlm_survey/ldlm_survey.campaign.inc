@@ -408,6 +408,8 @@ function ldlm_survey_campaign_form_submit($form, &$form_state) {
     ]);
     $participant->save();
   }
+
+  drupal_set_message(t('La campagne %title a été enregistrée', ['%title' => $campaign->title]));
 }
 
 /**
@@ -451,4 +453,23 @@ function ldlm_survey_campaign_read_participants_csv($uri) {
   }
 
   return $participants;
+}
+
+/**
+ * Formulaire de confirmation de suppression d'une campagne.
+ */
+function ldlm_survey_campaign_delete_confirm($form, &$form_state, $campaign) {
+  $form['#campaign'] = $campaign;
+  return confirm_form($form, t('Êtes-vous sûr·e de vouloir supprimer la campagne %title ?', ['%title' => $campaign->title]), 'admin/content/survey/campaign');
+}
+
+/**
+ * Soumission formulaire de confirmation de suppression d'une campagne (submit).
+ */
+function ldlm_survey_campaign_delete_confirm_submit($form, &$form_state) {
+  $campaign = $form['#campaign'];
+  $campaign->delete();
+  watchdog('ldlm_survey', 'Campagne %title supprimé', ['%title' => $campaign->title]);
+  drupal_set_message(t('Campagne %title supprimé', ['%title' => $campaign->title]));
+  $form_state['redirect'] = 'admin/content/survey/campaign';
 }

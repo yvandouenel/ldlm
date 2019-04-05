@@ -7,12 +7,23 @@
 
 include_once 'ldlm_survey.features.inc';
 
+define('LDLM_SURVEY_STATUS_SCHEDULED', 0);
+define('LDLM_SURVEY_STATUS_OPEN', 1);
+define('LDLM_SURVEY_STATUS_CLOSED', 2);
+
 /**
  * Implements hook_menu().
  */
 function ldlm_survey_menu() {
   $items = [];
 
+  $items['admin/content/survey'] = [
+    'title' => 'Enquêtes de satisfaction',
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => ['administer surveys'],
+    'file path' => drupal_get_path('module', 'system'),
+    'file' => 'system.admin.inc',
+  ];
   $items['admin/content/survey/survey/add'] = [
     'title' => 'Ajouter un questionnaire',
     'page callback' => 'drupal_get_form',
@@ -45,6 +56,13 @@ function ldlm_survey_menu() {
     'title' => 'Modifier une campagne',
     'page callback' => 'drupal_get_form',
     'page arguments' => ['ldlm_survey_campaign_form', 4],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.campaign.inc',
+  ];
+  $items['admin/content/survey/campaign/%campaign/delete'] = [
+    'title' => 'Supprimer une campagne',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['ldlm_survey_campaign_delete_confirm', 4],
     'access arguments' => ['administer surveys'],
     'file' => 'ldlm_survey.campaign.inc',
   ];
@@ -82,6 +100,8 @@ function ldlm_survey_entity_info() {
     'plural label' => t('Enquêtes de satisfaction'),
     'description' => t('Enquête de satisfaction (campagne)'),
     'entity keys' => ['id' => 'cid'],
+    'entity class' => 'Campaign',
+    'controller class' => 'CampaignController',
   ];
 
   $info['campaign_group'] = [
@@ -89,6 +109,8 @@ function ldlm_survey_entity_info() {
     'plural label' => t('Groupes de campagnes de satisfaction'),
     'description' => t('Groupe de campagnes de satisfaction.'),
     'entity keys' => ['id' => 'cgid'],
+    'entity class' => 'CampaignGroup',
+    'controller class' => 'CampaignGroupController',
   ];
 
   $info['survey'] = [
@@ -190,6 +212,13 @@ function ldlm_survey_entity_property_info_alter(&$info) {
     'type' => 'date',
     'schema field' => 'end',
   ];
+  $info['campaign']['properties']['status'] = [
+    'label' => t('État de la campagne'),
+    'description' => t('État de la campagne (programmée, en cours ou fermée).'),
+    'type' => 'integer',
+    'schema field' => 'status',
+    'options list' => 'ldlm_survey_statuses',
+  ];
   $info['campaign']['properties']['cgid'] = [
     'label' => t('Groupe de campagnes associé'),
     'description' => t('Groupe de campagnes associé.'),
@@ -236,6 +265,17 @@ function ldlm_survey_entity_property_info_alter(&$info) {
     'description' => t('Questionnaire associé à cette soumission.'),
     'type' => 'survey',
     'schema field' => 'sid',
+  ];
+}
+
+/**
+ * Callback renvoyant les types de statuts pour les campagnes.
+ */
+function ldlm_survey_statuses() {
+  return [
+    LDLM_SURVEY_STATUS_SCHEDULED => t('Programmée'),
+    LDLM_SURVEY_STATUS_OPEN => t('En cours'),
+    LDLM_SURVEY_STATUS_CLOSED => t('Fermée'),
   ];
 }
 
