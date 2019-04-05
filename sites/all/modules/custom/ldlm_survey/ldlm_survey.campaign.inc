@@ -473,3 +473,22 @@ function ldlm_survey_campaign_delete_confirm_submit($form, &$form_state) {
   drupal_set_message(t('Campagne %title supprimé', ['%title' => $campaign->title]));
   $form_state['redirect'] = 'admin/content/survey/campaign';
 }
+
+/**
+ * Export des participants en CSV.
+ */
+function ldlm_survey_export_participants($campaign) {
+  $delimiter = ';';
+  $header = [t('Nom'), t('Prénom'), t('Courriel')];
+
+  drupal_add_http_header('Content-Type', 'text/csv; utf-8');
+  drupal_add_http_header('Content-Disposition', 'attachment; filename=participants_' . $campaign->cid . '.csv');
+  $handle = fopen('php://output', 'w');
+  fputcsv($handle, $header, $delimiter);
+  foreach ($campaign->getParticipants() as $participant) {
+    $line = [$participant->surname, $participant->name, $participant->mail];
+    fputcsv($handle, $line, $delimiter);
+  }
+  fclose($handle);
+  drupal_exit();
+}

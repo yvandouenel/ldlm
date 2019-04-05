@@ -59,6 +59,13 @@ function ldlm_survey_menu() {
     'access arguments' => ['administer surveys'],
     'file' => 'ldlm_survey.campaign.inc',
   ];
+  $items['admin/content/survey/campaign/%campaign/participants-csv'] = [
+    'title' => 'Exporter les participants',
+    'page callback' => 'ldlm_survey_export_participants',
+    'page arguments' => [4],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.campaign.inc',
+  ];
   $items['admin/content/survey/campaign/%campaign/delete'] = [
     'title' => 'Supprimer une campagne',
     'page callback' => 'drupal_get_form',
