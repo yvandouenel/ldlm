@@ -316,15 +316,25 @@ function campaign_group_load($cgid, $reset = FALSE) {
  * Implements hook_menu_local_tasks_alter().
  */
 function ldlm_survey_menu_local_tasks_alter(&$data, $router_item, $root_path) {
-  // Ajouter le lien d'ajout d'un questionnaire au-dessus de la liste.
-  if ($root_path == 'admin/content/survey/survey') {
-    $item = menu_get_item('admin/content/survey/survey/add');
-    if ($item['access']) {
-      $data['actions']['output'][] = [
-        '#theme' => 'menu_local_action',
-        '#link' => $item,
-      ];
-    }
+  $item = [];
+
+  switch ($root_path) {
+    case 'admin/content/survey/survey':
+      // Ajouter le lien d'ajout d'un questionnaire au-dessus de la liste.
+      $item = menu_get_item('admin/content/survey/survey/add');
+      break;
+
+    case 'admin/content/survey/campaign':
+      // Ajouter le lien d'ajout d'une campagne au-dessus de la liste.
+      $item = menu_get_item('admin/content/survey/campaign/add');
+      break;
+  }
+
+  if ($item && $item['access']) {
+    $data['actions']['output'][] = [
+      '#theme' => 'menu_local_action',
+      '#link' => $item,
+    ];
   }
 }
 
