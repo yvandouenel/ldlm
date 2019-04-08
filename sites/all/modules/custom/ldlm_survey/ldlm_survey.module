@@ -73,8 +73,49 @@ function ldlm_survey_menu() {
     'access arguments' => ['administer surveys'],
     'file' => 'ldlm_survey.campaign.inc',
   ];
+  $items['evaluation/%participant_hash'] = [
+    'title' => "Campagne d'évaluation",
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['ldlm_survey_evaluation_form', 1],
+    'access callback' => 'ldlm_survey_evaluation_access',
+    'access arguments' => [1],
+    'file' => 'ldlm_survey.evaluation.inc',
+  ];
+  $items['evaluation/direct/%campaign_token'] = [
+    'title' => "Accéder à une campagne d'évaluation",
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['ldlm_survey_evaluation_prologue_form', 2],
+    'access callback' => 'ldlm_survey_evaluation_prologue_access',
+    'access arguments' => [2],
+    'file' => 'ldlm_survey.evaluation.inc',
+  ];
 
   return $items;
+}
+
+/**
+ * Contrôle d'accès au prologue du formulaire d'évaluation.
+ */
+function ldlm_survey_evaluation_prologue_access($campaign) {
+  if ($campaign->status == LDLM_SURVEY_STATUS_OPEN) {
+    return TRUE;
+  }
+
+  return FALSE;
+}
+
+/**
+ * Contrôle d'accès au formulaire d'évaluation.
+ */
+function ldlm_survey_evaluation_access($participant) {
+  if ($participant->answered) {
+    return FALSE;
+  }
+  if ($participant->wrapper()->cid->status->value() == LDLM_SURVEY_STATUS_OPEN) {
+    return TRUE;
+  }
+
+  return FALSE;
 }
 
 /**
@@ -100,6 +141,7 @@ function ldlm_survey_entity_info() {
     'plural label' => t('Participants à une enquête'),
     'description' => t('Participant à une enquête donnée'),
     'entity keys' => ['id' => 'pid'],
+    'controller class' => 'ParticipantController',
   ];
 
   $info['campaign'] = [
@@ -232,6 +274,12 @@ function ldlm_survey_entity_property_info_alter(&$info) {
     'type' => 'campaign_group',
     'schema field' => 'cgid',
   ];
+  $info['campaign']['properties']['token'] = [
+    'label' => t("Chaîne d'accès direct à une campagne"),
+    'description' => t("Chaîne d'accès pour les utilisateurs ne passant pas par un lien reçu par courriel."),
+    'type' => 'token',
+    'schema field' => 'cgid',
+  ];
 
   $info['campaign_group']['properties']['sid'] = [
     'label' => t('Questionnaire associé'),
@@ -302,6 +350,51 @@ function survey_load($sid, $reset = FALSE) {
 function campaign_load($cid, $reset = FALSE) {
   $campaigns = entity_load('campaign', [$cid], [], $reset);
   return reset($campaigns);
+}
+
+/**
+ * Chargement d'une campagne par token.
+ */
+function campaign_token_load($token) {
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'campaign')
+    ->propertyCondition('token', $token)
+    ->execute();
+
+  if (!empty($result['campaign'])) {
+    $cids = array_keys($result['campaign']);
+    $cid = reset($cids);
+    return campaign_load($cid);
+  }
+
+  return FALSE;
+}
+
+/**
+ * Chargement d'un participant.
+ */
+function participant_load($pid, $reset = FALSE) {
+  $participants = entity_load('participant', [$pid], [], $reset);
+  return reset($participants);
+}
+
+/**
+ * Chargement d'un participant par condensat.
+ */
+function participant_hash_load($hash) {
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'participant')
+    ->propertyCondition('hash', $hash)
+    ->execute();
+
+  if (!empty($result['participant'])) {
+    $pids = array_keys($result['participant']);
+    $pid = reset($pids);
+    return participant_load($pid);
+  }
+  else {
+    return FALSE;
+  }
 }
 
 /**

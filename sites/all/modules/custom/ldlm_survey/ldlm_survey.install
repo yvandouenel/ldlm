@@ -54,9 +54,17 @@ function ldlm_survey_schema() {
         'not null' => TRUE,
         'default' => 0,
       ],
+      'hash' => [
+        'description' => "Condensat pour l'accès direct au formulaire d'évaluation.",
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+        'default' => '',
+      ],
     ],
     'unique keys' => [
       'cid_mail' => ['cid', 'mail'],
+      'hash' => ['hash'],
     ],
     'primary key' => ['pid'],
     'foreign keys' => [
@@ -110,6 +118,16 @@ function ldlm_survey_schema() {
         'not null' => TRUE,
         'default' => 0,
       ],
+      'token' => [
+        'description' => "Chaîne d'accès à une campagne",
+        'type' => 'varchar',
+        'length' => 100,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+    ],
+    'unique keys' => [
+      'token' => ['token'],
     ],
     'primary key' => ['cid'],
     'foreign keys' => [

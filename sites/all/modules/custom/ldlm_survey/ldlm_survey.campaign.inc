@@ -207,6 +207,14 @@ function ldlm_survey_campaign_form_general($form, &$form_state) {
     '#required' => TRUE,
     '#default_value' => !empty($form_state['values']['end']) ? $form_state['values']['end'] : NULL,
   ];
+  $form['token'] = [
+    '#type' => 'machine_name',
+    '#title' => t("Clef d'accès"),
+    '#description' => t("Nom unique compréhensible par une machine. Peut seulement contenir des lettres minuscules, chiffres, et tirets bas (_). Cette chaîne est utilisée pour générer un lien d'accès utilisable par l'ensemble des participants (moyennant la saisie d'une adresse électronique personnelle), dans le cas où ils ne peuvent pas utiliser le lien personnel envoyé par courriel. Laisser vide pour désactiver cette fonctionnalité."),
+    '#maxlength' => 100,
+    '#machine_name' => ['exists' => 'campaign_token_load'],
+    '#default_value' => !empty($form_state['values']['token']) ? $form_state['values']['token'] : '',
+  ];
 
   return $form;
 }
@@ -396,6 +404,7 @@ function ldlm_survey_campaign_form_submit($form, &$form_state) {
   $campaign->title = $form_state['step_information'][1]['stored_values']['title'];
   $campaign->begin = strtotime($form_state['step_information'][1]['stored_values']['begin']);
   $campaign->end = strtotime($form_state['step_information'][1]['stored_values']['end']);
+  $campaign->token = $form_state['step_information'][1]['stored_values']['token'];
   $campaign->save();
 
   // Participants.
