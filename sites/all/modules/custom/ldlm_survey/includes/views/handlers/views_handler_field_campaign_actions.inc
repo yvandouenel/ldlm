@@ -18,7 +18,8 @@ class views_handler_field_campaign_actions extends views_handler_field {
   public function render($values) {
     $cid = $this->view->result[$this->view->row_index]->cid;
     $links = [
-      l(t('exporter les participants'), 'admin/content/survey/campaign/' . $cid . '/participants-csv'),
+      l(t('exporter participants'), 'admin/content/survey/campaign/' . $cid . '/participants-csv'),
+      l(t('exporter liens'), 'admin/content/survey/campaign/' . $cid . '/liens-csv'),
       l(t('delete'), 'admin/content/survey/campaign/' . $cid . '/delete'),
     ];
     return [
