@@ -85,6 +85,14 @@ function ldlm_survey_evaluation_form($form, &$form_state, $participant) {
   $form['#survey'] = $survey;
   $form['#tree'] = TRUE;
 
+  $form['header'] = [
+    '#theme' => 'html_tag',
+    '#tag' => 'p',
+    '#value' => t('Bonjour @prenom @nom, merci pour votre participation à cette évaluation. Vos réponses seront anonymisées.', [
+      '@prenom' => $participant->name,
+      '@nom' => $participant->surname,
+    ]),
+  ];
   foreach ($survey->getQuestionGroups() as $qgid => $question_group) {
     $form['question_groups'][$qgid] = [
       '#type' => 'fieldset',
