@@ -201,6 +201,13 @@ function ldlm_survey_entity_info() {
     'entity keys' => ['id' => 'smdid'],
   ];
 
+  $info['group_data'] = [
+    'label' => t('Points positifs et négatifs pour un groupe de questions'),
+    'plural label' => t('Points positifs et négatifs pour des groupe de questions'),
+    'description' => t('Données soumises pour un groupe de questions.'),
+    'entity keys' => ['id' => 'gdid'],
+  ];
+
   $info['submission'] = [
     'label' => t("Soumission d'un formulaire"),
     'plural label' => t('Soumissions de formulaires'),
@@ -327,6 +334,19 @@ function ldlm_survey_entity_property_info_alter(&$info) {
     'type' => 'integer',
     'schema field' => 'count',
     'options list' => 'ldlm_survey_points',
+  ];
+
+  $info['group_data']['properties']['qgid'] = [
+    'label' => t('Groupe de questions associé'),
+    'description' => t('Groupe de questions associés à ces données de soumission.'),
+    'type' => 'question_group',
+    'schema field' => 'qgid',
+  ];
+  $info['group_data']['properties']['smid'] = [
+    'label' => t('Soumission associée'),
+    'description' => t('Soumission associée à ces données.'),
+    'type' => 'submission',
+    'schema field' => 'smid',
   ];
 
   $info['submission']['properties']['sid'] = [

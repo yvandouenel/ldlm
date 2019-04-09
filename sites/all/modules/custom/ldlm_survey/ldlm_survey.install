@@ -299,6 +299,52 @@ function ldlm_survey_schema() {
       ],
     ],
   ];
+  $schema['ldlm_group_data'] = [
+    'description' => 'Données soumises (points positifs et négatifs) pour un groupe de questions.',
+    'fields' => [
+      'gdid' => [
+        'description' => 'Identifiant',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'positif' => [
+        'description' => 'Points positifs',
+        'type' => 'text',
+        'size' => 'normal',
+        'not null' => TRUE,
+      ],
+      'negatif' => [
+        'description' => 'Points négatifs',
+        'type' => 'text',
+        'size' => 'normal',
+        'not null' => TRUE,
+      ],
+      'qgid' => [
+        'description' => 'Groupe de questions.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'smid' => [
+        'description' => 'Soumission.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+    ],
+    'primary key' => ['gdid'],
+    'foreign keys' => [
+      'group_data_question_group' => [
+        'table' => 'ldlm_question',
+        'columns' => ['qgid' => 'qgid'],
+      ],
+      'group_data_submission' => [
+        'table' => 'ldlm_submission',
+        'columns' => ['smid' => 'smid'],
+      ],
+    ],
+  ];
 
   $schema['ldlm_submission'] = [
     'description' => "Soumission d'un formulaire.",

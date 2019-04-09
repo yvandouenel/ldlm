@@ -98,6 +98,22 @@ function ldlm_survey_evaluation_form($form, &$form_state, $participant) {
         '#options' => $question_options,
       ];
     }
+    $form['question_groups'][$qgid]['remarques'] = [
+      '#type' => 'fieldset',
+      '#title' => t('Remarques, commentaires ou suggestions.'),
+    ];
+    $form['question_groups'][$qgid]['remarques']['positif'] = [
+      '#type' => 'textarea',
+      '#title' => t('Points positifs'),
+      '#maxlength_js' => TRUE,
+      '#maxlength' => 1500,
+    ];
+    $form['question_groups'][$qgid]['remarques']['negatif'] = [
+      '#type' => 'textarea',
+      '#title' => t('Points négatifs'),
+      '#maxlength_js' => TRUE,
+      '#maxlength' => 1500,
+    ];
   }
 
   $form['actions'] = ['#type' => 'actions'];
@@ -121,8 +137,17 @@ function ldlm_survey_evaluation_form_submit($form, &$form_state) {
   $submission = entity_create('submission', ['cid' => $campaign->cid]);
   $submission->save();
 
-  // Stocker le nombre de points pour chaque question.
   foreach ($form_state['values']['question_groups'] as $qgid => $question_group_values) {
+    // Stocker les points négatifs et positifs.
+    $group_data = entity_create('group_data', [
+      'positif' => $question_group_values['remarques']['positif'],
+      'negatif' => $question_group_values['remarques']['negatif'],
+      'qgid' => $qgid,
+      'smid' => $submission->smid,
+    ]);
+    $group_data->save();
+
+    // Stocker le nombre de points pour chaque question.
     foreach ($question_group_values['questions'] as $qid => $count) {
       $submitted_data = entity_create('submitted_data', [
         'count' => $count,
