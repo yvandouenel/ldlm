@@ -534,3 +534,74 @@ function ldlm_survey_get_campaign_groups_as_options() {
 
   return $options;
 }
+
+/**
+ * Implements hook_cron().
+ */
+function ldlm_survey_cron() {
+  // Ouvrir les campagnes en attente et envoyer le lien par courriel.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'campaign')
+    ->propertyCondition('status', LDLM_SURVEY_STATUS_SCHEDULED)
+    ->propertyCondition('begin', REQUEST_TIME, '<=')
+    ->propertyCondition('end', REQUEST_TIME, '>')
+    ->execute();
+
+  if (!empty($result['campaign'])) {
+    $cids = array_keys($result['campaign']);
+    foreach (entity_load('campaign', $cids) as $cid => $campaign) {
+      watchdog('ldlm_survey', 'Ouverture de la campagne %campaign (%cid).', ['%campaign' => $campaign->title, '%cid' => $campaign->cid]);
+      $campaign->status = LDLM_SURVEY_STATUS_OPEN;
+      $campaign->save();
+      foreach ($campaign->getParticipants() as $pid => $participant) {
+        $params = [
+          'surname' => $participant->surname,
+          'name' => $participant->name,
+          'campaign' => $campaign->title,
+          'end' => format_date($campaign->end, 'custom', 'd/m/Y'),
+          'link' => url('evaluation/' . $participant->hash, ['absolute' => TRUE]),
+        ];
+        drupal_mail('ldlm_survey', 'campaign_link', $participant->mail, language_default(), $params);
+      }
+    }
+  }
+
+  // Fermer les campagnes.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'campaign')
+    ->propertyCondition('status', LDLM_SURVEY_STATUS_CLOSED, '<>')
+    ->propertyCondition('end', REQUEST_TIME, '<=')
+    ->execute();
+
+  if (!empty($result['campaign'])) {
+    $cids = array_keys($result['campaign']);
+    foreach (entity_load('campaign', $cids) as $cid => $campaign) {
+      watchdog('ldlm_survey', 'Fermeture de la campagne %campagne (%cid).', ['%campaign' => $campaign->title, '%cid' => $campaign->cid]);
+      $campaign->status = LDLM_SURVEY_STATUS_CLOSED;
+      $campaign->save();
+    }
+  }
+}
+
+/**
+ * Implements hook_mail().
+ */
+function ldlm_survey_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'campaign_link':
+      $message['subject'] = t("Ouverture de la campagne d'évaluation @campaign", ['@campaign' => $params['campaign']]);
+      $message['body'][] = t("Bonjour @prenom @nom,", [
+        '@prenom' => $params['name'],
+        '@nom' => $params['surname'],
+      ]);
+      $message['body'][] = t("vous pouvez dès à présent participer à la campagne d'évaluation « @campaign » en suivant ce lien ou en le collant dans la barre d'adresse de votre navigateur : @link", [
+        '@campaign' => $params['campaign'],
+        '@link' => $params['link'],
+      ]);
+      $message['body'][] = t('Cette campagne se termine le @end. Votre participation nous est précieuse pour améliorer continuellement notre offre de formations.', [
+        '@end' => $params['end'],
+      ]);
+      $message['body'][] = t("L'équipe pédagogique du Lycée de la Mer.");
+      break;
+  }
+}
