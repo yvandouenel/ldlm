@@ -309,8 +309,8 @@ function ldlm_survey_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
       ],
-      'sid' => [
-        'description' => 'Questionnaire soumis.',
+      'cid' => [
+        'description' => 'Campagne correspondant à cette soumission.',
         'type' => 'int',
         'not null' => TRUE,
         'default' => 0,
@@ -318,9 +318,9 @@ function ldlm_survey_schema() {
     ],
     'primary key' => ['smid'],
     'foreign keys' => [
-      'submission_survey' => [
-        'table' => 'ldlm_survey',
-        'columns' => ['sid' => 'sid'],
+      'submission_campaign' => [
+        'table' => 'ldlm_campaign',
+        'columns' => ['cid' => 'cid'],
       ],
     ],
   ];

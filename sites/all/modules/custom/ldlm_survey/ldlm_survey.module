@@ -321,6 +321,13 @@ function ldlm_survey_entity_property_info_alter(&$info) {
     'type' => 'submission',
     'schema field' => 'smid',
   ];
+  $info['submitted_data']['properties']['count'] = [
+    'label' => t('Points'),
+    'description' => t('Décompte des points pour une question donnée.'),
+    'type' => 'integer',
+    'schema field' => 'count',
+    'options list' => 'ldlm_survey_points',
+  ];
 
   $info['submission']['properties']['sid'] = [
     'label' => t('Questionnaire associé'),
@@ -338,6 +345,18 @@ function ldlm_survey_statuses() {
     LDLM_SURVEY_STATUS_SCHEDULED => t('Programmée'),
     LDLM_SURVEY_STATUS_OPEN => t('En cours'),
     LDLM_SURVEY_STATUS_CLOSED => t('Fermée'),
+  ];
+}
+
+/**
+ * Callback renvoyant la ponctuation des questions.
+ */
+function ldlm_survey_points() {
+  return [
+    1 => t("Pas du tout d'accord"),
+    2 => t("Plutôt pas d'accord"),
+    3 => t("Plutôt d'accord"),
+    4 => t("Tout à fait d'accord"),
   ];
 }
 
