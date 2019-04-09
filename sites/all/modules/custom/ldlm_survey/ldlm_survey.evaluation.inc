@@ -76,8 +76,29 @@ function ldlm_survey_evaluation_form($form, &$form_state, $participant) {
   $wr_participant = $participant->wrapper();
   $campaign = $wr_participant->cid->value();
   $survey = $wr_participant->cid->cgid->sid->value();
+  $question_options = ldlm_survey_points();
 
   drupal_set_title($campaign->title);
+
+  $form['#participant'] = $participant;
+  $form['#campaign'] = $campaign;
+  $form['#survey'] = $survey;
+  $form['#tree'] = TRUE;
+
+  foreach ($survey->getQuestionGroups() as $qgid => $question_group) {
+    $form['question_groups'][$qgid] = [
+      '#type' => 'fieldset',
+      '#title' => check_plain($question_group->title),
+    ];
+    foreach ($question_group->getQuestions() as $qid => $question) {
+      $form['question_groups'][$qgid]['questions'][$qid] = [
+        '#type' => 'radios',
+        '#title' => check_plain($question->label),
+        '#required' => TRUE,
+        '#options' => $question_options,
+      ];
+    }
+  }
 
   $form['actions'] = ['#type' => 'actions'];
   $form['actions']['submit'] = [
@@ -87,4 +108,35 @@ function ldlm_survey_evaluation_form($form, &$form_state, $participant) {
   ];
 
   return $form;
+}
+
+/**
+ * Formulaire d'évaluation (submit).
+ */
+function ldlm_survey_evaluation_form_submit($form, &$form_state) {
+  $participant = $form['#participant'];
+  $campaign = $form['#campaign'];
+
+  // Créer une soumission.
+  $submission = entity_create('submission', ['cid' => $campaign->cid]);
+  $submission->save();
+
+  // Stocker le nombre de points pour chaque question.
+  foreach ($form_state['values']['question_groups'] as $qgid => $question_group_values) {
+    foreach ($question_group_values['questions'] as $qid => $count) {
+      $submitted_data = entity_create('submitted_data', [
+        'count' => $count,
+        'qid' => $qid,
+        'smid' => $submission->smid,
+      ]);
+      $submitted_data->save();
+    }
+  }
+
+  // Un participant ne doit pouvoir répondre qu'une fois.
+  $participant->answered = TRUE;
+  $participant->save();
+
+  drupal_set_message(t("Merci d'avoir participé à cette évaluation."));
+  $form_state['redirect'] = '<front>';
 }
