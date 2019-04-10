@@ -165,12 +165,12 @@ function ldlm_survey_views_default_views() {
   $handler->display->display_options['fields']['title_1']['relationship'] = 'cgid';
   $handler->display->display_options['fields']['title_1']['label'] = 'Groupe de campagnes';
   $handler->display->display_options['fields']['title_1']['element_label_colon'] = FALSE;
-  /* Champ: Global: Liens d'administration des campagnes */
-  $handler->display->display_options['fields']['field_campaign_actions']['id'] = 'field_campaign_actions';
-  $handler->display->display_options['fields']['field_campaign_actions']['table'] = 'views';
-  $handler->display->display_options['fields']['field_campaign_actions']['field'] = 'field_campaign_actions';
-  $handler->display->display_options['fields']['field_campaign_actions']['label'] = 'Opérations';
-  $handler->display->display_options['fields']['field_campaign_actions']['element_label_colon'] = FALSE;
+  /* Champ: Enquête de satisfaction: Liens d'administration des campagnes */
+  $handler->display->display_options['fields']['field_campaign_actions_1']['id'] = 'field_campaign_actions_1';
+  $handler->display->display_options['fields']['field_campaign_actions_1']['table'] = 'views_entity_campaign';
+  $handler->display->display_options['fields']['field_campaign_actions_1']['field'] = 'field_campaign_actions';
+  $handler->display->display_options['fields']['field_campaign_actions_1']['label'] = 'Opérations';
+  $handler->display->display_options['fields']['field_campaign_actions_1']['element_label_colon'] = FALSE;
   /* Filter criterion: Enquête de satisfaction: État de la campagne */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'ldlm_campaign';
@@ -315,12 +315,12 @@ function ldlm_survey_views_default_views() {
   $handler->display->display_options['fields']['changed']['date_format'] = 'custom';
   $handler->display->display_options['fields']['changed']['custom_date_format'] = 'Y-m-d';
   $handler->display->display_options['fields']['changed']['second_date_format'] = 'long';
-  /* Champ: Global: Liens d'administration des questionnaires */
-  $handler->display->display_options['fields']['field_survey_actions']['id'] = 'field_survey_actions';
-  $handler->display->display_options['fields']['field_survey_actions']['table'] = 'views';
-  $handler->display->display_options['fields']['field_survey_actions']['field'] = 'field_survey_actions';
-  $handler->display->display_options['fields']['field_survey_actions']['label'] = 'Opérations';
-  $handler->display->display_options['fields']['field_survey_actions']['element_label_colon'] = FALSE;
+  /* Champ: Questionnaire: Liens d'administration des questionnaires */
+  $handler->display->display_options['fields']['field_survey_actions_1']['id'] = 'field_survey_actions_1';
+  $handler->display->display_options['fields']['field_survey_actions_1']['table'] = 'views_entity_survey';
+  $handler->display->display_options['fields']['field_survey_actions_1']['field'] = 'field_survey_actions';
+  $handler->display->display_options['fields']['field_survey_actions_1']['label'] = 'Opérations';
+  $handler->display->display_options['fields']['field_survey_actions_1']['element_label_colon'] = FALSE;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

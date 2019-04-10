@@ -16,7 +16,7 @@ class views_handler_field_survey_actions extends views_handler_field {
    * {@inheritdoc}
    */
   public function render($values) {
-    $sid = $this->view->result[$this->view->row_index]->sid;
+    $sid = $this->get_value($values, 'sid');
     $links = [
       l(t('edit'), 'admin/content/survey/survey/' . $sid . '/edit'),
       l(t('delete'), 'admin/content/survey/survey/' . $sid . '/delete'),

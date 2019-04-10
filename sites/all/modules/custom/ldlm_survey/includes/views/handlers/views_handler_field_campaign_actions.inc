@@ -16,7 +16,7 @@ class views_handler_field_campaign_actions extends views_handler_field {
    * {@inheritdoc}
    */
   public function render($values) {
-    $cid = $this->view->result[$this->view->row_index]->cid;
+    $cid = $this->get_value($values, 'cid');
     $links = [
       l(t('exporter participants'), 'admin/content/survey/campaign/' . $cid . '/participants-csv'),
       l(t('exporter liens'), 'admin/content/survey/campaign/' . $cid . '/liens-csv'),
