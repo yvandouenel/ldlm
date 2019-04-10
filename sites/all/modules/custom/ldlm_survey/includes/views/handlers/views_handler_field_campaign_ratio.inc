@@ -26,7 +26,7 @@ class views_handler_field_campaign_ratio extends views_handler_field {
       }
     }
     $ratio = $answers . '/' . $total;
-    $percent = floor(100 * $answers / $total) . ' %';
+    $percent = round(100 * $answers / $total) . ' %';
     return ['#markup' => $ratio . ' (' . $percent . ')'];
   }
 
