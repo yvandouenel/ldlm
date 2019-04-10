@@ -24,4 +24,11 @@ function ldlm_survey_views_data_alter(&$data) {
       'handler' => 'views_handler_field_campaign_actions',
     ],
   ];
+  $data['views_entity_campaign']['field_campaign_ratio'] = [
+    'title' => t('Taux de réponse'),
+    'help' => t("Nombre de réponses à cette campagne"),
+    'field' => [
+      'handler' => 'views_handler_field_campaign_ratio',
+    ],
+  ];
 }

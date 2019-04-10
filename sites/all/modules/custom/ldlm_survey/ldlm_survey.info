@@ -23,4 +23,5 @@ files[] = includes/entity/CampaignGroup.php
 files[] = includes/entity/ParticipantController.php
 files[] = includes/views/handlers/views_handler_field_survey_actions.inc
 files[] = includes/views/handlers/views_handler_field_campaign_actions.inc
+files[] = includes/views/handlers/views_handler_field_campaign_ratio.inc
 project path = sites/all/modules/custom

@@ -126,6 +126,10 @@ function ldlm_survey_views_default_views() {
   $handler->display->display_options['fields']['status']['field'] = 'status';
   $handler->display->display_options['fields']['status']['label'] = 'État';
   $handler->display->display_options['fields']['status']['element_label_colon'] = FALSE;
+  /* Champ: Enquête de satisfaction: Taux de réponse */
+  $handler->display->display_options['fields']['field_campaign_ratio']['id'] = 'field_campaign_ratio';
+  $handler->display->display_options['fields']['field_campaign_ratio']['table'] = 'views_entity_campaign';
+  $handler->display->display_options['fields']['field_campaign_ratio']['field'] = 'field_campaign_ratio';
   /* Champ: Enquête de satisfaction: Date d'ouverture */
   $handler->display->display_options['fields']['begin']['id'] = 'begin';
   $handler->display->display_options['fields']['begin']['table'] = 'ldlm_campaign';
@@ -220,6 +224,7 @@ function ldlm_survey_views_default_views() {
     t('Groupe de campagnes de satisfaction.'),
     t('Titre'),
     t('État'),
+    t('Taux de réponse'),
     t('Date d\'ouverture'),
     t('Date de fermeture'),
     t('Date de création'),
