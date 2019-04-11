@@ -424,6 +424,7 @@ function ldlm_survey_campaign_form_submit($form, &$form_state) {
   }
 
   drupal_set_message(t('La campagne %title a été enregistrée', ['%title' => $campaign->title]));
+  $form_state['redirect'] = 'admin/content/survey/campaign';
 }
 
 /**
