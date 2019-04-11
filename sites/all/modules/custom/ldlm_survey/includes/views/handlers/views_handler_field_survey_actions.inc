@@ -17,10 +17,18 @@ class views_handler_field_survey_actions extends views_handler_field {
    */
   public function render($values) {
     $sid = $this->get_value($values, 'sid');
-    $links = [
-      l(t('edit'), 'admin/content/survey/survey/' . $sid . '/edit'),
-      l(t('delete'), 'admin/content/survey/survey/' . $sid . '/delete'),
-    ];
+    $survey = survey_load($sid);
+
+    if ($survey->getCampaignGroups()) {
+      $links = [t('verrouillé')];
+    }
+    else {
+      $links = [
+        l(t('edit'), 'admin/content/survey/survey/' . $sid . '/edit'),
+        l(t('delete'), 'admin/content/survey/survey/' . $sid . '/delete'),
+      ];
+    }
+
     return [
       '#theme' => 'item_list',
       '#type' => 'ul',

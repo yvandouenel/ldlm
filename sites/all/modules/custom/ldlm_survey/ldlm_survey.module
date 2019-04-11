@@ -35,14 +35,16 @@ function ldlm_survey_menu() {
     'title' => 'Modifier un questionnaire',
     'page callback' => 'drupal_get_form',
     'page arguments' => ['ldlm_survey_survey_form', 4],
-    'access arguments' => ['administer surveys'],
+    'access callback' => 'ldlm_survey_survey_access',
+    'access arguments' => [4],
     'file' => 'ldlm_survey.survey.inc',
   ];
   $items['admin/content/survey/survey/%survey/delete'] = [
     'title' => 'Supprimer un questionnaire',
     'page callback' => 'drupal_get_form',
     'page arguments' => ['ldlm_survey_survey_delete_confirm', 4],
-    'access arguments' => ['administer surveys'],
+    'access callback' => 'ldlm_survey_survey_access',
+    'access arguments' => [4],
     'file' => 'ldlm_survey.survey.inc',
   ];
   $items['admin/content/survey/campaign/add'] = [
@@ -98,6 +100,34 @@ function ldlm_survey_menu() {
   ];
 
   return $items;
+}
+
+/**
+ * Contrôle d'accès aux questionnaires.
+ */
+function ldlm_survey_survey_access($survey, $account = NULL) {
+  global $user;
+
+  if (empty($account)) {
+    $account = $user;
+  }
+
+  if (!user_access('administer surveys', $account)) {
+    return FALSE;
+  }
+
+  if (!$survey->getCampaignGroups()) {
+    // Ne pas autoriser la modification ou la suppression d'un questionnaire
+    // une fois que des campagnes y sont associées. La suppression pose
+    // problème parce que les données soumises feraient référence à des
+    // questions ou des groupes de questions désormais inexistants, la
+    // modification parce que ces mêmes éléments feraient référence à des
+    // questions qui ne seraient pas celles auxquelles les participants
+    // auraient répondu.
+    return TRUE;
+  }
+
+  return FALSE;
 }
 
 /**

@@ -12,4 +12,11 @@ class Survey extends Entity {
     return entity_get_controller($this->entityType)->getQuestionGroups($this);
   }
 
+  /**
+   * Get all campaign groups for this survey.
+   */
+  public function getCampaignGroups() {
+    return entity_get_controller($this->entityType)->getCampaignGroups($this);
+  }
+
 }

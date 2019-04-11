@@ -41,4 +41,25 @@ class SurveyController extends LdlmSurveyController {
     return $question_groups;
   }
 
+  /**
+   * Get all campaign groups for this survey.
+   */
+  public function getCampaignGroups($survey) {
+    $campaign_groups = [];
+
+    if (isset($survey->sid)) {
+      $query = new EntityFieldQuery();
+      $result = $query->entityCondition('entity_type', 'campaign_group')
+        ->propertyCondition('sid', $survey->sid)
+        ->execute();
+
+      if (!empty($result['campaign_group'])) {
+        $cgids = array_keys($result['campaign_group']);
+        $campaign_groups = entity_load('campaign_group', $cgids);
+      }
+    }
+
+    return $campaign_groups;
+  }
+
 }
