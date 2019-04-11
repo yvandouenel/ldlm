@@ -223,6 +223,9 @@ function ldlm_survey_campaign_form_general($form, &$form_state) {
  * Informations générales sur la campagne (validation).
  */
 function ldlm_survey_campaign_form_general_validate($form, &$form_state) {
+  if (strtotime($form_state['values']['begin']) <= REQUEST_TIME) {
+    form_set_error('begin', t("Veuillez choisir une date future pour l'ouverture de la campagne."));
+  }
   if ($form_state['values']['begin'] >= $form_state['values']['end']) {
     form_set_error('begin', t("La date de fermeture de la campagne doit être postérieure à la date d'ouverture."));
   }
