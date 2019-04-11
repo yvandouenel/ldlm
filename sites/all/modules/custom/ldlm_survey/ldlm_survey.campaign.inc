@@ -243,6 +243,7 @@ function ldlm_survey_campaign_form_campaign_group($form, &$form_state) {
   $form['survey_mode'] = [
     '#type' => 'radios',
     '#title' => t('Mode de création'),
+    '#description' => t("Un groupe de campagnes permet de lancer plusieurs campagnes utilisant le même questionnaire et d'en exploiter conjointement les résultats."),
     '#options' => [
       'campaign_group' => t('Utiliser un groupe de campagnes existant.'),
       'survey' => t('Créer un nouveau groupe de campagnes.'),
