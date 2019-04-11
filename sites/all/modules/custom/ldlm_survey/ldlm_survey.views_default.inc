@@ -22,7 +22,7 @@ function ldlm_survey_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Enquêtes de satisfaction';
+  $handler->display->display_options['title'] = 'Campagnes';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'administer surveys';
@@ -199,14 +199,14 @@ function ldlm_survey_views_default_views() {
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'admin/content/survey/campaign';
   $handler->display->display_options['menu']['type'] = 'normal';
-  $handler->display->display_options['menu']['title'] = 'Enquêtes';
+  $handler->display->display_options['menu']['title'] = 'Campagne';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'management';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['enquetes'] = array(
     t('Master'),
-    t('Enquêtes de satisfaction'),
+    t('Campagnes'),
     t('more'),
     t('Apply'),
     t('Réinitialiser'),
