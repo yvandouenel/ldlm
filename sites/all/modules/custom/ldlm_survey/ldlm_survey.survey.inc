@@ -114,6 +114,14 @@ function ldlm_survey_survey_form($form, &$form_state, $survey = NULL) {
     '#value' => t('Save'),
     '#name' => 'submit',
   ];
+  if (!isset($survey->is_new) || !$survey->is_new) {
+    $form['actions']['delete'] = [
+      '#type' => 'submit',
+      '#value' => t('Delete'),
+      '#name' => 'delete',
+      '#submit' => ['ldlm_survey_form_delete_submit'],
+    ];
+  }
 
   return $form;
 }
@@ -188,6 +196,14 @@ function ldlm_survey_survey_form_submit($form, &$form_state) {
 
   drupal_set_message('Le formulaire a été enregistré.');
   $form_state['redirect'] = 'admin/content/survey/survey/' . $survey->sid . '/edit';
+}
+
+/**
+ * Formulaire d'édition d'un questionnaire (submit suppression).
+ */
+function ldlm_survey_form_delete_submit($form, &$form_state) {
+  $survey = $form_state['storage']['survey'];
+  $form_state['redirect'] = 'admin/content/survey/survey/' . $survey->sid . '/delete';
 }
 
 /**
