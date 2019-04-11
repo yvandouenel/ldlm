@@ -190,6 +190,7 @@ function ldlm_survey_campaign_form_general($form, &$form_state) {
       'minDate' => 1,
     ],
     '#title' => t('Ouverture de la campagne'),
+    '#description' => t("À cette date, la campagne passera de l'état <em>programmée</em> à l'état <em>en cours</em> et <strong>ne sera plus modifiable</strong>. Les participants recevront un courriel les avertissant de l'ouverture de la campagne, qui contiendra un lien leur permettant d'accéder directement au formulaire d'évaluation."),
     '#required' => TRUE,
     '#default_value' => !empty($form_state['values']['begin']) ? $form_state['values']['begin'] : NULL,
   ];
