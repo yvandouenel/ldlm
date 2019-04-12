@@ -58,7 +58,8 @@ function ldlm_survey_menu() {
     'title' => 'Modifier une campagne',
     'page callback' => 'drupal_get_form',
     'page arguments' => ['ldlm_survey_campaign_form', 4],
-    'access arguments' => ['administer surveys'],
+    'access callback' => 'ldlm_survey_campaign_access',
+    'access arguments' => [4],
     'file' => 'ldlm_survey.campaign.inc',
   ];
   $items['admin/content/survey/campaign/%campaign/participants-csv'] = [
@@ -79,7 +80,8 @@ function ldlm_survey_menu() {
     'title' => 'Supprimer une campagne',
     'page callback' => 'drupal_get_form',
     'page arguments' => ['ldlm_survey_campaign_delete_confirm', 4],
-    'access arguments' => ['administer surveys'],
+    'access callback' => 'ldlm_survey_campaign_access',
+    'access arguments' => [4],
     'file' => 'ldlm_survey.campaign.inc',
   ];
   $items['evaluation/%participant_hash'] = [
@@ -124,6 +126,29 @@ function ldlm_survey_survey_access($survey, $account = NULL) {
     // modification parce que ces mêmes éléments feraient référence à des
     // questions qui ne seraient pas celles auxquelles les participants
     // auraient répondu.
+    return TRUE;
+  }
+
+  return FALSE;
+}
+
+/**
+ * Contrôle d'accès aux campagnes (édition, suppression).
+ */
+function ldlm_survey_campaign_access($campaign, $account = NULL) {
+  global $user;
+
+  if (empty($account)) {
+    $account = $user;
+  }
+
+  if (!user_access('administer surveys', $account)) {
+    return FALSE;
+  }
+
+  // On autorise la modification et la suppression d'une campagne uniquement
+  // lorsqu'elle est encore à l'état « programmée ».
+  if ($campaign->status == LDLM_SURVEY_STATUS_SCHEDULED) {
     return TRUE;
   }
 
