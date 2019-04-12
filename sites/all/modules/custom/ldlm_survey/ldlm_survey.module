@@ -322,7 +322,13 @@ function ldlm_survey_entity_property_info_alter(&$info) {
     'label' => t("Chaîne d'accès direct à une campagne"),
     'description' => t("Chaîne d'accès pour les utilisateurs ne passant pas par un lien reçu par courriel."),
     'type' => 'token',
-    'schema field' => 'cgid',
+    'schema field' => 'token',
+  ];
+  $info['campaign']['properties']['csv'] = [
+    'label' => t('Fichier CSV des participants'),
+    'description' => t('Fichier CSV des participants.'),
+    'type' => 'file',
+    'schema field' => 'csv',
   ];
 
   $info['campaign_group']['properties']['sid'] = [

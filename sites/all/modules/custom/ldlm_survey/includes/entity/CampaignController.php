@@ -21,6 +21,11 @@ class CampaignController extends LdlmSurveyController {
           $campaign_group->delete();
         }
       }
+
+      // Supprimer le fichier CSV des participants.
+      $file = file_load($campaign->csv);
+      file_usage_delete($file, 'ldlm_survey', 'campaign', $campaign->cid);
+      file_delete($file);
     }
 
     parent::delete($ids, $transaction);

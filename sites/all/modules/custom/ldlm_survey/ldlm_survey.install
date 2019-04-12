@@ -125,6 +125,12 @@ function ldlm_survey_schema() {
         'not null' => TRUE,
         'default' => '',
       ],
+      'csv' => [
+        'description' => 'Fichier CSV des participants.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
     ],
     'unique keys' => [
       'token' => ['token'],
@@ -134,6 +140,10 @@ function ldlm_survey_schema() {
       'campaign_group' => [
         'table' => 'ldlm_campaign_group',
         'columns' => ['cgid' => 'cgid'],
+      ],
+      'csv' => [
+        'table' => 'file_managed',
+        'columns' => ['csv' => 'fid'],
       ],
     ],
     'indexes' => [

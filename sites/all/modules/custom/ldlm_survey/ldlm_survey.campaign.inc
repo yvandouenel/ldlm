@@ -329,8 +329,9 @@ function ldlm_survey_campaign_form_participants($form, &$form_state) {
     '#type' => 'managed_file',
     '#title' => t('Liste des participants'),
     '#description' => t("Fichiers au format CSV contenant la liste des participants à cette campagne : <ul><li>colonnes dans cet ordre : nom, prénom, courriel,</li><li>le séparateur est le point-virgule,</li><li>la première ligne n'est pas prise en compte,</li><li>le fichier est encodé en UTF-8, et a pour extension <code>.csv</code>.</li></ul>"),
+    '#required' => TRUE,
     '#default_value' => !empty($form_state['storage']['csv']) ? $form_state['storage']['csv'] : 0,
-    '#upload_location' => 'private://',
+    '#upload_location' => 'private://survey/campaign/csv/' . date('Y/m'),
     '#upload_validators' => [
       'file_validate_extensions' => ['csv'],
     ],
@@ -410,7 +411,14 @@ function ldlm_survey_campaign_form_submit($form, &$form_state) {
   $campaign->begin = strtotime($form_state['step_information'][1]['stored_values']['begin']);
   $campaign->end = strtotime($form_state['step_information'][1]['stored_values']['end']);
   $campaign->token = $form_state['step_information'][1]['stored_values']['token'];
+  $campaign->csv = $form_state['storage']['csv'];
   $campaign->save();
+
+  // Enregistrer le fichier CSV comme permanent.
+  $file = file_load($form_state['storage']['csv']);
+  $file->status = FILE_STATUS_PERMANENT;
+  file_save($file);
+  file_usage_add($file, 'ldlm_survey', 'campaign', $campaign->cid);
 
   // Participants.
   foreach ($form_state['storage']['participants'] as $participant_value) {
