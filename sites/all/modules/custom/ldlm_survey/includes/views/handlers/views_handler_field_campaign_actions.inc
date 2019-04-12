@@ -18,9 +18,10 @@ class views_handler_field_campaign_actions extends views_handler_field {
   public function render($values) {
     $cid = $this->get_value($values, 'cid');
     $campaign = campaign_load($cid);
+    $links = [];
 
     if ($campaign->status == LDLM_SURVEY_STATUS_SCHEDULED) {
-      $links = [l(t('modifier'), 'admin/content/survey/campaign/' . $campaign->cid . '/edit')];
+      $links[] = l(t('modifier'), 'admin/content/survey/campaign/' . $campaign->cid . '/edit');
     }
 
     $links[] = l(t('exporter participants'), 'admin/content/survey/campaign/' . $cid . '/participants-csv');
