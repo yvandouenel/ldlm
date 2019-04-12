@@ -104,6 +104,12 @@ function ldlm_survey_views_default_views() {
       'empty_column' => 0,
     ),
   );
+  /* Pied de page: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = 'Seules les campagnes programmées peuvent être modifiées ou supprimées.';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -175,6 +181,11 @@ function ldlm_survey_views_default_views() {
   $handler->display->display_options['fields']['field_campaign_actions_1']['field'] = 'field_campaign_actions';
   $handler->display->display_options['fields']['field_campaign_actions_1']['label'] = 'Opérations';
   $handler->display->display_options['fields']['field_campaign_actions_1']['element_label_colon'] = FALSE;
+  /* Sort criterion: Enquête de satisfaction: Date de modification */
+  $handler->display->display_options['sorts']['changed']['id'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['table'] = 'ldlm_campaign';
+  $handler->display->display_options['sorts']['changed']['field'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['order'] = 'DESC';
   /* Filter criterion: Enquête de satisfaction: État de la campagne */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'ldlm_campaign';
@@ -220,6 +231,7 @@ function ldlm_survey_views_default_views() {
     t('‹ précédent'),
     t('suivant ›'),
     t('dernier »'),
+    t('Seules les campagnes programmées peuvent être modifiées ou supprimées.'),
     t('Aucune campagne ne correspond à ces critères.'),
     t('Groupe de campagnes de satisfaction.'),
     t('Titre'),
