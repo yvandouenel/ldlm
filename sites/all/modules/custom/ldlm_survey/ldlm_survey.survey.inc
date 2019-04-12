@@ -8,12 +8,19 @@
 /**
  * Formulaire d'édition d'un questionnaire.
  */
-function ldlm_survey_survey_form($form, &$form_state, $survey = NULL) {
+function ldlm_survey_survey_form($form, &$form_state, $survey = NULL, $clone = FALSE) {
   $form = [];
 
   if (!isset($form_state['storage']['survey'])) {
-    if (!$survey) {
+    if ($clone) {
+      $title = $survey->title . ' (clone)';
+      $original_question_groups = array_values($survey->getQuestionGroups());
+    }
+    if (!$survey || $clone) {
       $survey = entity_create('survey', []);
+      if (isset($title)) {
+        $survey->title = $title;
+      }
     }
     $form_state['storage']['survey'] = $survey;
   }
@@ -21,8 +28,18 @@ function ldlm_survey_survey_form($form, &$form_state, $survey = NULL) {
     $form_state['storage']['question_groups'] = array_values($form_state['storage']['survey']->getQuestionGroups());
   }
   if (!isset($form_state['storage']['question_groups_total'])) {
-    $form_state['storage']['question_groups_total'] = count($form_state['storage']['question_groups']) + 1;
+    if ($clone) {
+      foreach ($original_question_groups as $i => $original_question_group) {
+        $form_state['values']['question_groups'][$i]['question_group']['title'] = $original_question_group->title;
+      }
+      $form_state['storage']['question_groups_total'] = count($original_question_groups) + 1;
+    }
+    else {
+      $form_state['storage']['question_groups_total'] = count($form_state['storage']['question_groups']) + 1;
+    }
   }
+  // Ajout au formulaire d'un groupe de questions vide après clic sur le bouton
+  // « ajouter une question ».
   elseif (isset($form_state['triggering_element']['#name']) && $form_state['triggering_element']['#name'] == 'add_question_group') {
     $form_state['storage']['question_groups_total']++;
   }
@@ -52,7 +69,16 @@ function ldlm_survey_survey_form($form, &$form_state, $survey = NULL) {
     else {
       $question_group = NULL;
       if (!isset($form_state['storage']['questions_total'][$i])) {
-        $form_state['storage']['questions_total'][$i] = 1;
+        if ($clone && isset($original_question_groups[$i])) {
+          $original_questions = array_values($original_question_groups[$i]->getQuestions());
+          foreach ($original_questions as $j => $original_question) {
+            $form_state['values']['question_groups'][$i]['question_group']['questions'][$j]['title'] = $original_question->label;
+          }
+          $form_state['storage']['questions_total'][$i] = count($original_questions) + 1;
+        }
+        else {
+          $form_state['storage']['questions_total'][$i] = 1;
+        }
       }
     }
     if (isset($form_state['triggering_element']['#question_group']) && $form_state['triggering_element']['#question_group'] == $i) {
@@ -70,7 +96,7 @@ function ldlm_survey_survey_form($form, &$form_state, $survey = NULL) {
       '#description' => t("Titre du groupe de questions. Laisser vide pour supprimer entièrement ce groupe et les questions qu'il contient."),
       '#size' => 60,
       '#maxlength' => 128,
-      '#default_value' => isset($question_group->title) ? $question_group->title : '',
+      '#default_value' => isset($question_group->title) ? $question_group->title : (isset($form_state['values']['question_groups'][$i]['question_group']['title']) ? $form_state['values']['question_groups'][$i]['question_group']['title'] : ''),
     ];
     $form['question_groups'][$i]['question_group']['questions'] = [
       '#type' => 'container',
@@ -85,7 +111,7 @@ function ldlm_survey_survey_form($form, &$form_state, $survey = NULL) {
         '#description' => t('Libellé de la question.'),
         '#size' => 60,
         '#maxlength' => 128,
-        '#default_value' => isset($question->label) ? $question->label : '',
+        '#default_value' => isset($question->label) ? $question->label : (isset($form_state['values']['question_groups'][$i]['question_group']['questions'][$j]['title']) ? $form_state['values']['question_groups'][$i]['question_group']['questions'][$j]['title'] : ''),
       ];
     }
     $form['question_groups'][$i]['question_group']['add_question'] = [

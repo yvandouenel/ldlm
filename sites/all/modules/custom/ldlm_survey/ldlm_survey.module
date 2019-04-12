@@ -39,6 +39,13 @@ function ldlm_survey_menu() {
     'access arguments' => [4],
     'file' => 'ldlm_survey.survey.inc',
   ];
+  $items['admin/content/survey/survey/%survey/clone'] = [
+    'title' => 'Cloner un questionnaire',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => ['ldlm_survey_survey_form', 4, TRUE],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.survey.inc',
+  ];
   $items['admin/content/survey/survey/%survey/delete'] = [
     'title' => 'Supprimer un questionnaire',
     'page callback' => 'drupal_get_form',
