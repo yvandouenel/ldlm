@@ -292,6 +292,12 @@ function ldlm_survey_views_default_views() {
       'empty_column' => 0,
     ),
   );
+  /* Pied de page: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = 'Une fois associé à une ou plusieurs campagnes, un formulaire ne peut être ni modifié, ni supprimé, mais peut encore être cloné.';
+  $handler->display->display_options['footer']['area']['format'] = 'full_html';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -352,6 +358,7 @@ function ldlm_survey_views_default_views() {
     t('‹ précédent'),
     t('suivant ›'),
     t('dernier »'),
+    t('Une fois associé à une ou plusieurs campagnes, un formulaire ne peut être ni modifié, ni supprimé, mais peut encore être cloné.'),
     t('Aucun questionnaire n\'a été créé.'),
     t('Titre'),
     t('Date de création'),
