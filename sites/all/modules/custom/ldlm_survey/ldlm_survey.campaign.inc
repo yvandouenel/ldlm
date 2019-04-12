@@ -413,8 +413,9 @@ function ldlm_survey_campaign_form_submit($form, &$form_state) {
   // Si le groupe de campagnes change, supprimer l'ancien s'il ne contenait plus
   // que cette campagne pour éviter les groupes de campagnes orphelins.
   if (isset($campaign->cgid) && $campaign->cgid != $campaign_group->cgid) {
-    if (count($campaign_group->getCampaigns()) == 1) {
-      $campaign_group->delete();
+    $old_campaign_group = campaign_group_load($campaign->cgid);
+    if (count($old_campaign_group->getCampaigns()) == 1) {
+      $old_campaign_group->delete();
     }
   }
 
