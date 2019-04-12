@@ -159,6 +159,7 @@ function ldlm_survey_campaign_form_next_submit($form, &$form_state) {
  */
 function ldlm_survey_campaign_form_general($form, &$form_state) {
   $form = [];
+  $campaign = $form_state['storage']['campaign'];
 
   // Forcer à créer un questionnaire auparavant.
   if (!ldlm_survey_get_surveys()) {
@@ -176,7 +177,7 @@ function ldlm_survey_campaign_form_general($form, &$form_state) {
     '#title' => t('Titre'),
     '#description' => t("Nom de la campagne d'évaluation."),
     '#required' => TRUE,
-    '#default_value' => !empty($form_state['values']['title']) ? $form_state['values']['title'] : '',
+    '#default_value' => !empty($form_state['values']['title']) ? $form_state['values']['title'] : (isset($campaign->title) ? $campaign->title : ''),
   ];
   $default_timezone = date_default_timezone();
   $form['begin'] = [
@@ -192,7 +193,7 @@ function ldlm_survey_campaign_form_general($form, &$form_state) {
     '#title' => t('Ouverture de la campagne'),
     '#description' => t("À cette date, la campagne passera de l'état <em>programmée</em> à l'état <em>en cours</em> et <strong>ne sera plus modifiable</strong>. Les participants recevront un courriel les avertissant de l'ouverture de la campagne, qui contiendra un lien leur permettant d'accéder directement au formulaire d'évaluation."),
     '#required' => TRUE,
-    '#default_value' => !empty($form_state['values']['begin']) ? $form_state['values']['begin'] : NULL,
+    '#default_value' => !empty($form_state['values']['begin']) ? $form_state['values']['begin'] : (isset($campaign->begin) ? date('Y-m-d', $campaign->begin) : NULL),
   ];
   $form['end'] = [
     '#type' => 'date_popup',
@@ -206,7 +207,7 @@ function ldlm_survey_campaign_form_general($form, &$form_state) {
     ],
     '#title' => t('Fermeture de la campagne'),
     '#required' => TRUE,
-    '#default_value' => !empty($form_state['values']['end']) ? $form_state['values']['end'] : NULL,
+    '#default_value' => !empty($form_state['values']['end']) ? $form_state['values']['end'] : (isset($campaign->end) ? date('Y-m-d', $campaign->end) : NULL),
   ];
   $form['token'] = [
     '#type' => 'machine_name',
@@ -214,7 +215,7 @@ function ldlm_survey_campaign_form_general($form, &$form_state) {
     '#description' => t("Nom unique compréhensible par une machine. Peut seulement contenir des lettres minuscules, chiffres, et tirets bas (_). Cette chaîne est utilisée pour générer un lien d'accès utilisable par l'ensemble des participants (moyennant la saisie d'une adresse électronique personnelle), dans le cas où ils ne peuvent pas utiliser le lien personnel envoyé par courriel. Laisser vide pour désactiver cette fonctionnalité."),
     '#maxlength' => 100,
     '#machine_name' => ['exists' => 'campaign_token_load'],
-    '#default_value' => !empty($form_state['values']['token']) ? $form_state['values']['token'] : '',
+    '#default_value' => !empty($form_state['values']['token']) ? $form_state['values']['token'] : (isset($campaign->token) ? $campaign->token : ''),
   ];
 
   return $form;
@@ -237,6 +238,7 @@ function ldlm_survey_campaign_form_general_validate($form, &$form_state) {
  */
 function ldlm_survey_campaign_form_campaign_group($form, &$form_state) {
   $form = [];
+  $campaign = $form_state['storage']['campaign'];
   $survey_options = ldlm_survey_get_surveys_as_options();
   $campaign_group_options = ldlm_survey_get_campaign_groups_as_options();
 
@@ -292,8 +294,9 @@ function ldlm_survey_campaign_form_campaign_group($form, &$form_state) {
         ':input[name="survey_mode"]' => ['value' => 'campaign_group'],
       ],
     ],
-    '#default_value' => !empty($form_state['values']['campaign_group']) ? $form_state['values']['campaign_group'] : NULL,
+    '#default_value' => !empty($form_state['values']['campaign_group']) ? $form_state['values']['campaign_group'] : (isset($campaign->cgid) ? $campaign->cgid : NULL),
   ];
+  // Si aucun groupe de questions existants, forcer à en créer un.
   if (count($campaign_group_options) == 1) {
     unset($form['survey_mode']['#options']['campaign_group']);
     $form['survey_mode']['#default_value'] = 'survey';
@@ -324,13 +327,14 @@ function ldlm_survey_campaign_form_campaign_group_validate($form, &$form_state) 
  */
 function ldlm_survey_campaign_form_participants($form, &$form_state) {
   $form = [];
+  $campaign = $form_state['storage']['campaign'];
 
   $form['csv'] = [
     '#type' => 'managed_file',
     '#title' => t('Liste des participants'),
     '#description' => t("Fichiers au format CSV contenant la liste des participants à cette campagne : <ul><li>colonnes dans cet ordre : nom, prénom, courriel,</li><li>le séparateur est le point-virgule,</li><li>la première ligne n'est pas prise en compte,</li><li>le fichier est encodé en UTF-8, et a pour extension <code>.csv</code>.</li></ul>"),
     '#required' => TRUE,
-    '#default_value' => !empty($form_state['storage']['csv']) ? $form_state['storage']['csv'] : 0,
+    '#default_value' => !empty($form_state['storage']['csv']) ? $form_state['storage']['csv'] : (isset($campaign->csv) ? $campaign->csv : 0),
     '#upload_location' => 'private://survey/campaign/csv/' . date('Y/m'),
     '#upload_validators' => [
       'file_validate_extensions' => ['csv'],
@@ -391,6 +395,8 @@ function ldlm_survey_campaign_form_participants_confirm($form, &$form_state) {
 function ldlm_survey_campaign_form_submit($form, &$form_state) {
   $current_step = &$form_state['step'];
   $form_state['step_information'][$current_step]['stored_values'] = $form_state['values'];
+  $campaign = $form_state['storage']['campaign'];
+  $import_participants = TRUE;
 
   // Groupe de campagne.
   if ($form_state['step_information'][2]['stored_values']['survey_mode'] == 'campaign_group') {
@@ -404,8 +410,27 @@ function ldlm_survey_campaign_form_submit($form, &$form_state) {
     $campaign_group->save();
   }
 
+  // Si le groupe de campagnes change, supprimer l'ancien s'il ne contenait plus
+  // que cette campagne pour éviter les groupes de campagnes orphelins.
+  if (isset($campaign->cgid) && $campaign->cgid != $campaign_group->cgid) {
+    if (count($campaign_group->getCampaigns()) == 1) {
+      $campaign_group->delete();
+    }
+  }
+
+  // Si le CSV change, supprimer tous les participants pour les réimporter plus
+  // tard, et supprimer l'ancien fichier.
+  if (isset($campaign->csv)) {
+    if ($campaign->csv != $form_state['storage']['csv']) {
+      $campaign->deleteParticipants();
+      $campaign->deleteCsv();
+    }
+    else {
+      $import_participants = FALSE;
+    }
+  }
+
   // Campagne.
-  $campaign = $form_state['storage']['campaign'];
   $campaign->cgid = $campaign_group->cgid;
   $campaign->title = $form_state['step_information'][1]['stored_values']['title'];
   $campaign->begin = strtotime($form_state['step_information'][1]['stored_values']['begin']);
@@ -421,14 +446,16 @@ function ldlm_survey_campaign_form_submit($form, &$form_state) {
   file_usage_add($file, 'ldlm_survey', 'campaign', $campaign->cid);
 
   // Participants.
-  foreach ($form_state['storage']['participants'] as $participant_value) {
-    $participant = entity_create('participant', [
-      'cid' => $campaign->cid,
-      'mail' => $participant_value['mail'],
-      'surname' => $participant_value['surname'],
-      'name' => $participant_value['name'],
-    ]);
-    $participant->save();
+  if ($import_participants) {
+    foreach ($form_state['storage']['participants'] as $participant_value) {
+      $participant = entity_create('participant', [
+        'cid' => $campaign->cid,
+        'mail' => $participant_value['mail'],
+        'surname' => $participant_value['surname'],
+        'name' => $participant_value['name'],
+      ]);
+      $participant->save();
+    }
   }
 
   drupal_set_message(t('La campagne %title a été enregistrée', ['%title' => $campaign->title]));

@@ -11,9 +11,7 @@ class CampaignController extends LdlmSurveyController {
   public function delete($ids, DatabaseTransaction $transaction = NULL) {
     foreach ($this->load($ids) as $campaign) {
       // Supprimer les participants liés avant de supprimer la campagne.
-      foreach ($campaign->getParticipants() as $participant) {
-        $participant->delete();
-      }
+      $campaign->deleteParticipants();
 
       // Si cette campagne est la dernière de son groupe, le supprimer.
       if ($campaign_group = campaign_group_load($campaign->cgid)) {
@@ -23,9 +21,7 @@ class CampaignController extends LdlmSurveyController {
       }
 
       // Supprimer le fichier CSV des participants.
-      $file = file_load($campaign->csv);
-      file_usage_delete($file, 'ldlm_survey', 'campaign', $campaign->cid);
-      file_delete($file);
+      $campaign->deleteCsv();
     }
 
     parent::delete($ids, $transaction);
@@ -50,6 +46,24 @@ class CampaignController extends LdlmSurveyController {
     }
 
     return $participants;
+  }
+
+  /**
+   * Delete all participants for this campaign.
+   */
+  public function deleteParticipants($campaign) {
+    foreach ($campaign->getParticipants() as $participant) {
+      $participant->delete();
+    }
+  }
+
+  /**
+   * Delete participants CSV file.
+   */
+  public function deleteCsv($campaign) {
+    $file = file_load($campaign->csv);
+    file_usage_delete($file, 'ldlm_survey', 'campaign', $campaign->cid);
+    file_delete($file);
   }
 
 }
