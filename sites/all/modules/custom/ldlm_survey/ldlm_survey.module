@@ -54,6 +54,14 @@ function ldlm_survey_menu() {
     'access arguments' => [4],
     'file' => 'ldlm_survey.survey.inc',
   ];
+  $items['admin/content/survey/campaign/%campaign'] = [
+    'title callback' => 'ldlm_survey_campaign_page_title',
+    'title arguments' => [4],
+    'page callback' => 'ldlm_survey_campaign_page',
+    'page arguments' => [4],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.campaign.inc',
+  ];
   $items['admin/content/survey/campaign/add'] = [
     'title' => 'Ajouter une campagne',
     'page callback' => 'drupal_get_form',
@@ -61,13 +69,33 @@ function ldlm_survey_menu() {
     'access arguments' => ['administer surveys'],
     'file' => 'ldlm_survey.campaign.inc',
   ];
+  $items['admin/content/survey/campaign/%campaign/general'] = [
+    'title' => 'Général',
+    'page callback' => 'ldlm_survey_campaign_page',
+    'page arguments' => [4],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.campaign.inc',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => 0,
+  ];
+  $items['admin/content/survey/campaign/%campaign/participants'] = [
+    'title' => 'Participants',
+    'page callback' => 'ldlm_survey_campaign_participants_page',
+    'page arguments' => [4],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.campaign.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+  ];
   $items['admin/content/survey/campaign/%campaign/edit'] = [
-    'title' => 'Modifier une campagne',
+    'title' => 'Modifier',
     'page callback' => 'drupal_get_form',
     'page arguments' => ['ldlm_survey_campaign_form', 4],
     'access callback' => 'ldlm_survey_campaign_access',
     'access arguments' => [4],
     'file' => 'ldlm_survey.campaign.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 2,
   ];
   $items['admin/content/survey/campaign/%campaign/participants-csv'] = [
     'title' => 'Exporter les participants',
@@ -423,6 +451,34 @@ function ldlm_survey_entity_property_info_alter(&$info) {
     'type' => 'survey',
     'schema field' => 'sid',
   ];
+}
+
+/**
+ * Implements hook_theme().
+ */
+function ldlm_survey_theme($existing, $type, $theme, $path) {
+  $tpl_path = drupal_get_path('module', 'ldlm_survey') . '/templates';
+  return [
+    'answered_ratio' => [
+      'variables' => [
+        'answers' => 0,
+        'total' => 0,
+      ],
+      'template' => 'answered-ratio',
+      'path' => $tpl_path,
+    ],
+  ];
+}
+
+/**
+ * Implements MODULE_preprocess_HOOK().
+ */
+function ldlm_survey_preprocess_answered_ratio(&$variables) {
+  if ($variables['total'] == 0) {
+    return;
+  }
+
+  $variables['percent'] = round(100 * $variables['answers'] / $variables['total']);
 }
 
 /**

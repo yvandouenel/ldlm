@@ -37,6 +37,7 @@ class CampaignController extends LdlmSurveyController {
       $query = new EntityFieldQuery();
       $result = $query->entityCondition('entity_type', 'participant')
         ->propertyCondition('cid', $campaign->cid)
+        ->propertyOrderBy('surname')
         ->execute();
 
       if (!empty($result['participant'])) {
@@ -46,6 +47,25 @@ class CampaignController extends LdlmSurveyController {
     }
 
     return $participants;
+  }
+
+  /**
+   * Return number of answers and total number of participants.
+   */
+  public function getAnsweredRatio($campaign) {
+    $answers = $total = 0;
+
+    foreach ($campaign->getParticipants() as $participant) {
+      $total++;
+      if ($participant->answered) {
+        $answers++;
+      }
+    }
+
+    return [
+      'answers' => $answers,
+      'total' => $total,
+    ];
   }
 
   /**

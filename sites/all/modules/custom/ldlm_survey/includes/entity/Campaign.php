@@ -13,6 +13,13 @@ class Campaign extends Entity {
   }
 
   /**
+   * Return number of answers and total number of participants.
+   */
+  public function getAnsweredRatio() {
+    return entity_get_controller($this->entityType)->getAnsweredRatio($this);
+  }
+
+  /**
    * Delete all participants for this campaign.
    */
   public function deleteParticipants() {

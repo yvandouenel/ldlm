@@ -460,7 +460,7 @@ function ldlm_survey_campaign_form_submit($form, &$form_state) {
   }
 
   drupal_set_message(t('La campagne %title a été enregistrée', ['%title' => $campaign->title]));
-  $form_state['redirect'] = 'admin/content/survey/campaign';
+  $form_state['redirect'] = 'admin/content/survey/campaign/' . $campaign->cid;
 }
 
 /**
@@ -548,4 +548,95 @@ function ldlm_survey_export_participants($campaign, $links = FALSE) {
   }
   fclose($handle);
   drupal_exit();
+}
+
+/**
+ * Title callback.
+ */
+function ldlm_survey_campaign_page_title($campaign) {
+  return $campaign->title;
+}
+
+/**
+ * Tableau de bord d'une campagne.
+ */
+function ldlm_survey_campaign_page($campaign) {
+  $wr_campaign = $campaign->wrapper();
+  $data = [
+    [
+      t('État'),
+      $wr_campaign->status->label(),
+    ],
+    [
+      t('Taux de réponse'),
+      theme('answered_ratio', $campaign->getAnsweredRatio()),
+    ],
+    [
+      t("Date d'ouverture de la campagne"),
+      date('Y-m-d', $campaign->begin),
+    ],
+    [
+      t("Date de fermeture de la campagne"),
+      date('Y-m-d', $campaign->end),
+    ],
+    [
+      t("Date de création de la campagne"),
+      date('Y-m-d', $campaign->created),
+    ],
+    [
+      t("Date de modification de la campagne"),
+      date('Y-m-d', $campaign->changed),
+    ],
+    [
+      t('Groupe de campagnes'),
+      $wr_campaign->cgid->title->value(),
+    ],
+    [
+      t('Questionnaire'),
+      $wr_campaign->cgid->sid->title->value(),
+    ],
+    [
+      t("Lien d'accès direct"),
+      url('evaluation/direct/' . $campaign->token, ['absolute' => TRUE]),
+    ],
+  ];
+  return [
+    '#theme' => 'table',
+    '#rows' => $data,
+  ];
+}
+
+/**
+ * Liste des participants.
+ */
+function ldlm_survey_campaign_participants_page($campaign) {
+  $participants = [];
+
+  foreach ($campaign->getParticipants() as $participant) {
+    $participants[] = [
+      $participant->surname,
+      $participant->name,
+      $participant->mail,
+      $participant->answered ? t('Yes') : t('No'),
+    ];
+  }
+
+  return [
+    [
+      '#theme' => 'table',
+      '#header' => [t('Nom'), t('Prénom'), t('Courriel'), t('Répondu')],
+      '#rows' => $participants,
+    ],
+    [
+      '#theme' => 'item_list',
+      '#type' => 'ul',
+      '#attributes' => [
+        'class' => ['inline'],
+      ],
+      '#items' => [
+        l(t('exporter participants'), 'admin/content/survey/campaign/' . $campaign->cid . '/participants-csv'),
+        l(t('exporter liens de connexion'), 'admin/content/survey/campaign/' . $campaign->cid . '/liens-csv'),
+      ],
+    ],
+  ];
 }

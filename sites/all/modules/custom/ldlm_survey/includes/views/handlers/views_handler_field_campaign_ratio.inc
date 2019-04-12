@@ -17,23 +17,8 @@ class views_handler_field_campaign_ratio extends views_handler_field {
    */
   public function render($values) {
     $cid = $this->get_value($values, 'cid');
-    $answers = $total = 0;
     $campaign = campaign_load($cid);
-
-    foreach ($campaign->getParticipants() as $participant) {
-      $total++;
-      if ($participant->answered) {
-        $answers++;
-      }
-    }
-
-    if ($total == 0) {
-      return ['#markup' => t('N/A')];
-    }
-
-    $ratio = $answers . '/' . $total;
-    $percent = round(100 * $answers / $total) . ' %';
-    return ['#markup' => $ratio . ' (' . $percent . ')'];
+    return theme('answered_ratio', $campaign->getAnsweredRatio());
   }
 
 }
