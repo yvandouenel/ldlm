@@ -973,3 +973,39 @@ body.pro .field-name-body h3{
   padding: 5px 0 5px 5px;
 }
 
+/* Formulaire d'évaluation */
+#ldlm-survey-evaluation-form legend,
+#ldlm-survey-evaluation-form .form-type-radios > label {
+  font-weight: bold;
+}
+#ldlm-survey-evaluation-form .counter {
+  font-size: small;
+}
+#ldlm-survey-evaluation-form fieldset.question-group {
+  margin: 3em 0;
+  padding-bottom: 4em;
+  background: transparent url(/sites/all/themes/custom/ldlm/images/icons/separator-blue.png) no-repeat 50% bottom;
+}
+#ldlm-survey-evaluation-form fieldset.question-group > legend {
+  font-size: 1.5em;
+  text-transform: uppercase;
+  color: #236e8b;
+}
+#ldlm-survey-evaluation-form fieldset.question-group:last-child {
+  background: none;
+  padding-bottom: 0;
+}
+#ldlm-survey-evaluation-form fieldset.remarques {
+  border: 1px solid #236f8b;
+  border-radius: 8px;
+  padding: 0.3em 1.5em;
+}
+#ldlm-survey-evaluation-form fieldset.remarques > legend {
+  font-weight: normal;
+}
+#ldlm-survey-evaluation-form fieldset.remarques label {
+  font-weight: bold;
+}
+#ldlm-survey-evaluation-form .form-radios {
+  padding: 1em 0;
+}

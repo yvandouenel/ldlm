@@ -20,6 +20,12 @@
         width: 100%;
     }
 }
+@media screen and (min-width:741px) {
+  #ldlm-survey-evaluation-form .form-type-radio {
+    display: inline;
+    padding-left: 1em;
+  }
+}
 @media screen and (max-width:1025px) and (min-width:741px){
     body.front .view-evenements .views-row .home-news-text{
         height: 52px;

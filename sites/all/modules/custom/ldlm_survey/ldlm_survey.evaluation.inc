@@ -93,10 +93,14 @@ function ldlm_survey_evaluation_form($form, &$form_state, $participant) {
       '@nom' => $participant->surname,
     ]),
   ];
+  $form['question_groups'] = ['#type' => 'container'];
   foreach ($survey->getQuestionGroups() as $qgid => $question_group) {
     $form['question_groups'][$qgid] = [
       '#type' => 'fieldset',
       '#title' => check_plain($question_group->title),
+      '#attributes' => [
+        'class' => ['question-group'],
+      ],
     ];
     foreach ($question_group->getQuestions() as $qid => $question) {
       $form['question_groups'][$qgid]['questions'][$qid] = [
@@ -108,7 +112,10 @@ function ldlm_survey_evaluation_form($form, &$form_state, $participant) {
     }
     $form['question_groups'][$qgid]['remarques'] = [
       '#type' => 'fieldset',
-      '#title' => t('Remarques, commentaires ou suggestions.'),
+      '#title' => t('Remarques, commentaires ou suggestions'),
+      '#attributes' => [
+        'class' => ['remarques'],
+      ],
     ];
     $form['question_groups'][$qgid]['remarques']['positif'] = [
       '#type' => 'textarea',
