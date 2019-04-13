@@ -20,6 +20,13 @@ class Campaign extends Entity {
   }
 
   /**
+   * Remarques soumises par les participants à cette campagne.
+   */
+  public function getRemarques() {
+    return entity_get_controller($this->entityType)->getRemarques($this);
+  }
+
+  /**
    * Delete all participants for this campaign.
    */
   public function deleteParticipants() {

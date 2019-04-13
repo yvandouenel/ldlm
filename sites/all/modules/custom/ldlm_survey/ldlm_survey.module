@@ -107,6 +107,15 @@ function ldlm_survey_menu() {
     'type' => MENU_LOCAL_TASK,
     'weight' => 1,
   ];
+  $items['admin/content/survey/campaign/%campaign/remarques'] = [
+    'title' => 'Remarques',
+    'page callback' => 'ldlm_survey_campaign_remarques_page',
+    'page arguments' => [4],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.campaign.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 2,
+  ];
   $items['admin/content/survey/campaign/%campaign/edit'] = [
     'title' => 'Modifier',
     'page callback' => 'drupal_get_form',
@@ -115,11 +124,18 @@ function ldlm_survey_menu() {
     'access arguments' => [4],
     'file' => 'ldlm_survey.campaign.inc',
     'type' => MENU_LOCAL_TASK,
-    'weight' => 2,
+    'weight' => 3,
   ];
   $items['admin/content/survey/campaign/%campaign/participants-csv'] = [
     'title' => 'Exporter les participants',
     'page callback' => 'ldlm_survey_export_participants',
+    'page arguments' => [4],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.campaign.inc',
+  ];
+  $items['admin/content/survey/campaign/%campaign/remarques-csv'] = [
+    'title' => 'Exporter les remarques',
+    'page callback' => 'ldlm_survey_export_remarques',
     'page arguments' => [4],
     'access arguments' => ['administer surveys'],
     'file' => 'ldlm_survey.campaign.inc',

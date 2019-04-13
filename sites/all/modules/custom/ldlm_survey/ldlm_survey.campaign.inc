@@ -647,3 +647,96 @@ function ldlm_survey_campaign_participants_page($campaign) {
     ],
   ];
 }
+
+/**
+ * Remarques.
+ */
+function ldlm_survey_campaign_remarques_page($campaign) {
+  $wr_campaign = $campaign->wrapper();
+  $survey = $wr_campaign->cgid->sid->value();
+  $header = [t('Points positifs'), t('Points à améliorer')];
+  $remarques = $campaign->getRemarques();
+
+  if (!$remarques) {
+    return t("Pas de remarques pour l'instant.");
+  }
+
+  $return = [
+    [
+      '#theme' => 'html_tag',
+      '#tag' => 'p',
+      '#value' => t('Ces réponses ont été soumises via le questionnaire <a href="!url">@survey</a>, du !begin au !end.', [
+        '@survey' => $survey->title,
+        '!url' => url('admin/content/survey/survey/' . $survey->sid . '/demo'),
+        '!begin' => date('Y-m-d', $campaign->begin),
+        '!end' => date('Y-m-d', $campaign->end),
+      ]),
+    ],
+  ];
+
+  foreach ($survey->getQuestionGroups() as $qgid => $question_group) {
+    if (!isset($remarques[$qgid])) {
+      continue;
+    }
+    $return[] = [
+      '#theme' => 'html_tag',
+      '#tag' => 'h3',
+      '#value' => check_plain($question_group->title),
+    ];
+    $return[] = [
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $remarques[$qgid],
+      '#attributes' => [
+        'style' => 'table-layout: fixed;',
+      ],
+    ];
+  }
+  $return[] = [
+    '#theme' => 'item_list',
+    '#type' => 'ul',
+    '#attributes' => [
+      'class' => ['inline'],
+    ],
+    '#items' => [
+      l(t('exporter remarques'), 'admin/content/survey/campaign/' . $campaign->cid . '/remarques-csv'),
+    ],
+  ];
+
+  return $return;
+}
+
+/**
+ * Export des remarques en CSV.
+ */
+function ldlm_survey_export_remarques($campaign) {
+  $wr_campaign = $campaign->wrapper();
+  $survey = $wr_campaign->cgid->sid->value();
+  $remarques = $campaign->getRemarques();
+  $delimiter = ';';
+  $header = [
+    t('Groupe de questions'),
+    t('Points positifs'),
+    t('Points à améliorer'),
+  ];
+
+  drupal_add_http_header('Content-Type', 'text/csv; utf-8');
+  drupal_add_http_header('Content-Disposition', 'attachment; filename=remarques_' . $campaign->cid . '.csv');
+  $handle = fopen('php://output', 'w');
+  fputcsv($handle, $header, $delimiter);
+  foreach ($survey->getQuestionGroups() as $qgid => $question_group) {
+    if (!isset($remarques[$qgid])) {
+      continue;
+    }
+    foreach ($remarques[$qgid] as $comments) {
+      $line = [
+        $question_group->title,
+        $comments['positif'],
+        $comments['negatif'],
+      ];
+      fputcsv($handle, $line, $delimiter);
+    }
+  }
+  fclose($handle);
+  drupal_exit();
+}

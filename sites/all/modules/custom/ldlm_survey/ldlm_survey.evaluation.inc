@@ -207,5 +207,6 @@ function ldlm_survey_survey_demo_page($survey) {
     'campaign' => $campaign,
     'survey' => $survey,
   ];
+  drupal_set_message(t('Ceci est une prévisualisation du questionnaire %title.', ['%title' => $survey->title]), 'warning');
   return drupal_get_form('ldlm_survey_evaluation_form', $participant);
 }

@@ -69,6 +69,30 @@ class CampaignController extends LdlmSurveyController {
   }
 
   /**
+   * Remarques soumises par les participants à cette campagne.
+   */
+  public function getRemarques($campaign) {
+    $query = db_select('ldlm_group_data', 'gd');
+    $query->join('ldlm_submission', 'sm', 'sm.smid = gd.smid');
+    $result = $query->fields('gd', ['qgid', 'positif', 'negatif'])
+      ->condition('sm.cid', $campaign->cid)
+      ->orderBy('gd.created')
+      ->execute();
+    $remarques = [];
+    while ($record = $result->fetchAssoc()) {
+      if (empty($record['positif']) && empty($record['negatif'])) {
+        continue;
+      }
+      $remarques[$record['qgid']][] = [
+        'positif' => $record['positif'],
+        'negatif' => $record['negatif'],
+      ];
+    }
+
+    return $remarques;
+  }
+
+  /**
    * Delete all participants for this campaign.
    */
   public function deleteParticipants($campaign) {
