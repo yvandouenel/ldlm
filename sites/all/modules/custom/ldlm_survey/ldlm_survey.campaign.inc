@@ -368,6 +368,13 @@ function ldlm_survey_campaign_form_participants_validate($form, &$form_state) {
 function ldlm_survey_campaign_form_participants_confirm($form, &$form_state) {
   $form = [];
 
+  // Nettoyer pour la prévisualisation, mais enregistrer les données telles
+  // quelles.
+  $participants = $form_state['storage']['participants'];
+  array_walk_recursive($participants, function (&$item, $key) {
+    $item = check_plain($item);
+  });
+
   $form['recap_participants'] = [
     [
       '#theme' => 'html_tag',
@@ -377,7 +384,7 @@ function ldlm_survey_campaign_form_participants_confirm($form, &$form_state) {
     [
       '#theme' => 'table',
       '#header' => [t('Nom'), t('Prénom'), t('Courriel')],
-      '#rows' => $form_state['storage']['participants'],
+      '#rows' => $participants,
     ],
     [
       '#theme' => 'html_tag',
@@ -589,11 +596,11 @@ function ldlm_survey_campaign_page($campaign) {
     ],
     [
       t('Groupe de campagnes'),
-      $wr_campaign->cgid->title->value(),
+      $wr_campaign->cgid->title->value(['sanitize' => TRUE]),
     ],
     [
       t('Questionnaire'),
-      l($wr_campaign->cgid->sid->title->value(), 'admin/content/survey/survey/' . $wr_campaign->cgid->sid->raw() . '/demo'),
+      l($wr_campaign->cgid->sid->title->value(['sanitize' => TRUE]), 'admin/content/survey/survey/' . $wr_campaign->cgid->sid->raw() . '/demo'),
     ],
     [
       t("Lien d'accès direct"),
@@ -614,9 +621,9 @@ function ldlm_survey_campaign_participants_page($campaign) {
 
   foreach ($campaign->getParticipants() as $participant) {
     $participants[] = [
-      $participant->surname,
-      $participant->name,
-      $participant->mail,
+      check_plain($participant->surname),
+      check_plain($participant->name),
+      check_plain($participant->mail),
       $participant->answered ? t('Yes') : t('No'),
     ];
   }
