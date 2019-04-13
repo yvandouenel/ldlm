@@ -593,7 +593,7 @@ function ldlm_survey_campaign_page($campaign) {
     ],
     [
       t('Questionnaire'),
-      $wr_campaign->cgid->sid->title->value(),
+      l($wr_campaign->cgid->sid->title->value(), 'admin/content/survey/survey/' . $wr_campaign->cgid->sid->raw() . '/demo'),
     ],
     [
       t("Lien d'accès direct"),

@@ -20,6 +20,7 @@ class views_handler_field_survey_actions extends views_handler_field {
     $survey = survey_load($sid);
     $campaign_groups = $survey->getCampaignGroups();
 
+    $links[] = l(t('visualiser'), 'admin/content/survey/survey/' . $sid . '/demo');
     if (!$campaign_groups) {
       $links[] = l(t('edit'), 'admin/content/survey/survey/' . $sid . '/edit');
     }

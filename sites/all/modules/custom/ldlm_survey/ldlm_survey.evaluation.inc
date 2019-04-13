@@ -73,9 +73,15 @@ function ldlm_survey_evaluation_prologue_form_submit($form, &$form_state) {
 function ldlm_survey_evaluation_form($form, &$form_state, $participant) {
   $form = [];
 
-  $wr_participant = $participant->wrapper();
-  $campaign = $wr_participant->cid->value();
-  $survey = $wr_participant->cid->cgid->sid->value();
+  if (empty($participant->demo)) {
+    $wr_participant = $participant->wrapper();
+    $campaign = $wr_participant->cid->value();
+    $survey = $wr_participant->cid->cgid->sid->value();
+  }
+  else {
+    $campaign = $participant->demo['campaign'];
+    $survey = $participant->demo['survey'];
+  }
   $question_options = ldlm_survey_points();
 
   drupal_set_title($campaign->title);
@@ -136,6 +142,7 @@ function ldlm_survey_evaluation_form($form, &$form_state, $participant) {
     '#type' => 'submit',
     '#value' => t("Envoyer"),
     '#name' => 'submit',
+    '#disabled' => !empty($participant->demo),
   ];
 
   return $form;
@@ -179,4 +186,26 @@ function ldlm_survey_evaluation_form_submit($form, &$form_state) {
 
   drupal_set_message(t("Merci d'avoir participé à cette évaluation."));
   $form_state['redirect'] = '<front>';
+}
+
+/**
+ * Page callback: demo page for surveys.
+ */
+function ldlm_survey_survey_demo_page($survey) {
+  $participant = entity_create('participant', [
+    'mail' => 'demo@example.net',
+    'surname' => 'Nonyme',
+    'name' => 'A.',
+  ]);
+  $campaign = entity_create('campaign', [
+    'title' => t("Campagne d'évaluation de démo"),
+    'begin' => REQUEST_TIME - 5 * 86400,
+    'end' => REQUEST_TIME + 7 * 86400,
+    'status' => LDLM_SURVEY_STATUS_OPEN,
+  ]);
+  $participant->demo = [
+    'campaign' => $campaign,
+    'survey' => $survey,
+  ];
+  return drupal_get_form('ldlm_survey_evaluation_form', $participant);
 }
