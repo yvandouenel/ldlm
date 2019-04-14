@@ -1,0 +1,17 @@
+.survey-value.good {
+  color: green;
+}
+.survey-value.bad {
+  color: red;
+}
+.survey-value.group {
+  font-weight: bold;
+}
+body.page-admin-content-survey-campaign-results h2,
+body.page-admin-content-survey-campaign-remarques h2 {
+  margin-top: 1.2em;
+}
+body.page-admin-content-survey-campaign-results table,
+body.page-admin-content-survey-campaign-remarques table {
+  table-layout: fixed;
+}

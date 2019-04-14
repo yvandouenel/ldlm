@@ -691,17 +691,11 @@ function ldlm_survey_campaign_remarques_page($campaign) {
       '#theme' => 'html_tag',
       '#tag' => 'h2',
       '#value' => check_plain($question_group->title),
-      '#attributes' => [
-        'style' => 'margin-top: 1.2em;',
-      ],
     ];
     $return[] = [
       '#theme' => 'table',
       '#header' => $header,
       '#rows' => $remarques[$qgid],
-      '#attributes' => [
-        'style' => 'table-layout: fixed;',
-      ],
     ];
   }
   $return[] = [
@@ -818,9 +812,6 @@ function ldlm_survey_campaign_results_page($campaign, $group = FALSE) {
       '#theme' => 'html_tag',
       '#tag' => 'h2',
       '#value' => check_plain($question_group->title),
-      '#attributes' => [
-        'style' => 'margin-top: 1.2em;',
-      ],
     ];
 
     foreach ($question_group->getQuestions() as $qid => $question) {
@@ -841,7 +832,7 @@ function ldlm_survey_campaign_results_page($campaign, $group = FALSE) {
         'avg' => theme('survey_value', $results[$qgid]['avg']),
         'stddev' => theme('survey_value', $results[$qgid]['stddev']),
       ],
-      'style' => 'font-weight: bold;',
+      'class' => ['survey-value', 'group'],
     ];
 
     $return[] = [
