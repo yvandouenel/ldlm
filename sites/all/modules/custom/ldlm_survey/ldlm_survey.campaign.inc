@@ -785,12 +785,16 @@ function ldlm_survey_campaign_results_page($campaign, $group = FALSE) {
     [
       '#theme' => 'html_tag',
       '#tag' => 'p',
-      '#value' => t('<strong>Moyenne globale :</strong> !avg', ['!avg' => $results['avg']]),
+      '#value' => t('<strong>Moyenne globale :</strong> !avg', [
+        '!avg' => theme('survey_value', $results['avg']),
+      ]),
     ],
     [
       '#theme' => 'html_tag',
       '#tag' => 'p',
-      '#value' => t('<strong>Écart type global :</strong> !stddev', ['!stddev' => $results['stddev']]),
+      '#value' => t('<strong>Écart type global :</strong> !stddev', [
+        '!stddev' => theme('survey_value', $results['stddev']),
+      ]),
     ],
   ];
 
@@ -817,16 +821,16 @@ function ldlm_survey_campaign_results_page($campaign, $group = FALSE) {
 
       $rows[] = [
         'title' => check_plain($question->label),
-        'avg' => $results[$qgid][$qid]['avg'],
-        'stddev' => $results[$qgid][$qid]['stddev'],
+        'avg' => theme('survey_value', $results[$qgid][$qid]['avg']),
+        'stddev' => theme('survey_value', $results[$qgid][$qid]['stddev']),
       ];
     }
 
     $rows[] = [
       'data' => [
         'title' => t('Ensemble'),
-        'avg' => $results[$qgid]['avg'],
-        'stddev' => $results[$qgid]['stddev'],
+        'avg' => theme('survey_value', $results[$qgid]['avg']),
+        'stddev' => theme('survey_value', $results[$qgid]['stddev']),
       ],
       'style' => 'font-weight: bold;',
     ];
@@ -924,8 +928,8 @@ function ldlm_survey_export_results($campaign, $group = FALSE) {
       $line = [
         $question_group->title,
         $question->label,
-        number_format($results[$qgid][$qid]['avg'], 1, ',', ''),
-        number_format($results[$qgid][$qid]['stddev'], 1, ',', ''),
+        number_format($results[$qgid][$qid]['avg']['value'], 1, ',', ''),
+        number_format($results[$qgid][$qid]['stddev']['value'], 1, ',', ''),
       ];
       fputcsv($handle, $line, $delimiter);
     }

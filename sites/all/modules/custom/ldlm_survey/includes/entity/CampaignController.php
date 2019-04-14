@@ -158,9 +158,46 @@ class CampaignController extends LdlmSurveyController {
     $stddev = sqrt($sq_sum / $count - $avg * $avg);
 
     return [
-      'avg' => round($avg, 1),
-      'stddev' => round($stddev, 1),
+      'avg' => [
+        'value' => $avg,
+        'quality' => $this->assessment($avg, 'avg'),
+      ],
+      'stddev' => [
+        'value' => $stddev,
+        'quality' => $this->assessment($stddev, 'stddev'),
+      ],
     ];
+  }
+
+  /**
+   * Appréciation qualitative du résultat.
+   *
+   * On divise en trois parties les intervalles dans lesquels les grandeurs
+   * prennent leurs valeurs.
+   */
+  protected function assessment($value, $type) {
+    switch ($type) {
+      // Les points varient de 1 à 4, la moyenne aussi.
+      case 'avg':
+        if ($value <= 2) {
+          return 'bad';
+        }
+        elseif ($value >= 3) {
+          return 'good';
+        }
+        break;
+
+      // L'écart type varie entre 0 et 1,5.
+      case 'stddev':
+        if ($value >= 1) {
+          return 'bad';
+        }
+        elseif ($value <= 0.5) {
+          return 'good';
+        }
+        break;
+    }
+    return 'normal';
   }
 
   /**

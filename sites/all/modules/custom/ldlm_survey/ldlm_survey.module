@@ -567,6 +567,14 @@ function ldlm_survey_theme($existing, $type, $theme, $path) {
       'template' => 'answered-ratio',
       'path' => $tpl_path,
     ],
+    'survey_value' => [
+      'variables' => [
+        'value' => 0,
+        'quality' => 'normal',
+      ],
+      'template' => 'survey-value',
+      'path' => $tpl_path,
+    ],
   ];
 }
 
@@ -579,6 +587,14 @@ function ldlm_survey_preprocess_answered_ratio(&$variables) {
   }
 
   $variables['percent'] = round(100 * $variables['answers'] / $variables['total']);
+}
+
+/**
+ * Implements MODULE_preprocess_HOOK().
+ */
+function ldlm_survey_preprocess_survey_value(&$variables) {
+  // number_format() se charge aussi d'arrondir.
+  $variables['value'] = number_format($variables['value'], 1, ',', '');
 }
 
 /**
