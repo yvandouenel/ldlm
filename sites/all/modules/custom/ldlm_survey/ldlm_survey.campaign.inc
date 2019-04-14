@@ -851,6 +851,8 @@ function ldlm_survey_campaign_results_page($campaign, $group = FALSE) {
     ],
   ];
 
+  $return[] = ['#markup' => t("<p>Les questions sont notées comme suit :</p><ul><li>tout à fait d'accord (4 points),</li><li>plutôt d'accord (3 points),</li><li>plutôt pas d'accord (2 points),</li><li>pas du tout d'accord (1 point).</li></ul><p>En conséquence, la moyenne varie également entre 1 et 4 (intervalle d'une largeur de 3 points), tandis que l'écart type, lui, varie de 0 à 1,5. On divise ces intervalles en trois parties égales, et on considère que la moyenne est bonne (vert) au-dessus de 3 et médiocre (rouge) en dessous de 2. L'écart type est médiocre (répartition importante) au-dessus de 1, et bon en dessous de 0,5.</p>")];
+
   return $return;
 }
 
