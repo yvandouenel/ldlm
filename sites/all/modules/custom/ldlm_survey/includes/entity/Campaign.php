@@ -27,6 +27,20 @@ class Campaign extends Entity {
   }
 
   /**
+   * Points par question pour cette campagne (ou le groupe de campagnes).
+   */
+  public function getRawResults($group = FALSE) {
+    return entity_get_controller($this->entityType)->getRawResults($this, $group);
+  }
+
+  /**
+   * Moyenne et écart type par question.
+   */
+  public function getResults($group = FALSE) {
+    return entity_get_controller($this->entityType)->getResults($this, $group);
+  }
+
+  /**
    * Delete all participants for this campaign.
    */
   public function deleteParticipants() {

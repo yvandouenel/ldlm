@@ -680,8 +680,11 @@ function ldlm_survey_campaign_remarques_page($campaign) {
     }
     $return[] = [
       '#theme' => 'html_tag',
-      '#tag' => 'h3',
+      '#tag' => 'h2',
       '#value' => check_plain($question_group->title),
+      '#attributes' => [
+        'style' => 'margin-top: 1.2em;',
+      ],
     ];
     $return[] = [
       '#theme' => 'table',
@@ -739,4 +742,101 @@ function ldlm_survey_export_remarques($campaign) {
   }
   fclose($handle);
   drupal_exit();
+}
+
+/**
+ * Résultat d'une campagne ou de tout un groupe.
+ */
+function ldlm_survey_campaign_results_page($campaign, $group = FALSE) {
+  $wr_campaign = $campaign->wrapper();
+  $survey = $wr_campaign->cgid->sid->value();
+  $results = $campaign->getResults($group);
+  $header = [
+    t('Question'),
+    t('Moyenne'),
+    t('Écart type'),
+  ];
+
+  if (!$results) {
+    return t("Pas de résultats pour l'instant.");
+  }
+
+  if ($group) {
+    $message = t('Ces réponses ont été soumises via le questionnaire <a href="!url">@survey</a>, à travers les campagnes du groupe %group.', [
+      '@survey' => $survey->title,
+      '!url' => url('admin/content/survey/survey/' . $survey->sid . '/demo'),
+      '%group' => $wr_campaign->cgid->title->value(),
+    ]);
+  }
+  else {
+    $message = t('Ces réponses ont été soumises via le questionnaire <a href="!url">@survey</a>, du !begin au !end.', [
+      '@survey' => $survey->title,
+      '!url' => url('admin/content/survey/survey/' . $survey->sid . '/demo'),
+      '!begin' => date('Y-m-d', $campaign->begin),
+      '!end' => date('Y-m-d', $campaign->end),
+    ]);
+  }
+  $return = [
+    [
+      '#theme' => 'html_tag',
+      '#tag' => 'p',
+      '#value' => $message,
+    ],
+    [
+      '#theme' => 'html_tag',
+      '#tag' => 'p',
+      '#value' => t('<strong>Moyenne globale :</strong> !avg', ['!avg' => $results['avg']]),
+    ],
+    [
+      '#theme' => 'html_tag',
+      '#tag' => 'p',
+      '#value' => t('<strong>Écart type global :</strong> !stddev', ['!stddev' => $results['stddev']]),
+    ],
+  ];
+
+  foreach ($survey->getQuestionGroups() as $qgid => $question_group) {
+    $rows = [];
+
+    if (!isset($results[$qgid])) {
+      continue;
+    }
+
+    $return[] = [
+      '#theme' => 'html_tag',
+      '#tag' => 'h2',
+      '#value' => check_plain($question_group->title),
+      '#attributes' => [
+        'style' => 'margin-top: 1.2em;',
+      ],
+    ];
+
+    foreach ($question_group->getQuestions() as $qid => $question) {
+      if (!isset($results[$qgid][$qid])) {
+        continue;
+      }
+
+      $rows[] = [
+        'title' => check_plain($question->label),
+        'avg' => $results[$qgid][$qid]['avg'],
+        'stddev' => $results[$qgid][$qid]['stddev'],
+      ];
+    }
+
+    $rows[] = [
+      'data' => [
+        'title' => t('Ensemble'),
+        'avg' => $results[$qgid]['avg'],
+        'stddev' => $results[$qgid]['stddev'],
+      ],
+      'style' => 'font-weight: bold;',
+    ];
+
+    $return[] = [
+      '#theme' => 'table',
+      '#header' => $header,
+      '#rows' => $rows,
+    ];
+  }
+
+  return $return;
 }

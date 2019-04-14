@@ -8,8 +8,8 @@ class CampaignGroup extends Entity {
   /**
    * Get all campaigns for this campaign group.
    */
-  public function getCampaigns() {
-    return entity_get_controller($this->entityType)->getCampaigns($this);
+  public function getCampaigns($raw = FALSE) {
+    return entity_get_controller($this->entityType)->getCampaigns($this, $raw);
   }
 
 }

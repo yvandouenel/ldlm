@@ -8,7 +8,7 @@ class CampaignGroupController extends LdlmSurveyController {
   /**
    * Get all campaigns for this campaign group.
    */
-  public function getCampaigns($campaign_group) {
+  public function getCampaigns($campaign_group, $raw) {
     $campaigns = [];
 
     if (isset($campaign_group->cgid)) {
@@ -19,7 +19,7 @@ class CampaignGroupController extends LdlmSurveyController {
 
       if (!empty($result['campaign'])) {
         $cids = array_keys($result['campaign']);
-        $campaigns = entity_load('campaign', $cids);
+        $campaigns = $raw ? $cids : entity_load('campaign', $cids);
       }
     }
 

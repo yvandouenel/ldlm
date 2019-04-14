@@ -93,6 +93,77 @@ class CampaignController extends LdlmSurveyController {
   }
 
   /**
+   * Points par question pour cette campagne (ou le groupe de campagnes).
+   */
+  public function getRawResults($campaign, $group) {
+    if ($group) {
+      $campaign_group = campaign_group_load($campaign->cgid);
+      $cids = $campaign_group->getCampaigns(TRUE);
+    }
+    else {
+      $cids = $campaign->cid;
+    }
+
+    $query = db_select('ldlm_submitted_data', 'smd');
+    $query->join('ldlm_submission', 'sm', 'sm.smid = smd.smid');
+    $query->join('ldlm_question', 'q', 'q.qid = smd.qid');
+    $result = $query->fields('smd', ['qid', 'count'])
+      ->fields('q', ['qgid'])
+      ->condition('sm.cid', $cids)
+      ->orderBy('smd.created')
+      ->execute();
+    $results = [];
+    while ($record = $result->fetchAssoc()) {
+      $results[$record['qgid']][$record['qid']][] = $record['count'];
+    }
+
+    return $results;
+  }
+
+  /**
+   * Moyenne et écart type par question.
+   */
+  public function getResults($campaign, $group = FALSE) {
+    $raw_results = $campaign->getRawResults($group);
+
+    if (!$raw_results) {
+      return [];
+    }
+
+    $results = $this->statistics($raw_results);
+
+    foreach ($raw_results as $qgid => $question_group_values) {
+      $results[$qgid] = $this->statistics($question_group_values);
+      foreach ($question_group_values as $qid => $question_values) {
+        $results[$qgid][$qid] = $this->statistics($question_values);
+      }
+    }
+
+    return $results;
+  }
+
+  /**
+   * Calcule la moyenne et l'écart-type des points obtenus.
+   */
+  protected function statistics($values) {
+    $sum = $sq_sum = $count = 0;
+
+    array_walk_recursive($values, function ($value, $key) use (&$sum, &$sq_sum, &$count) {
+      $count++;
+      $sum += $value;
+      $sq_sum += $value * $value;
+    });
+
+    $avg = $sum / $count;
+    $stddev = sqrt($sq_sum / $count - $avg * $avg);
+
+    return [
+      'avg' => round($avg, 1),
+      'stddev' => round($stddev, 1),
+    ];
+  }
+
+  /**
    * Delete all participants for this campaign.
    */
   public function deleteParticipants($campaign) {
