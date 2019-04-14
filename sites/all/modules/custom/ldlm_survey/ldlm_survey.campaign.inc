@@ -569,6 +569,7 @@ function ldlm_survey_campaign_page_title($campaign) {
  */
 function ldlm_survey_campaign_page($campaign) {
   $wr_campaign = $campaign->wrapper();
+  $results = $campaign->getResults(FALSE, TRUE);
   $data = [
     [
       t('État'),
@@ -577,6 +578,14 @@ function ldlm_survey_campaign_page($campaign) {
     [
       t('Taux de réponse'),
       theme('answered_ratio', $campaign->getAnsweredRatio()),
+    ],
+    [
+      t('Moyenne globale'),
+      $results ? theme('survey_value', $results['avg']) : t('N/A'),
+    ],
+    [
+      t('Écart type global'),
+      $results ? theme('survey_value', $results['stddev']) : t('N/A'),
     ],
     [
       t("Date d'ouverture de la campagne"),

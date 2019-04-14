@@ -123,7 +123,7 @@ class CampaignController extends LdlmSurveyController {
   /**
    * Moyenne et écart type par question.
    */
-  public function getResults($campaign, $group = FALSE) {
+  public function getResults($campaign, $group, $truncate) {
     $raw_results = $campaign->getRawResults($group);
 
     if (!$raw_results) {
@@ -131,6 +131,10 @@ class CampaignController extends LdlmSurveyController {
     }
 
     $results = $this->statistics($raw_results);
+
+    if ($truncate) {
+      return $results;
+    }
 
     foreach ($raw_results as $qgid => $question_group_values) {
       $results[$qgid] = $this->statistics($question_group_values);

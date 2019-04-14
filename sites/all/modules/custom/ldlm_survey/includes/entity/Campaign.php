@@ -36,8 +36,8 @@ class Campaign extends Entity {
   /**
    * Moyenne et écart type par question.
    */
-  public function getResults($group = FALSE) {
-    return entity_get_controller($this->entityType)->getResults($this, $group);
+  public function getResults($group = FALSE, $truncate = FALSE) {
+    return entity_get_controller($this->entityType)->getResults($this, $group, $truncate);
   }
 
   /**
