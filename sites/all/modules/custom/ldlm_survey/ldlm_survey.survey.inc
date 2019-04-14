@@ -50,7 +50,7 @@ function ldlm_survey_survey_form($form, &$form_state, $survey = NULL, $clone = F
     '#title' => t('Titre'),
     '#description' => t("Titre du formulaire, utilisé pour l'administration."),
     '#size' => 60,
-    '#maxlength' => 128,
+    '#maxlength' => 255,
     '#default_value' => isset($form_state['storage']['survey']->title) ? $form_state['storage']['survey']->title : '',
   ];
   $form['question_groups'] = [
@@ -95,7 +95,7 @@ function ldlm_survey_survey_form($form, &$form_state, $survey = NULL, $clone = F
       '#title' => t('Title'),
       '#description' => t("Titre du groupe de questions. Laisser vide pour supprimer entièrement ce groupe et les questions qu'il contient."),
       '#size' => 60,
-      '#maxlength' => 128,
+      '#maxlength' => 255,
       '#default_value' => isset($question_group->title) ? $question_group->title : (isset($form_state['values']['question_groups'][$i]['question_group']['title']) ? $form_state['values']['question_groups'][$i]['question_group']['title'] : ''),
     ];
     $form['question_groups'][$i]['question_group']['questions'] = [
@@ -110,7 +110,7 @@ function ldlm_survey_survey_form($form, &$form_state, $survey = NULL, $clone = F
         '#title' => t('Question'),
         '#description' => t('Libellé de la question.'),
         '#size' => 60,
-        '#maxlength' => 128,
+        '#maxlength' => 255,
         '#default_value' => isset($question->label) ? $question->label : (isset($form_state['values']['question_groups'][$i]['question_group']['questions'][$j]['title']) ? $form_state['values']['question_groups'][$i]['question_group']['questions'][$j]['title'] : ''),
       ];
     }
