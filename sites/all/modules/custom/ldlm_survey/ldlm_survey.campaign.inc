@@ -838,5 +838,96 @@ function ldlm_survey_campaign_results_page($campaign, $group = FALSE) {
     ];
   }
 
+  $slug = $group ? 'group' : 'campaign';
+  $return[] = [
+    '#theme' => 'item_list',
+    '#type' => 'ul',
+    '#attributes' => [
+      'class' => ['inline'],
+    ],
+    '#items' => [
+      l(t('exporter résultats'), 'admin/content/survey/campaign/' . $campaign->cid . '/results/' . $slug . '-csv'),
+      l(t('exporter résultats bruts'), 'admin/content/survey/campaign/' . $campaign->cid . '/raw-results/' . $slug . '-csv'),
+    ],
+  ];
+
   return $return;
+}
+
+/**
+ * Export CSV des résultats bruts.
+ */
+function ldlm_survey_export_raw_results($campaign, $group = FALSE) {
+  $delimiter = ';';
+  $wr_campaign = $campaign->wrapper();
+  $survey = $wr_campaign->cgid->sid->value();
+  $results = $campaign->getRawResults($group);
+  $header = [
+    t('Groupe de questions'),
+    t('Question'),
+    t('Points'),
+  ];
+  $slug = $group ? 'groupe' : 'campagne';
+
+  drupal_add_http_header('Content-Type', 'text/csv; utf-8');
+  drupal_add_http_header('Content-Disposition', 'attachment; filename=resultats_bruts_' . $slug . '_' . $campaign->cid . '.csv');
+  $handle = fopen('php://output', 'w');
+  fputcsv($handle, $header, $delimiter);
+
+  foreach ($survey->getQuestionGroups() as $qgid => $question_group) {
+    foreach ($question_group->getQuestions() as $qid => $question) {
+      if (!isset($results[$qgid][$qid])) {
+        continue;
+      }
+      foreach ($results[$qgid][$qid] as $count) {
+        $line = [
+          $question_group->title,
+          $question->label,
+          $count,
+        ];
+        fputcsv($handle, $line, $delimiter);
+      }
+    }
+  }
+  fclose($handle);
+  drupal_exit();
+}
+
+/**
+ * Export CSV des résultats.
+ */
+function ldlm_survey_export_results($campaign, $group = FALSE) {
+  $delimiter = ';';
+  $wr_campaign = $campaign->wrapper();
+  $survey = $wr_campaign->cgid->sid->value();
+  $results = $campaign->getResults($group);
+  $header = [
+    t('Groupe de questions'),
+    t('Question'),
+    t('Moyenne'),
+    t('Écart type'),
+  ];
+  $slug = $group ? 'groupe' : 'campagne';
+
+  drupal_add_http_header('Content-Type', 'text/csv; utf-8');
+  drupal_add_http_header('Content-Disposition', 'attachment; filename=resultats_' . $slug . '_' . $campaign->cid . '.csv');
+  $handle = fopen('php://output', 'w');
+  fputcsv($handle, $header, $delimiter);
+
+  foreach ($survey->getQuestionGroups() as $qgid => $question_group) {
+    foreach ($question_group->getQuestions() as $qid => $question) {
+      if (!isset($results[$qgid][$qid])) {
+        continue;
+      }
+      $line = [
+        $question_group->title,
+        $question->label,
+        number_format($results[$qgid][$qid]['avg'], 1, ',', ''),
+        number_format($results[$qgid][$qid]['stddev'], 1, ',', ''),
+      ];
+      fputcsv($handle, $line, $delimiter);
+    }
+  }
+  fclose($handle);
+  drupal_exit();
 }

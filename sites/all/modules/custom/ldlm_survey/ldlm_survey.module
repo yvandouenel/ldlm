@@ -174,6 +174,34 @@ function ldlm_survey_menu() {
     'access arguments' => ['administer surveys'],
     'file' => 'ldlm_survey.campaign.inc',
   ];
+  $items['admin/content/survey/campaign/%campaign/raw-results/campaign-csv'] = [
+    'title' => 'Exporter les résultats bruts par campagne',
+    'page callback' => 'ldlm_survey_export_raw_results',
+    'page arguments' => [4],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.campaign.inc',
+  ];
+  $items['admin/content/survey/campaign/%campaign/raw-results/group-csv'] = [
+    'title' => 'Exporter les résultats bruts par groupe de campagnes',
+    'page callback' => 'ldlm_survey_export_raw_results',
+    'page arguments' => [4, TRUE],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.campaign.inc',
+  ];
+  $items['admin/content/survey/campaign/%campaign/results/campaign-csv'] = [
+    'title' => 'Exporter les résultats par campagne',
+    'page callback' => 'ldlm_survey_export_results',
+    'page arguments' => [4],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.campaign.inc',
+  ];
+  $items['admin/content/survey/campaign/%campaign/results/group-csv'] = [
+    'title' => 'Exporter les résultats par groupe de campagnes',
+    'page callback' => 'ldlm_survey_export_results',
+    'page arguments' => [4, TRUE],
+    'access arguments' => ['administer surveys'],
+    'file' => 'ldlm_survey.campaign.inc',
+  ];
   $items['admin/content/survey/campaign/%campaign/delete'] = [
     'title' => 'Supprimer une campagne',
     'page callback' => 'drupal_get_form',
