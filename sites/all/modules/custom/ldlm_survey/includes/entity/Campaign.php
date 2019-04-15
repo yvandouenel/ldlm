@@ -29,8 +29,8 @@ class Campaign extends Entity {
   /**
    * Points par question pour cette campagne (ou le groupe de campagnes).
    */
-  public function getRawResults($group = FALSE) {
-    return entity_get_controller($this->entityType)->getRawResults($this, $group);
+  public function getRawResults($group = FALSE, $truncate = FALSE) {
+    return entity_get_controller($this->entityType)->getRawResults($this, $group, $truncate);
   }
 
   /**

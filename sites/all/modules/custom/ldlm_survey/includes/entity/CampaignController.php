@@ -95,7 +95,7 @@ class CampaignController extends LdlmSurveyController {
   /**
    * Points par question pour cette campagne (ou le groupe de campagnes).
    */
-  public function getRawResults($campaign, $group) {
+  public function getRawResults($campaign, $group, $truncate) {
     if ($group) {
       $campaign_group = campaign_group_load($campaign->cgid);
       $cids = $campaign_group->getCampaigns(TRUE);
@@ -107,14 +107,20 @@ class CampaignController extends LdlmSurveyController {
     $query = db_select('ldlm_submitted_data', 'smd');
     $query->join('ldlm_submission', 'sm', 'sm.smid = smd.smid');
     $query->join('ldlm_question', 'q', 'q.qid = smd.qid');
-    $result = $query->fields('smd', ['qid', 'count'])
+    $query->join('ldlm_question_group', 'qg', 'qg.qgid = q.qgid');
+    $result = $query->fields('smd', ['qid', 'count', 'smid'])
       ->fields('q', ['qgid'])
+      ->fields('qg', ['sid'])
       ->condition('sm.cid', $cids)
       ->orderBy('smd.created')
       ->execute();
     $results = [];
     while ($record = $result->fetchAssoc()) {
-      $results[$record['qgid']][$record['qid']][] = $record['count'];
+      $results['survey'][$record['sid']][$record['smid']][] = $record['count'];
+      if (!$truncate) {
+        $results['question_group'][$record['qgid']][$record['smid']][] = $record['count'];
+        $results['question'][$record['qid']][$record['smid']][] = $record['count'];
+      }
     }
 
     return $results;
@@ -124,53 +130,38 @@ class CampaignController extends LdlmSurveyController {
    * Moyenne et écart type par question.
    */
   public function getResults($campaign, $group, $truncate) {
-    $raw_results = $campaign->getRawResults($group);
+    $results = $campaign->getRawResults($group, $truncate);
 
-    if (!$raw_results) {
+    if (!$results) {
       return [];
     }
 
-    $results = $this->statistics($raw_results);
-
-    if ($truncate) {
-      return $results;
-    }
-
-    foreach ($raw_results as $qgid => $question_group_values) {
-      $results[$qgid] = $this->statistics($question_group_values);
-      foreach ($question_group_values as $qid => $question_values) {
-        $results[$qgid][$qid] = $this->statistics($question_values);
+    foreach ($results as $entity_type => &$entities) {
+      foreach ($entities as $entity_id => &$submissions) {
+        $averages = [];
+        foreach ($submissions as $smid => $submission) {
+          $averages[] = array_sum($submission) / count($submission);
+        }
+        $count = count($averages);
+        $avg = array_sum($averages) / $count;
+        $sq_averages = array_map(function ($n) {
+          return $n * $n;
+        }, $averages);
+        $stddev = sqrt(array_sum($sq_averages) / $count - $avg * $avg);
+        $submissions = [
+          'avg' => [
+            'value' => $avg,
+            'quality' => $this->assessment($avg, 'avg'),
+          ],
+          'stddev' => [
+            'value' => $stddev,
+            'quality' => $this->assessment($stddev, 'stddev'),
+          ],
+        ];
       }
     }
 
     return $results;
-  }
-
-  /**
-   * Calcule la moyenne et l'écart-type des points obtenus.
-   */
-  protected function statistics($values) {
-    $sum = $sq_sum = $count = 0;
-
-    array_walk_recursive($values, function ($value, $key) use (&$sum, &$sq_sum, &$count) {
-      $count++;
-      $sum += $value;
-      $sq_sum += $value * $value;
-    });
-
-    $avg = $sum / $count;
-    $stddev = sqrt($sq_sum / $count - $avg * $avg);
-
-    return [
-      'avg' => [
-        'value' => $avg,
-        'quality' => $this->assessment($avg, 'avg'),
-      ],
-      'stddev' => [
-        'value' => $stddev,
-        'quality' => $this->assessment($stddev, 'stddev'),
-      ],
-    ];
   }
 
   /**
@@ -180,6 +171,9 @@ class CampaignController extends LdlmSurveyController {
    * prennent leurs valeurs.
    */
   protected function assessment($value, $type) {
+    // Éviter les problèmes liés à l'arrondi, sans toutefois modifier les
+    // valeurs brutes pour l'instant.
+    $value = round($value, 1);
     switch ($type) {
       // Les points varient de 1 à 4, la moyenne aussi.
       case 'avg':

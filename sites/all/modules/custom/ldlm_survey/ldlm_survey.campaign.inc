@@ -569,7 +569,9 @@ function ldlm_survey_campaign_page_title($campaign) {
  */
 function ldlm_survey_campaign_page($campaign) {
   $wr_campaign = $campaign->wrapper();
-  $results = $campaign->getResults(FALSE, TRUE);
+  if ($results = $campaign->getResults(FALSE, TRUE)) {
+    $results = reset($results['survey']);
+  }
   $data = [
     [
       t('État'),
@@ -789,14 +791,14 @@ function ldlm_survey_campaign_results_page($campaign, $group = FALSE) {
       '#theme' => 'html_tag',
       '#tag' => 'p',
       '#value' => t('<strong>Moyenne globale :</strong> !avg', [
-        '!avg' => theme('survey_value', $results['avg']),
+        '!avg' => theme('survey_value', $results['survey'][$survey->sid]['avg']),
       ]),
     ],
     [
       '#theme' => 'html_tag',
       '#tag' => 'p',
       '#value' => t('<strong>Écart type global :</strong> !stddev', [
-        '!stddev' => theme('survey_value', $results['stddev']),
+        '!stddev' => theme('survey_value', $results['survey'][$survey->sid]['stddev']),
       ]),
     ],
   ];
@@ -804,7 +806,7 @@ function ldlm_survey_campaign_results_page($campaign, $group = FALSE) {
   foreach ($survey->getQuestionGroups() as $qgid => $question_group) {
     $rows = [];
 
-    if (!isset($results[$qgid])) {
+    if (!isset($results['question_group'][$qgid])) {
       continue;
     }
 
@@ -815,22 +817,22 @@ function ldlm_survey_campaign_results_page($campaign, $group = FALSE) {
     ];
 
     foreach ($question_group->getQuestions() as $qid => $question) {
-      if (!isset($results[$qgid][$qid])) {
+      if (!isset($results['question'][$qid])) {
         continue;
       }
 
       $rows[] = [
         'title' => check_plain($question->label),
-        'avg' => theme('survey_value', $results[$qgid][$qid]['avg']),
-        'stddev' => theme('survey_value', $results[$qgid][$qid]['stddev']),
+        'avg' => theme('survey_value', $results['question'][$qid]['avg']),
+        'stddev' => theme('survey_value', $results['question'][$qid]['stddev']),
       ];
     }
 
     $rows[] = [
       'data' => [
         'title' => t('Ensemble'),
-        'avg' => theme('survey_value', $results[$qgid]['avg']),
-        'stddev' => theme('survey_value', $results[$qgid]['stddev']),
+        'avg' => theme('survey_value', $results['question_group'][$qgid]['avg']),
+        'stddev' => theme('survey_value', $results['question_group'][$qgid]['stddev']),
       ],
       'class' => ['survey-value', 'group'],
     ];
@@ -882,14 +884,14 @@ function ldlm_survey_export_raw_results($campaign, $group = FALSE) {
 
   foreach ($survey->getQuestionGroups() as $qgid => $question_group) {
     foreach ($question_group->getQuestions() as $qid => $question) {
-      if (!isset($results[$qgid][$qid])) {
+      if (!isset($results['question'][$qid])) {
         continue;
       }
-      foreach ($results[$qgid][$qid] as $count) {
+      foreach ($results['question'][$qid] as $count) {
         $line = [
           $question_group->title,
           $question->label,
-          $count,
+          reset($count),
         ];
         fputcsv($handle, $line, $delimiter);
       }
@@ -922,14 +924,14 @@ function ldlm_survey_export_results($campaign, $group = FALSE) {
 
   foreach ($survey->getQuestionGroups() as $qgid => $question_group) {
     foreach ($question_group->getQuestions() as $qid => $question) {
-      if (!isset($results[$qgid][$qid])) {
+      if (!isset($results['question'][$qid])) {
         continue;
       }
       $line = [
         $question_group->title,
         $question->label,
-        number_format($results[$qgid][$qid]['avg']['value'], 1, ',', ''),
-        number_format($results[$qgid][$qid]['stddev']['value'], 1, ',', ''),
+        number_format($results['question'][$qid]['avg']['value'], 1, ',', ''),
+        number_format($results['question'][$qid]['stddev']['value'], 1, ',', ''),
       ];
       fputcsv($handle, $line, $delimiter);
     }
