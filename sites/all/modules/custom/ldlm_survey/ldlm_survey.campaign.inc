@@ -871,6 +871,7 @@ function ldlm_survey_export_raw_results($campaign, $group = FALSE) {
   $survey = $wr_campaign->cgid->sid->value();
   $results = $campaign->getRawResults($group);
   $header = [
+    t('Soumission'),
     t('Groupe de questions'),
     t('Question'),
     t('Points'),
@@ -887,11 +888,12 @@ function ldlm_survey_export_raw_results($campaign, $group = FALSE) {
       if (!isset($results['question'][$qid])) {
         continue;
       }
-      foreach ($results['question'][$qid] as $count) {
+      foreach ($results['question'][$qid] as $smid => $submission) {
         $line = [
+          $smid,
           $question_group->title,
           $question->label,
-          reset($count),
+          reset($submission),
         ];
         fputcsv($handle, $line, $delimiter);
       }
