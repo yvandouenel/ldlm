@@ -127,13 +127,13 @@ function ldlm_survey_evaluation_form($form, &$form_state, $participant) {
       '#type' => 'textarea',
       '#title' => t('Points positifs'),
       '#maxlength_js' => TRUE,
-      '#maxlength' => 1500,
+      '#maxlength' => 500,
     ];
     $form['question_groups'][$qgid]['remarques']['negatif'] = [
       '#type' => 'textarea',
       '#title' => t('Points à améliorer'),
       '#maxlength_js' => TRUE,
-      '#maxlength' => 1500,
+      '#maxlength' => 500,
     ];
   }
 
