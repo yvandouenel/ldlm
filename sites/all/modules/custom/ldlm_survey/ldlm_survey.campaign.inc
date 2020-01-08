@@ -212,7 +212,7 @@ function ldlm_survey_campaign_form_general($form, &$form_state) {
   $form['token'] = [
     '#type' => 'machine_name',
     '#title' => t("Clef d'accès"),
-    '#description' => t("Nom unique compréhensible par une machine. Peut seulement contenir des lettres minuscules, chiffres, et tirets bas (_). Cette chaîne est utilisée pour générer un lien d'accès utilisable par l'ensemble des participants (moyennant la saisie d'une adresse électronique personnelle), dans le cas où ils ne peuvent pas utiliser le lien personnel envoyé par courriel. Laisser vide pour désactiver cette fonctionnalité."),
+    '#description' => t("Nom unique compréhensible par une machine. Peut seulement contenir des lettres minuscules, chiffres, et tirets bas (_). Cette chaîne est utilisée pour générer un lien d'accès utilisable par l'ensemble des participants (moyennant la saisie d'une adresse électronique personnelle), dans le cas où ils ne peuvent pas utiliser le lien personnel envoyé par courriel."),
     '#maxlength' => 100,
     '#machine_name' => ['exists' => 'campaign_token_load'],
     '#default_value' => !empty($form_state['values']['token']) ? $form_state['values']['token'] : (isset($campaign->token) ? $campaign->token : ''),
