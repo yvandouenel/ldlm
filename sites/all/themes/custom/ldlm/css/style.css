@@ -38,6 +38,9 @@ body{
 body.page-node .field-name-body .dnd-legend-wrapper {
   display: block;
 }
+.type-video .dnd-legend-wrapper {
+  display: block;
+}
 /* Corps de texte *****************************************************************/
 blockquote {
     border-left: 5px solid #CCC;
