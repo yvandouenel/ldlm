@@ -35,6 +35,9 @@ body{
 .field-name-scald-authors .field-item:before{
     content:'\00a9';
 }
+body.page-node .field-name-body .dnd-legend-wrapper {
+  display: block;
+}
 /* Corps de texte *****************************************************************/
 blockquote {
     border-left: 5px solid #CCC;
@@ -93,7 +96,7 @@ ul li.leaf {
   color: #444a52
 }
 h2#page-title{
-  
+
 }
 a:hover{
   text-decoration: underline;
@@ -224,7 +227,7 @@ a.vie_lyceenne{
   margin-right: 5px;
 }
 #link_pdfm{
-  color: #ef8c0c; 
+  color: #ef8c0c;
 }
 
 /* zoom ***********************************************************************/
@@ -321,7 +324,7 @@ body.front .region-home-col2 > .block-views{
   padding-bottom: 15px;
   border-bottom: 1px solid #e6edf2;
   border-top: 1px solid #e6edf2;
-  padding-top: 15px;    
+  padding-top: 15px;
   margin-bottom: 1px;
 }
 body.front .region-home-col2 #block-views-formations-block-3{
@@ -468,7 +471,7 @@ body.pro .h3-formation{
   padding: 15px 2px 15px 22px;
 }
 .group-metier-secteur h3{
-  
+
   font-size: 1.2em;
   text-transform: uppercase;
   color: white;
@@ -478,7 +481,7 @@ body.pro .h3-formation{
   font-family: 'Open Sans', sans-serif;
   text-decoration: none;
   display: block;
-  
+
 }
 .group-metier-secteur a:before {
     content: ">";
@@ -545,7 +548,7 @@ div.group-pre-inscription-pro h3{
   font-size: 1.1em;
   padding: 10px 0 20px 0;
   border-bottom: 1px dotted #cfd1d3;
-  
+
 }
 .group-scolaire-right .node-t-moignage,
 .group-pro .div-scol-right p,
@@ -661,7 +664,7 @@ body.pro .group-scolaire-right{
 }
 #superfish-1 > li.sf-no-children > a{
   padding: 10px 5px;
-  
+
 }
 #superfish-1 > li.first{
     width:20px;
@@ -679,7 +682,7 @@ body.pro .group-scolaire-right{
   text-decoration: none;
   display: block;
   text-decoration: none;
-  
+
 }
 ul#superfish-1 li > ul > li a{
   background-color: #566174;
@@ -860,7 +863,7 @@ ul#superfish-1 > li > li a{
 .field-name-field-titre{
   float: right;
   clear: right;
-  
+
 }
 .field-name-field-nom,.field-name-field-prenom{
   float: left;
