@@ -1019,4 +1019,5 @@ body.pro .field-name-body h3{
 table.border tr td,
 table.border tr th{
   border: 1px solid black;
+  padding: 10px;
 }
