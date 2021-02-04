@@ -1015,3 +1015,8 @@ body.pro .field-name-body h3{
 #ldlm-survey-evaluation-form .form-radios {
   padding: 1em 0;
 }
+/* Tableaux  */
+table.border tr td,
+table.border tr th{
+  border: 1px solid black;
+}
